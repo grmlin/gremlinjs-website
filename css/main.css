@@ -1,0 +1,8 @@
+.sidebar ul li a i {
+    margin-top: 3px;
+}
+
+.sidebar ul li.divider {
+    margin-right: -15px;
+    margin-left: -15px;
+}
