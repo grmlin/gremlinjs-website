@@ -1,4 +1,4 @@
 gremlinjs-website
 =================
 
-The GremlinJS Website
+Visit http://grmlin.github.io/gremlinjs-website/
