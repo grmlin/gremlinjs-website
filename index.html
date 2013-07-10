@@ -7,86 +7,156 @@
     <link rel="stylesheet" href="css/main.css"/>
 
 
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sons-of-obsidian"></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="css/github.css"/>
 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div class="container">
-    <h1 class="page-header">GremlinJS <small>a web components framework</small></h1>
-    <div class="row">
-        <div class="span12"></div>
-    </div>
-    <div class="row">
-        <div class="sidebar span3">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="./index.html">GremlinJS</a>
 
-            <div class="well" style="padding: 8px 0;">
-                <ul class="nav nav-list"
-                    data-gremlin-name="Navigation"
-                    data-src="nav.json"
-                    data-current="index.html"></ul>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active">
+                        <a href="#start">Get started</a>
+                    </li>
+                    <li class="">
+                        <a href="#guides">Guides</a>
+                    </li>
+                    <li>
+                        <a href="#api">API</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="demo-content span9">
-            <p class="lead">
-                To create a basic HelloWorld gremlin, include the GremlinJS source and the gremlin definition(s). That's
-                it.
-            </p>
+    </div>
+</div>
+<div class="hero-unit">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="logo">
+                    <img src="img/logo.png" alt="GremlinJS Logo"/>
+                    <h1>GremlinJS
+                        <small>web components the easy way</small>
+                    </h1>
+                </div>
 
-            <h3>Sample</h3>
+                </div>
+            <div class="span8">
+                <p class="lead">
+                    GremlinJS is a framework to build <strong>reusable components</strong> for your websites with Javascript.
+                    Gremlins are modular and flexible pieces of code describing the behaviour of dom elements.
+                </p>
 
-            <div class="sample-gremlins">
-                <div data-gremlin-name="HelloWorld"></div>
             </div>
-            <hr>
-            <h3>HTML</h3>
-            <h4>1. Include GremlinJS and the gremlin defintions</h4>
-<pre class="prettyprint linenums">
-&lt;head&gt;
+            <div class="span4">
+
+            </div>
+            <div class="span12">
+                <p>
+                    <strong>GremlinJS</strong>
+                </p>
+                <ul class="xunstyled">
+                    <li>has <strong>no dependencies</strong></li>
+                    <li>is <strong>fast and lightweight</strong></li>
+                    <li>supports <strong>lazy loading of javascript components</strong></li>
+                    <li>is <strong>highly extendable with build in extension interface</strong></li>
+                </ul>
+                <p class="text-center">
+
+                    <a class="btn btn-primary btn-large" href="#">Download GremlinJS</a>
+                    <span class="download-info muted">4k minified and gzipped</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <h2>Quick Start</h2>
+        </div>
+    </div>
+    <div class="row buffered">
+        <div class="span12">
+            <h3>1. Include GremlinJS</h3>
+
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h4>Legacy Support!</h4>
+                GremlinJS uses the javascript JSON API to parse JSON strings from dom element attributes. Include a
+                polyfill like
+                <a href="https://github.com/douglascrockford/JSON-js">json2.js</a> if you have to support older browsers
+                (e.g. IE7)
+            </div>
+
+<pre class="prettyprint">
+&lt;body&gt;
     ...
-    &lt;script src=&quot;js/GremlinJS.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;js/gremlins/HelloWorld.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
+    &lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
 </pre>
-            <h4>2. Add a gremlin element to your HTML</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <h3>2. Add a gremlin</h3>
 
-<pre class="prettyprint linenums">
-&lt;div data-gremlin-name=&quot;HelloWorld&quot;&gt;&lt;/div&gt;
+
+<pre class="prettyprint">
+&lt;body&gt;
+    ...
+    &lt;div data-gremlin=&quot;Gizmo&quot;&gt;&lt;/div&gt;
+    ...
+    <span class="muted">&lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;   </span>
+    &lt;script src=&quot;js/gremlins/Gizmo.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
 </pre>
-            <h3>Javascript <a href="js/gremlins/HelloWorld.js"><span class="badge badge-info">HelloWorld.js</span></a>
-            </h3>
+        </div>
+        <div class="span12">
+            <p><a href="js/gremlins/Gizmo.js"><span class="badge badge-info">Gizmo.js</span></a></p>
+<pre class="prettyprint">
+var Gizmo = GremlinJS.define('Gizmo',
+    function () {
+        this.el.innerHTML = '<strong>Hello World, Gizmo here!</strong>';
+    }
+);
+</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="well">
+                <p class="text-center">
+                    <button type="button" class="btn btn-info btn-large" data-toggle="collapse"
+                            data-target="#preview-1">
+                        Live preview
+                    </button>
+                </p>
 
-            <p></p>
+                <div id="preview-1" class=" collapse out">
 
-
-            <ul>
-                <li>
-                    <p>
-                        <code>GremlinJS.define</code> adds a new gremlin definition. This one here is called <code>HelloWorld</code>.
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        The <code>initialize</code> method is the constructor function called when a gremlin with the
-                        name <code>data-gremlin-name="HelloWorld"</code> was found and initialized.
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        <code>this.el</code> is available in every gremlin instance and references the gremlin's dom
-                        element. <br>
-                        Here, the <code>innerHTML</code> property of the gremlin's dom element will be changed to
-                        display <strong>Hello World</strong>.
-                    </p>
-                </li>
-            </ul>
+                    <a class="jsbin-embed" href="http://jsbin.com/ozozoz/1/embed?live">JS Bin</a>
+                    <script src="http://static.jsbin.com/js/embed.js"></script>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script src="js/GremlinJS.min.js"></script>
-<script src="js/gremlins/Navigation.js"></script>
+
 
 </body>
 </html>
