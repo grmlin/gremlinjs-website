@@ -1,16 +1,16 @@
-var Gizmo = GremlinJS.define('Gizmo', function () {
+GremlinJS.define('Gizmo', function () {
     this.el.innerHTML = '<strong>Hello World, Gizmo here! Loading some images from google now...</strong>';
     this._search();
 }, {
     elements: {
 
     },
-    _search: function(){
+    _search: function () {
         $.ajax({
-            url: Gizmo.G_IMG_SEARCH_API,
+            url: this.klass.G_IMG_SEARCH_API,
             cache: false,
             dataType: 'jsonp',
-            success: function(response){
+            success: function (response) {
                 console.dir(response.responseData);
             }
         });
