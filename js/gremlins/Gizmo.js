@@ -11,10 +11,10 @@ var Gizmo = GremlinJS.define('Gizmo', function () {
             cache: false,
             dataType: 'jsonp',
             success: function(response){
-                console.dir(response);
+                console.dir(response.responseData);
             }
         });
     }
 }, {
-    G_IMG_SEARCH_API: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=gizmo'
+    G_IMG_SEARCH_API: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=gizmo&rsz=8'
 });
