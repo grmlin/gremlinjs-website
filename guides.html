@@ -82,16 +82,15 @@
                     <h2 id="prepare-intro">Introduction</h2>
 
                     <p class="lead">
-                        GremlinJS allows you to organize your Javascripts in components, <em>Gremlins</em>.
+                        GremlinJS allows you to organize your Javascripts in components called <em>Gremlins</em>.
 
                     </p>
 
                     <p>
                         <strong>Every</strong> dom element may use one or more of these components. GremlinJS searches
-                        and
-                        finds all these elements (no matter if they are part of the dom from the beginning or added
-                        later)
-                        and creates Gremlin instances of the Gremlin definitions you provided.
+                        and finds all these elements (no matter if they are part of the dom from the beginning or added
+                        later)and creates Gremlin instances of the Gremlin definitions you provided. <br>
+
                     </p>
 
                     <p>
@@ -99,6 +98,10 @@
                         automatically whenever a dom element with this attribute is or becomes a child node of the dom.
                         <br>
                         <strong>Yepp, GremlinJS observes the dom for changes!</strong>
+                        <br>
+                        In websites build the classical, jQuery-style way, you normally end up with a huge list of
+                        dom-queries initializing all your javascript-enhancements. GremlinJS uses <strong>a
+                        single</strong> query for all your elements.
                     </p>
 
                     <p>
@@ -127,7 +130,8 @@
                     <p class="alert alert-info">
                         <strong>
                             If you have to support an old browser like IE7, be sure to include a JSON Library like
-                            <a href="https://github.com/douglascrockford/JSON-js">json2.js</a> before including GremlinJS.
+                            <a href="https://github.com/douglascrockford/JSON-js">json2.js</a> before including
+                            GremlinJS.
                         </strong> <br>
                         GremlinJS uses the javascript JSON API to parse JSON strings in custom dom element
                         data-attributes.
