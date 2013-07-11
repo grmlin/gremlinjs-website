@@ -17,97 +17,100 @@
 
 </head>
 <body data-gremlin-config='{"debug":false}'>
+<div class="page-wrapper">
+    <div class="navbar navbar-static-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand with-icon" href="./index.html"><img src="img/ico.png" alt="GremlinJS"/> GremlinJS</a>
 
-<div class="navbar navbar-static-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="brand with-icon" href="./index.html"><img src="img/ico.png" alt="GremlinJS"/> GremlinJS</a>
-
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li>
-                        <a href="index.html">Get started</a>
-                    </li>
-                    <li class="active">
-                        <a>Guides</a>
-                    </li>
-                    <li>
-                        <a href="#api">API</a>
-                    </li>
-                </ul>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="index.html">Get started</a>
+                        </li>
+                        <li class="active">
+                            <a>Guides</a>
+                        </li>
+                        <li>
+                            <a href="#api">API</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="row buffered">
-        <div id="doc-nav" class="sidebar span3" data-gremlin="ContentToggle" data-host-id="content-host">
+    <div class="container">
+        <div class="row buffered">
+            <div id="doc-nav" class="sidebar span3" data-gremlin="ContentToggle" data-host-id="content-host">
 
-            <ul class="nav nav-list" data-spy="affix" data-offset-top="80">
+                <ul class="nav nav-list" data-spy="affix" data-offset-top="80">
 
-                <li class="active">
-                    <a href="#prepare">Getting Started
-                        <ul>
-                            <li><a href="#prepare-intro">Introduction</a></li>
-                            <li><a href="#prepare-include">Include GremlinJS</a></li>
-                            <li><a href="#prepare-first">The first Gremlin</a></li>
-                        </ul>
-                    </a>
-                </li>
-                <li>
-                    <a href="#create">Add Gremlins</a>
-                </li>
-                <li>
-                    <a href="#create">Configuration options</a>
-                </li>
-                <li>
-                    <a href="#create">Configuration options</a>
-                </li>
-                <li><a href="#">Applications</a></li>
-                <li class="nav-header">Another list header</li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Settings</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-        </div>
-        <div id="content-host" class="span9">
-            <div id="prepare">
-                <h2 id="prepare-intro">Introduction</h2>
+                    <li class="active">
+                        <a href="#prepare">Getting Started
+                            <ul>
+                                <li><a href="#prepare-intro">Introduction</a></li>
+                                <li><a href="#prepare-include">Include GremlinJS</a></li>
+                                <li><a href="#prepare-first">The first Gremlin</a></li>
+                            </ul>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#create">Add Gremlins</a>
+                    </li>
+                    <li>
+                        <a href="#create">Configuration options</a>
+                    </li>
+                    <li>
+                        <a href="#create">Configuration options</a>
+                    </li>
+                    <li><a href="#">Applications</a></li>
+                    <li class="nav-header">Another list header</li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+            <div id="content-host" class="span9">
+                <div id="prepare">
+                    <h2 id="prepare-intro">Introduction</h2>
 
-                <p class="lead">
-                    GremlinJS allows you to organize your Javascripts in components, <em>Gremlins</em>.
+                    <p class="lead">
+                        GremlinJS allows you to organize your Javascripts in components, <em>Gremlins</em>.
 
-                </p>
+                    </p>
 
-                <p>
-                    <strong>Every</strong> dom element may use one or more of these components. GremlinJS searches and
-                    finds all these elements (no matter if they are part of the dom from the beginning or added later)
-                    and creates Gremlin instances of the Gremlin definitions you provided.
-                </p>
+                    <p>
+                        <strong>Every</strong> dom element may use one or more of these components. GremlinJS searches
+                        and
+                        finds all these elements (no matter if they are part of the dom from the beginning or added
+                        later)
+                        and creates Gremlin instances of the Gremlin definitions you provided.
+                    </p>
 
-                <p>
-                    Gremlins are found by a special data-attribute: <code>data-gremlin</code>. This happens
-                    automatically whenever a dom element with this attribute is or becomes a child node of the dom. <br>
-                    <strong>Yepp, GremlinJS observes the dom for changes!</strong>
-                </p>
+                    <p>
+                        Gremlins are found by a special data-attribute: <code>data-gremlin</code>. This happens
+                        automatically whenever a dom element with this attribute is or becomes a child node of the dom.
+                        <br>
+                        <strong>Yepp, GremlinJS observes the dom for changes!</strong>
+                    </p>
 
-                <p>
-                    Normally the components you'll write are isolated from each other and function independently.
-                    To use a Gremlin in another project, all you'll do is copy a file and add some HTML markup.
-                </p>
+                    <p>
+                        Normally the components you'll write are isolated from each other and function independently.
+                        To use a Gremlin in another project, all you'll do is copy a file and add some HTML markup.
+                    </p>
 
 
-                                <h3 id="prepare-include">Include GremlinJS</h3>
+                    <h3 id="prepare-include">Include GremlinJS</h3>
 
-                <p><a class="" href="#">Download GremlinJS</a> and include it in your HTML.
-                    From now on all gremlin components in the site will be found and instantiated. </p>
+                    <p><a class="" href="#">Download GremlinJS</a> and include it in your HTML.
+                        From now on all gremlin components in the site will be found and instantiated. </p>
 
 <pre class="prettyprint">
 &lt;!DOCTYPE html&gt;
@@ -121,25 +124,27 @@
 &lt;/html&gt;
 </pre>
 
-                <p class="alert alert-info">
-                    <strong>
-                        If you have to support an old browser like IE7, be sure to include a JSON Library like
-                        <a href="https://github.com/douglascrockford/JSON-js">json2.js</a> before GremlinJS.
-                    </strong> <br>
-                    GremlinJS uses the javascript JSON API to parse JSON strings in custom dom element data-attributes.
-                    (see <a href="#">Gremlin Configuration</a>)
-                </p>
+                    <p class="alert alert-info">
+                        <strong>
+                            If you have to support an old browser like IE7, be sure to include a JSON Library like
+                            <a href="https://github.com/douglascrockford/JSON-js">json2.js</a> before including GremlinJS.
+                        </strong> <br>
+                        GremlinJS uses the javascript JSON API to parse JSON strings in custom dom element
+                        data-attributes.
+                        (see <a href="#">Gremlin Configuration</a>)
+                    </p>
 
-                <h3 id="prepare-first">The first Gremlin</h3>
+                    <h3 id="prepare-first">The first Gremlin</h3>
 
-            </div>
-            <div id="create">
-                <h2>Create</h2>
+                </div>
+                <div id="create">
+                    <h2>Create</h2>
+                </div>
             </div>
         </div>
+
+
     </div>
-
-
 </div>
 
 <footer>

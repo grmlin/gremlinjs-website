@@ -17,82 +17,84 @@
 </head>
 <body>
 
-<div class="navbar navbar-static-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="brand with-icon" href="./index.html"><img src="img/ico.png" alt="GremlinJS"/> GremlinJS</a>
+<div class="page-wrapper">
+    <div class="navbar navbar-static-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand with-icon" href="./index.html"><img src="img/ico.png" alt="GremlinJS"/> GremlinJS</a>
 
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="active">
-                        <a>Get started</a>
-                    </li>
-                    <li class="">
-                        <a href="guides.html">Guides</a>
-                    </li>
-                    <li>
-                        <a href="api.html">API</a>
-                    </li>
-                </ul>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active">
+                            <a>Get started</a>
+                        </li>
+                        <li class="">
+                            <a href="guides.html">Guides</a>
+                        </li>
+                        <li>
+                            <a href="api.html">API</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="hero-unit">
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <div class="logo">
-                    <img src="img/logo.png" alt="GremlinJS Logo"/>
+    <div class="hero-unit">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="GremlinJS Logo"/>
 
-                    <h1>GremlinJS
-                        <small>web components the easy way</small>
-                    </h1>
-                </div>
-
-            </div>
-            <div class="span5">
-                <p class="lead">
-                    GremlinJS is a framework independent library to build <strong><abbr title="Gremlins">reusable web components</abbr></strong> with Javascript.
-                    Gremlins are modular and flexible pieces of code describing the behaviour of dom elements.
-                </p>
-
-            </div>
-            <div class="span6 offset1">
-                <ul class="">
-                    <li><strong>no dependencies</strong></li>
-                    <li><strong>fast and lightweight</strong></li>
-                    <li><strong>lazy loading of javascript components</strong></li>
-                    <li><strong>highly extendable with build in extensions interface</strong></li>
-                </ul>
-            </div>
-            <div class="span12 buffered">
-                <div class="text-center">
-
-                    <div class="download-button-wrapper">
-                        <a class="btn btn-primary btn-large download-button" href="#">Download GremlinJS</a>
-                        <span class="download-info muted">~4k minified and gzipped</span>
+                        <h1>GremlinJS
+                            <small>web components the easy way</small>
+                        </h1>
                     </div>
 
                 </div>
+                <div class="span5">
+                    <p class="lead">
+                        GremlinJS is a framework independent library to build <strong><abbr title="Gremlins">reusable
+                        web components</abbr></strong> with Javascript.
+                        Gremlins are modular and flexible pieces of code describing the behaviour of dom elements.
+                    </p>
+
+                </div>
+                <div class="span6 offset1">
+                    <ul class="">
+                        <li><strong>no dependencies</strong></li>
+                        <li><strong>fast and lightweight</strong></li>
+                        <li><strong>lazy loading of javascript components</strong></li>
+                        <li><strong>highly extendable with build in extensions interface</strong></li>
+                    </ul>
+                </div>
+                <div class="span12 buffered">
+                    <div class="text-center">
+
+                        <div class="download-button-wrapper">
+                            <a class="btn btn-primary btn-large download-button" href="#">Download GremlinJS</a>
+                            <span class="download-info muted">~4k minified and gzipped</span>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row buffered">
-        <div class="span12">
-            <h2>Quick Start</h2>
+    <div class="container">
+        <div class="row buffered">
+            <div class="span12">
+                <h2>Quick Start</h2>
+            </div>
         </div>
-    </div>
-    <div class="row buffered">
-        <div class="span12">
-            <h3>1. Include GremlinJS</h3>
+        <div class="row buffered">
+            <div class="span12">
+                <h3>1. Include GremlinJS</h3>
 
 <pre class="prettyprint">
 &lt;!DOCTYPE html&gt;
@@ -104,11 +106,11 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="span12">
-            <h3>2. Add a gremlin</h3>
+        <div class="row">
+            <div class="span12">
+                <h3>2. Add a gremlin</h3>
 
 
 <pre class="prettyprint">
@@ -118,24 +120,28 @@
     <span class="muted">&lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;   </span>
     <strong>&lt;script&gt;
         var Gizmo = GremlinJS.define('Gizmo',
-            function () {
-                this.el.innerHTML = '<strong>Hello World, Gizmo here!</strong>';
-            }
+        function () {
+        this.el.innerHTML = '<strong>Hello World, Gizmo here!</strong>';
+        }
         );
-    &lt;/script&gt;</strong>
+        &lt;/script&gt;</strong>
 &lt;/body&gt;
 </pre>
+            </div>
+
         </div>
+        <hr>
 
-    </div>
-    <hr>
+        <div class="row">
+            <div class="span12">
+                <h3>Live Preview</h3>
 
-    <div class="row">
-        <div class="span12">
-            <h3>Live Preview</h3>
-            <div class="live-preview">
-                <pre class="codepen" data-height="300" data-type="result" data-href="vsxDk" data-user="grmlin" data-safe="true"><code></code><a href="http://codepen.io/grmlin/pen/vsxDk">Check out this Pen!</a></pre>
-                <script async src="http://codepen.io/assets/embed/ei.js"></script>
+                <div class="live-preview">
+                    <pre class="codepen" data-height="300" data-type="result" data-href="vsxDk" data-user="grmlin"
+                         data-safe="true"><code></code><a href="http://codepen.io/grmlin/pen/vsxDk">Check out this
+                        Pen!</a></pre>
+                    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+                </div>
             </div>
         </div>
     </div>
