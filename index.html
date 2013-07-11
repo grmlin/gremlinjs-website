@@ -119,12 +119,10 @@
 
     <span class="muted">&lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;   </span>
     <strong>&lt;script&gt;
-        var Gizmo = GremlinJS.define('Gizmo',
-        function () {
-        this.el.innerHTML = '<strong>Hello World, Gizmo here!</strong>';
-        }
-        );
-        &lt;/script&gt;</strong>
+        GremlinJS.define('Gizmo', function () {
+            this.el.innerHTML = '<strong>Hello World, Gizmo here!</strong>';
+        });
+    &lt;/script&gt;</strong>
 &lt;/body&gt;
 </pre>
             </div>
