@@ -7,13 +7,11 @@
     <link rel="stylesheet" href="css/main.css"/>
 
 
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="css/github.css"/>
-
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/gremlin.min.js"></script>
-
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="css/vibrant.css"/>
 </head>
 <body>
 
@@ -62,6 +60,7 @@
                         GremlinJS is a dependency-free library to build <strong><abbr title="Gremlins">reusable
                         web components</abbr></strong> with Javascript. <br>
                     </p>
+
                     <p class="lead">
                         Gremlins are modular and flexible pieces of code describing the behaviour of dom elements.
                         Don't waste your time managing dozens of dom queries, let GremlinJS handle that for you.
@@ -99,7 +98,7 @@
             <div class="span12">
                 <h3>1. Include GremlinJS</h3>
 
-<pre class="prettyprint">
+<pre class="prettyprint ">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -119,15 +118,11 @@
 <pre class="prettyprint">
 &lt;body&gt;
     <strong>&lt;div data-gremlin=&quot;Gizmo&quot;&gt;&lt;/div&gt;</strong>
-
     <span class="muted">&lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;   </span>
-    <strong>&lt;script&gt;
-        GremlinJS.define('Gizmo', function () {
-        this.el.innerHTML = '<strong>Hello World, Gizmo here!</strong>';
-        });
-        &lt;/script&gt;</strong>
+    <strong>&lt;script src=&quot;js/Gizmo.js&quot;&gt;&lt;/script&gt;</strong>
 &lt;/body&gt;
 </pre>
+
             </div>
 
         </div>
@@ -138,7 +133,7 @@
                 <h3>Live Preview</h3>
 
                 <div class="live-preview">
-                    <pre class="codepen" data-height="300" data-type="result" data-href="vsxDk" data-user="grmlin"
+                    <pre class="codepen" data-height="500" data-type="result" data-href="vsxDk" data-user="grmlin"
                          data-safe="true"><code></code><a href="http://codepen.io/grmlin/pen/vsxDk">Check out this
                         Pen!</a></pre>
                     <script async src="http://codepen.io/assets/embed/ei.js"></script>
