@@ -10,8 +10,7 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/gremlin.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="css/vibrant.css"/>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian"></script>
 </head>
 <body>
 
@@ -98,7 +97,7 @@
             <div class="span12">
                 <h3>1. Include GremlinJS</h3>
 
-<pre class="prettyprint ">
+<div class="well"><pre class="prettyprint">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -107,7 +106,7 @@
     <strong>&lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;</strong>
   &lt;/body&gt;
 &lt;/html&gt;
-</pre>
+</pre></div>
             </div>
         </div>
         <div class="row">
@@ -115,13 +114,17 @@
                 <h3>2. Add a gremlin</h3>
 
 
-<pre class="prettyprint">
+<div class="well"><pre class="prettyprint">
 &lt;body&gt;
-    <strong>&lt;div data-gremlin=&quot;Gizmo&quot;&gt;&lt;/div&gt;</strong>
+    <strong>&lt;div class=&quot;gizmo-slideshow&quot; data-gremlin=&quot;Gizmo&quot;&gt;
+        &lt;p&gt;
+            &lt;strong&gt;Hello World, Gizmo here! Loading some images from google now...&lt;/strong&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;</strong>
     <span class="muted">&lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;   </span>
     <strong>&lt;script src=&quot;js/Gizmo.js&quot;&gt;&lt;/script&gt;</strong>
 &lt;/body&gt;
-</pre>
+</pre></div>
 
             </div>
 

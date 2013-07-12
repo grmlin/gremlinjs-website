@@ -7,113 +7,125 @@
     <link rel="stylesheet" href="css/main.css"/>
 
 
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="css/vibrant.css"/>
-
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/gremlin.min.js"></script>
     <script src="js/gremlins/ContentToggle.js"></script>
 
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian"></script>
+    <link rel="stylesheet" href="css/solarized.css"/>
 </head>
 <body data-gremlin-config='{"debug":false}'>
 <div class="page-wrapper">
-    <div class="navbar navbar-static-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="brand with-icon" href="./index.html"><img src="img/ico.png" alt="GremlinJS"/> GremlinJS</a>
+<div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand with-icon" href="./index.html"><img src="img/ico.png" alt="GremlinJS"/> GremlinJS</a>
 
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li>
-                            <a href="index.html">Get started</a>
-                        </li>
-                        <li class="active">
-                            <a>Guides</a>
-                        </li>
-                        <li>
-                            <a href="#api">API</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li>
+                        <a href="index.html">Get started</a>
+                    </li>
+                    <li class="active">
+                        <a>Guides</a>
+                    </li>
+                    <li>
+                        <a href="#api">API</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <div class="row buffered">
-            <div id="doc-nav" class="sidebar span3" data-gremlin="ContentToggle" data-host-id="content-host">
+<div class="container">
+<div class="row buffered">
+    <div id="doc-nav" class="sidebar span3" data-gremlin="ContentToggle" data-host-id="content-host">
 
-                <ul class="nav nav-list" data-spy="affix" data-offset-top="80">
+        <ul class="nav nav-list" data-spy="affix" data-offset-top="80">
 
-                    <li class="active">
-                        <a href="#prepare">Getting Started
-                            <ul>
-                                <li><a href="#prepare-intro">Introduction</a></li>
-                                <li><a href="#prepare-include">Include GremlinJS</a></li>
-                                <li><a href="#prepare-first">The first Gremlin</a></li>
-                            </ul>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#create">Add Gremlins</a>
-                    </li>
-                    <li>
-                        <a href="#create">Configuration options</a>
-                    </li>
-                    <li>
-                        <a href="#create">Configuration options</a>
-                    </li>
-                    <li><a href="#">Applications</a></li>
-                    <li class="nav-header">Another list header</li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Help</a></li>
-                </ul>
-            </div>
-            <div id="content-host" class="span9">
-                <div id="prepare">
-                    <h2 id="prepare-intro">Introduction</h2>
+            <li class="active">
+                <a href="#prepare">Getting Started
+                    <ul>
+                        <li><a href="#prepare-intro">Introduction</a></li>
+                        <li><a href="#prepare-include">Include GremlinJS</a></li>
+                        <li><a href="#prepare-first">The first Gremlin</a></li>
+                    </ul>
+                </a>
+            </li>
+            <li>
+                <a href="#create">Add Gremlins</a>
+            </li>
+            <li>
+                <a href="#create">Configuration options</a>
+            </li>
+            <li>
+                <a href="#create">Extensions</a>
+            </li>
+            <li>
+                <a href="#create">Complex Gremlins</a>
+            </li>
+        </ul>
+    </div>
+    <div id="content-host" class="span9">
+        <div id="prepare">
+            <h2 id="prepare-intro">Introduction</h2>
 
-                    <p class="lead">
-                        GremlinJS allows you to organize your Javascripts in components called <em>Gremlins</em>.
+            <p class="lead">
+                GremlinJS allows you to organize your Javascripts in components called <em>Gremlins</em>.
 
-                    </p>
+            </p>
 
-                    <p>
-                        <strong>Every</strong> dom element may use one or more of these components. GremlinJS searches
-                        and finds all these elements (no matter if they are part of the dom from the beginning or added
-                        later)and creates Gremlin instances of the Gremlin definitions you provided. <br>
+            <p>
+                Every dom element may use one or more of these components. GremlinJS watches your site looking
+                for these elements and creates Gremlin instances of Gremlin definitions (aka classes) you
+                provided.
+            </p>
 
-                    </p>
+            <p>
+                Gremlins are found with a special data-attribute: <code>data-gremlin</code>. This happens
+                automatically whenever a dom element with this attribute is or becomes a child node of the dom.
+            </p>
 
-                    <p>
-                        Gremlins are found by a special data-attribute: <code>data-gremlin</code>. This happens
-                        automatically whenever a dom element with this attribute is or becomes a child node of the dom.
-                        <br>
-                        <strong>Yepp, GremlinJS observes the dom for changes!</strong>
-                        <br>
-                        In websites build the classical, jQuery-style way, you normally end up with a huge list of
-                        dom-queries initializing all your javascript-enhancements. GremlinJS uses <strong>a
-                        single</strong> query for all your elements.
-                    </p>
+            <p>
+                <strong>Yepp, GremlinJS observes the dom for you.</strong>
+            </p>
 
-                    <p>
-                        Normally the components you'll write are isolated from each other and function independently.
-                        To use a Gremlin in another project, all you'll do is copy a file and add some HTML markup.
-                    </p>
+            <!--
+            <p>
+                In websites build the classical, jQuery-style way, you normally end up with a huge list of
+                dom-queries initializing all your javascript-enhancements. GremlinJS uses <strong>a
+                single</strong> query for all your elements.
+            </p>
+            -->
 
+            <p>
+                Components you'll write with GremlinJS are isolated from each other and function independently.
+                To use a Gremlin in another project, all you'll do is copy a file and add some HTML markup. <br>
+                The code will be cleaner and easier to understand: whenever you see an element with a
+                <code>data-gremlin</code> attribute, you will always and instantly know what javascript is
+                responsible for it's behaviour.
+            </p>
 
-                    <h3 id="prepare-include">Include GremlinJS</h3>
+            <hr>
 
-                    <p><a class="" href="#">Download GremlinJS</a> and include it in your HTML.
-                        From now on all gremlin components in the site will be found and instantiated. </p>
+            <h3 id="prepare-include">Include GremlinJS</h3>
+
+            <p>
+                <a class="" href="#">Download GremlinJS</a> and include it in your HTML.
+                From now on all gremlin components in the site will be found and instantiated.
+            </p>
+
+            <p>
+                You don't have to start or initialize it, you don't have to wait for anything, include it and
+                you're done.
+            </p>
 
 <pre class="prettyprint">
 &lt;!DOCTYPE html&gt;
@@ -121,34 +133,124 @@
   &lt;head&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    ...
     &lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
 
-                    <p class="alert alert-info">
-                        <strong>
-                            If you have to support an old browser like IE7, be sure to include a JSON Library like
-                            <a href="https://github.com/douglascrockford/JSON-js">json2.js</a> before including
-                            GremlinJS.
-                        </strong> <br>
-                        GremlinJS uses the javascript JSON API to parse JSON strings in custom dom element
-                        data-attributes.
-                        (see <a href="#">Gremlin Configuration</a>)
-                    </p>
+            <p class="alert alert-info">
+                <strong>
+                    If you have to support an old browser (eg IE7), be sure to include a JSON Library like
+                    <a href="https://github.com/douglascrockford/JSON-js">json2.js</a> before including
+                    GremlinJS.
+                </strong> <br>
+                GremlinJS uses the javascript JSON API to parse JSON strings in custom dom element
+                data-attributes.
+                (see <a href="#">Gremlin Configuration</a>)
+            </p>
 
-                    <h3 id="prepare-first">The first Gremlin</h3>
+            <hr>
 
-                </div>
-                <div id="create">
-                    <h2>Create</h2>
+            <h3 id="prepare-first">The first Gremlin</h3>
+
+            <p>
+                Gremlins are build by writing a javascript definition for them and are used adding a
+                data-attribute to dom elements. So in order to create a new gremlin you have to
+            </p>
+            <ol>
+                <li>Write the javascript that defines the gremlins behaviour</li>
+                <li>Add the gremlin to your HTML one or multiple times</li>
+            </ol>
+
+            <h4>Gremlin definitions</h4>
+
+            <p>
+                Gremlin definitions are Javascript snippets describing the gremlin. You will create constructor
+                functions inheriting from an abstract gremlin.
+            </p>
+
+            <p>
+                If GremlinJS finds a suitable dom element, one that provides the <code>data-gremlin</code>
+                attribute, a new instance of the constructor function, the gremlin class, will be created. This
+                instance does, beside the members and methods you defined, provide some useful properties you
+                may need later.
+            </p>
+
+            <p class="alert alert-info">
+                GremlinJS uses constructor functions, the protoype chain and the <code>new</code> keyword to
+                create gremlin instances internally. So no matter how many gremlins of a certain type are
+                present in the document and instantiated, they'll use the beauty and performance of the prototype.
+            </p>
+
+            <p>
+                To make the developer's life easier, GremlinJS provides a helper method to add gremlin
+                definitions.
+            </p>
+
+            <div class="api-item well well-large">
+                <h5><a href="api.html#gremlinjs.define">GremlinJS.define()</a></h5>
+
+                <p class="desc">
+                    Creates a gremlin definition that will later be used to activate gremlin elements in the document.
+                    <br>
+                    <small>
+                        This will be a native javascript constructor function instantiated with <code>new</code> using
+                        the prototype and static members.
+                    </small>
+                </p>
+
+                <div class="signature">
+                    <h6>GremlinJS.define(name, constructor, instanceMembers, staticMembers)</h6>
+                    <ul>
+                        <li>
+                            <code>name</code>
+
+                            <p>
+                                The unique name of the gremlin.
+                            </p>
+                        </li>
+                        <li>
+                            <code>constructor</code>
+
+                            <p>
+                                The constructor function being called every time a gremlin with the
+                                <code>name</code> defined above was found in the dom. <br>
+                                <code>this</code> inside the constructor refers to the <a
+                                    href="/api.html#gremlin-instance">gremlin instance</a>.
+                            </p>
+                        </li>
+                        <li>
+                            <code>instanceMembers</code>
+
+                            <p>
+                                All instance members of this class as an object literal. Will be mixed into the
+                                <code>prototype</code> of the gremlin (the constructor function).
+                            </p>
+                        </li>
+                        <li>
+                            <code>staticMembers</code>
+
+                            <p>
+                                All static members of this class as an object literal. <br> To access static members
+                                from inside gremlin instances, <code>
+                                &lt;gremlinInstance&gt;.<strong>klass</strong></code>
+                                references the original constructor function.
+                            </p>
+                        </li>
+                    </ul>
                 </div>
             </div>
+
+
         </div>
-
-
+        <div id="create">
+            <h2>Create</h2>
+        </div>
     </div>
+</div>
+
+
+</div>
 </div>
 
 <footer>
@@ -165,5 +267,6 @@
         </div>
     </div>
 </footer>
+
 </body>
 </html>
