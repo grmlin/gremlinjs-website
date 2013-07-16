@@ -1,0 +1,67 @@
+<div class="hd">
+    <input id="search" type="search" placeholder="search" />
+    <label><input id="show-desc" type="checkbox" /> Show Description</label>
+</div>
+<div class="bd">
+    <div class="toc">
+        
+            <h3 class="toc-mod-title" title="GremlinJS"><a href="GremlinJS.html">GremlinJS</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="GremlinJS.html#debug">
+                    <h4>debug:Object</h4>
+                    <span class="desc">Debugger instance used for console logging and gremlin highlighting in the document. With activated debugging, all gremlins will be highlighted visually by GremlinJS, listing components that are ready, pending or broken.</span>
+                </a>
+                
+                <a class="toc-item" href="GremlinJS.html#define">
+                    <h4>define(name, constructor, instanceMembers, staticMembers):Function</h4>
+                    <span class="desc">Defines a new gremlin.   Creates a gremlin definition (<em>"class"</em>) that later will be used to activate elements in the document for this gremlin.
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong><code>name:String</code></strong> <br />
+A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the <code>data-gremlin</code> attribute of
+a dom element to select the gremlin.</li>
+</ul></span>
+                </a>
+                
+                <a class="toc-item" href="GremlinJS.html#registerExtension">
+                    <h4>registerExtension(Extension) </h4>
+                    <span class="desc">Add a new extension to GremlinJS.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title" title="gremlin.gremlinDefinitions.IExtension"><a href="gremlin\gremlinDefinitions\IExtension.html">gremlin.gremlinDefinitions.IExtension</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="gremlin\gremlinDefinitions\IExtension.html#test">
+                    <h4>test():Boolean</h4>
+                    <span class="desc"><strong>static</strong> Should return true, if the extension is available, false otherwise</span>
+                </a>
+                
+                <a class="toc-item" href="gremlin\gremlinDefinitions\IExtension.html#bind">
+                    <h4>bind(gremlinInstance)</h4>
+                    <span class="desc"><strong>static</strong> Binds the extension to a gremlin instance.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title" title="gremlin.util.Debug"><a href="gremlin\util\Debug.html">gremlin.util.Debug</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="gremlin\util\Debug.html#constructor">
+                    <h4>constructor(isDebug)</h4>
+                    <span class="desc">Creates a new <code>gremlin.util.Debug</code> instance.</span>
+                </a>
+                
+                <a class="toc-item" href="gremlin\util\Debug.html#console">
+                    <h4>console</h4>
+                    <span class="desc">A reference to the console object you know and love. <strong>If</strong> GremlinJS is in debug mode, the <code>console</code> methods are a direct reference to the native <code>console</code> object. Otherwise all your <code>console.log</code> statements will be muted.</span>
+                </a>
+                
+            </div>
+        
+    </div>
+</div>
