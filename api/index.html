@@ -18,7 +18,7 @@
 
 <p>Global GremlinJS Namespace</p>
 
-<h2>debug:Object</h2>
+<h2>.debug:Object</h2>
 
 <p>Debugger instance used for console logging and gremlin highlighting in the document. With activated debugging, all gremlins
 will be highlighted visually by GremlinJS, listing components that are ready, pending or broken.</p>
@@ -44,7 +44,7 @@ statements will be muted.</p>
 <p>GremlinJS.debug.console.warn('Heads up, something wrent wrong');
 ```</p>
 
-<h2>define(name, constructor, instanceMembers, staticMembers):Function</h2>
+<h2>.define(name, constructor, instanceMembers, staticMembers):Function</h2>
 
 <p>Defines a new gremlin. <br />
 Creates a gremlin definition (<em>"class"</em>) that later will be used to activate elements in the document for this gremlin.</p>
@@ -100,7 +100,13 @@ All static members of this class as an object literal. <br> To access static mem
 <script async src="http://codepen.io/assets/embed/ei.js">
 </script>
 
-<h2>registerExtension(Extension)</h2>
+<h2>.Helper:Function</h2>
+
+<p>Object providing some useful utility methods.</p>
+
+<p>See <a href="gremlin/util/Helper.html"><code>gremlin.util.Helper</code></a> for details  </p>
+
+<h2>.registerExtension(Extension)</h2>
 
 <p>Add a new extension to GremlinJS.</p>
 
@@ -108,13 +114,23 @@ All static members of this class as an object literal. <br> To access static mem
 
 <ul>
 <li><strong><code>Extension:Function|Object</code></strong> <br />
-The new extension implementing  <a href="gremlin/gremlinDefinitions/IExtension.html"><code>gremlin.gremlinDefinitions.IExtension.</code></a> </li>
+The new extension implementing  <a href="gremlin/gremlinDefinitions/IExtension.html"><code>gremlin.gremlinDefinitions.IExtension</code></a> </li>
 </ul>
 
 <blockquote>
   <p>The Interface does not exist in code and there is no error handling when registring extensions at all. Take care and provide
   the necessary methods. </p>
 </blockquote>
+
+<h3>Example</h3>
+
+<h5>Live Preview</h5>
+
+<pre class="codepen" data-height="430" data-type="js" data-href="mAGDC" data-user="grmlin" data-safe="true">
+</pre>
+
+<script async src="http://codepen.io/assets/embed/ei.js">
+</script>
 <h2>Table of Contents</h2>
 <ul class="mod-list">
 
@@ -123,6 +139,8 @@ The new extension implementing  <a href="gremlin/gremlinDefinitions/IExtension.h
     <li><a href="gremlin\gremlinDefinitions\IExtension.html">gremlin.gremlinDefinitions.IExtension</a></li>
 
     <li><a href="gremlin\util\Debug.html">gremlin.util.Debug</a></li>
+
+    <li><a href="gremlin\util\Helper.html">gremlin.util.Helper</a></li>
 
 </ul>
                 <hr />

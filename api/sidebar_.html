@@ -8,13 +8,13 @@
             <h3 class="toc-mod-title" title="GremlinJS"><a href="GremlinJS.html">GremlinJS</a></h3>
             <div class="toc-list">
                 
-                <a class="toc-item" href="GremlinJS.html#debug">
-                    <h4>debug:Object</h4>
+                <a class="toc-item" href="GremlinJS.html#.debug">
+                    <h4>.debug:Object</h4>
                     <span class="desc">Debugger instance used for console logging and gremlin highlighting in the document. With activated debugging, all gremlins will be highlighted visually by GremlinJS, listing components that are ready, pending or broken.</span>
                 </a>
                 
-                <a class="toc-item" href="GremlinJS.html#define">
-                    <h4>define(name, constructor, instanceMembers, staticMembers):Function</h4>
+                <a class="toc-item" href="GremlinJS.html#.define">
+                    <h4>.define(name, constructor, instanceMembers, staticMembers):Function</h4>
                     <span class="desc">Defines a new gremlin.   Creates a gremlin definition (<em>"class"</em>) that later will be used to activate elements in the document for this gremlin.
 
 <h3>Arguments</h3>
@@ -26,8 +26,14 @@ a dom element to select the gremlin.</li>
 </ul></span>
                 </a>
                 
-                <a class="toc-item" href="GremlinJS.html#registerExtension">
-                    <h4>registerExtension(Extension) </h4>
+                <a class="toc-item" href="GremlinJS.html#.Helper">
+                    <h4>.Helper:Function</h4>
+                    <span class="desc">Object providing some useful utility methods. <br />
+See <code>gremlin.util.Helper</code> for details  </span>
+                </a>
+                
+                <a class="toc-item" href="GremlinJS.html#.registerExtension">
+                    <h4>.registerExtension(Extension) </h4>
                     <span class="desc">Add a new extension to GremlinJS.</span>
                 </a>
                 
@@ -36,14 +42,19 @@ a dom element to select the gremlin.</li>
             <h3 class="toc-mod-title" title="gremlin.gremlinDefinitions.IExtension"><a href="gremlin\gremlinDefinitions\IExtension.html">gremlin.gremlinDefinitions.IExtension</a></h3>
             <div class="toc-list">
                 
-                <a class="toc-item" href="gremlin\gremlinDefinitions\IExtension.html#test">
-                    <h4>test():Boolean</h4>
-                    <span class="desc"><strong>static</strong> Should return true, if the extension is available, false otherwise</span>
+                <a class="toc-item" href="gremlin\gremlinDefinitions\IExtension.html#.bind">
+                    <h4>.bind(gremlinInstance)</h4>
+                    <span class="desc">Binds the extension to a gremlin instance. Do whatever yout want to do with a gremlins instance in here. </span>
                 </a>
                 
-                <a class="toc-item" href="gremlin\gremlinDefinitions\IExtension.html#bind">
-                    <h4>bind(gremlinInstance)</h4>
-                    <span class="desc"><strong>static</strong> Binds the extension to a gremlin instance.</span>
+                <a class="toc-item" href="gremlin\gremlinDefinitions\IExtension.html#.extend">
+                    <h4>.extend(GremlinDefinition)</h4>
+                    <span class="desc">Change and extend the gremlin definition (constructor function, aka. class) in this handler.   <code>extend</code> is the place where you might want to add static members to the classes or extend their prototypes. </span>
+                </a>
+                
+                <a class="toc-item" href="gremlin\gremlinDefinitions\IExtension.html#.test">
+                    <h4>.test():Boolean</h4>
+                    <span class="desc">Should return true, if the extension is available, false otherwise</span>
                 </a>
                 
             </div>
@@ -59,6 +70,46 @@ a dom element to select the gremlin.</li>
                 <a class="toc-item" href="gremlin\util\Debug.html#console">
                     <h4>console</h4>
                     <span class="desc">A reference to the console object you know and love. <strong>If</strong> GremlinJS is in debug mode, the <code>console</code> methods are a direct reference to the native <code>console</code> object. Otherwise all your <code>console.log</code> statements will be muted.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title" title="gremlin.util.Helper"><a href="gremlin\util\Helper.html">gremlin.util.Helper</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="gremlin\util\Helper.html#.extend">
+                    <h4>.extend(target, objects...):Function|Object </h4>
+                    <span class="desc"></span>
+                </a>
+                
+                <a class="toc-item" href="gremlin\util\Helper.html#.mixin">
+                    <h4>.mixin(targetClass, mixinObject)</h4>
+                    <span class="desc"></span>
+                </a>
+                
+                <a class="toc-item" href="gremlin\util\Helper.html#.clone">
+                    <h4>.clone(obj):Object</h4>
+                    <span class="desc"></span>
+                </a>
+                
+                <a class="toc-item" href="gremlin\util\Helper.html#.hasClass">
+                    <h4>.hasClass(element, className):Boolean</h4>
+                    <span class="desc"></span>
+                </a>
+                
+                <a class="toc-item" href="gremlin\util\Helper.html#.addClass">
+                    <h4>.addClass(element, className)</h4>
+                    <span class="desc"></span>
+                </a>
+                
+                <a class="toc-item" href="gremlin\util\Helper.html#.removeClass">
+                    <h4>.removeClass(element, className)</h4>
+                    <span class="desc"></span>
+                </a>
+                
+                <a class="toc-item" href="gremlin\util\Helper.html#.addStyleSheet">
+                    <h4>.addStyleSheet(cssText) </h4>
+                    <span class="desc"></span>
                 </a>
                 
             </div>
