@@ -2,15 +2,59 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>IExtension : GremlinJS API Documentation</title>
+        <title>Static Members : GremlinJS API Documentation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="..\../assets_/css/shCore.css">
         <link rel="stylesheet" href="..\../assets_/css/shThemeDefault.css">
-        <link rel="stylesheet" href="..\../assets_/css/main.css">
+        <!--<link rel="stylesheet" href="..\../assets_/css/main.css">--!>
+        <link rel="stylesheet" href="..\../assets_/css/bootstrap.min.css">
+        <link rel="stylesheet" href="..\../assets_/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="..\../assets_/css/custom.css">
     </head>
     <body data-root-path="..\../">
-        <div id="wrapper">
-            <div id="content">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand with-icon" href="./index.html"><img src="..\../assets_/img/ico.png" alt="GremlinJS"/> GremlinJS</a>
+    
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li>
+                                <a>Get started</a>
+                            </li>
+                            <li class="">
+                                <a href="guides.html">Guides</a>
+                            </li>
+                            <li>
+                                <a href="samples/">Demos</a>
+                            </li>
+                            <li class="active">
+                                <a>API</a>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <div id="sidebar-wrapper" class="span3 sidebar">
+              <!--Sidebar content-->
+            </div>
+            <div class="span9">
+              <!--Body content-->
+              <div id="wrapper">
+                          <div id="content">
+            
+        
+        
 
 <ul id="topnav">
     <li><a href="..\../index.html">Index</a></li>
@@ -30,30 +74,33 @@
 <script async src="http://codepen.io/assets/embed/ei.js">
 </script>
 
-<h2>Table of Contents <a href="#toc" name="toc" class="deep-link">#</a></h2>
+<h2>Static Members</h2>
+
+<h3>Table of Contents <a href="#toc" name="toc" class="deep-link">#</a></h3>
 
 <ul>
-<li><a href="#.bind">.bind()</a></li>
-<li><a href="#.extend">.extend()</a></li>
+<li><a href="#.bind">.bind</a></li>
+<li><a href="#.extend">.extend</a></li>
 <li><a href="#.test">.test()</a></li>
 </ul>
 
-<h2>.bind(gremlinInstance) <a href="#.bind" id=".bind" class="deep-link">#</a></h2>
+<h3>.bind <a href="#.bind" id=".bind" class="deep-link">#</a></h3>
 
 <p>Binds the extension to a gremlin instance. Do whatever yout want to do with a gremlins instance in here. </p>
 
-<h3>Arguments</h3>
+<h4><code>.bind(gremlinInstance)</code></h4>
 
 <ul>
-<li><strong><code>gremlinInstance:Object</code></strong> <br />
-The instance of a gremlin component the extension will be bound to.</li>
+<li><p><strong><code>gremlinInstance</code></strong> : Gremlin </p>
+
+<p>The instance of a gremlin component the extension will be bound to.</p></li>
 </ul>
 
 <blockquote>
   <p>Will be called <strong>for every gremlin element</strong> in the document separately</p>
 </blockquote>
 
-<h3>Example</h3>
+<h4>Example</h4>
 
 <pre class="brush:js">
 
@@ -62,24 +109,25 @@ The instance of a gremlin component the extension will be bound to.</li>
     };
 </pre>
 
-<h2>.extend(GremlinDefinition) <a href="#.extend" id=".extend" class="deep-link">#</a></h2>
+<h3>.extend <a href="#.extend" id=".extend" class="deep-link">#</a></h3>
 
-<p>Change and extend the gremlin definition (constructor function, aka. class) in this handler. <br />
-<code>extend</code> is the place where you might want to add static members to the classes or extend their prototypes. </p>
+<p>Change and extend the gremlin definition (constructor function, aka. class) in this handler.  </p>
 
-<h3>Arguments</h3>
+<h4><code>.extend(AbstractGremlin)</code></h4>
 
 <ul>
-<li><strong><code>GremlinDefinition:Function</code></strong> <br />
-The constructor function used to create gremlin instances.</li>
+<li><p><strong><code>AbstractGremlin</code></strong> : gremlin.gremlinDefinitions.AbstractGremlin</p>
+
+<p>The constructor function used to create gremlin instances.</p></li>
 </ul>
 
+<p><code>extend</code> is the place where you might want to add static members to the classes or extend their prototypes. </p>
+
 <blockquote>
-  <p>Will be called <strong>once for every gremlin definition</strong> the moment the defintion is added to GremlinJS with 
-  <a href="../../GremlinJS.html#define"><code>GremlinJS.define()</code></a></p>
+  <p>Will be called <strong>once when adding the extension</strong></p>
 </blockquote>
 
-<h3>Example</h3>
+<h4>Example</h4>
 
 <pre class="brush:js">
 
@@ -91,15 +139,21 @@ The constructor function used to create gremlin instances.</li>
     };
 </pre>
 
-<h2>.test():Boolean <a href="#.test" id=".test" class="deep-link">#</a></h2>
+<h3>.test() <a href="#.test" id=".test" class="deep-link">#</a></h3>
 
-<p>Should return true, if the extension is available, false otherwise</p>
+<p>Test the extensions availability</p>
+
+<h4><code>.test():Boolean</code></h4>
+
+<p>Should return <code>true</code>, if the extension is available, <code>false</code> otherwise.</p>
+
+<p>This little helper is needed to prevent errors for the some of the build in extensions. In most cases you will return <code>true</code> here.</p>
 
 <blockquote>
-  <p>Will be called <strong>for every gremlin element</strong> in the document separately</p>
+  <p>Will be called <strong>once when adding the extension</strong></p>
 </blockquote>
 
-<h3>Example</h3>
+<h4>Example</h4>
 
 <pre class="brush:js">
 
@@ -107,14 +161,25 @@ The constructor function used to create gremlin instances.</li>
         return Modernizr.geolocation
     };
 </pre>
+
+                </div>
+              </div>
+            </div>
                 <hr />
                 <small>Documentation generated by <a href="https://github.com/millermedeiros/mdoc">mdoc</a>.</small>
             </div>
         </div>
         <script src="..\../assets_/js/lib/jquery.js"></script>
+        <script src="..\../assets_/js/lib/bootstrap.min.js"></script>
         <script src="..\../assets_/js/lib/syntax-highlighter/shCore.js"></script>
         <script src="..\../assets_/js/lib/syntax-highlighter/shAutoloader.js"></script>
         <script src="..\../assets_/js/main.js"></script>
+                <script>
+                    var $tocHeader = $('a[name="toc"]').parent();
+
+                    $tocHeader.next('ul').hide();
+                    $tocHeader.hide();
+                </script>
     </body>
 </html>
 

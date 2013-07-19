@@ -2,15 +2,59 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>GremlinJS : GremlinJS API Documentation</title>
+        <title>Static Members : GremlinJS API Documentation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="assets_/css/shCore.css">
         <link rel="stylesheet" href="assets_/css/shThemeDefault.css">
-        <link rel="stylesheet" href="assets_/css/main.css">
+        <!--<link rel="stylesheet" href="assets_/css/main.css">--!>
+        <link rel="stylesheet" href="assets_/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets_/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="assets_/css/custom.css">
     </head>
     <body data-root-path="">
-        <div id="wrapper">
-            <div id="content">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand with-icon" href="./index.html"><img src="assets_/img/ico.png" alt="GremlinJS"/> GremlinJS</a>
+    
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li>
+                                <a>Get started</a>
+                            </li>
+                            <li class="">
+                                <a href="guides.html">Guides</a>
+                            </li>
+                            <li>
+                                <a href="samples/">Demos</a>
+                            </li>
+                            <li class="active">
+                                <a>API</a>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <div id="sidebar-wrapper" class="span3 sidebar">
+              <!--Sidebar content-->
+            </div>
+            <div class="span9">
+              <!--Body content-->
+              <div id="wrapper">
+                          <div id="content">
+            
+        
+        
 
 <ul id="topnav">
     <li><a href="index.html">Index</a></li>
@@ -22,18 +66,23 @@
 
 <p>Global GremlinJS Namespace</p>
 
-<h2>Table of Contents <a href="#toc" name="toc" class="deep-link">#</a></h2>
+<h2>Static Members</h2>
+
+<h3>Table of Contents <a href="#toc" name="toc" class="deep-link">#</a></h3>
 
 <ul>
-<li><a href="#.debug">.debug</a></li>
-<li><a href="#.define">.define()</a></li>
-<li><a href="#.Helper">.Helper</a></li>
-<li><a href="#.registerExtension">.registerExtension()</a></li>
+<li><a href="#debug">debug</a></li>
+<li><a href="#define">define()</a></li>
+<li><a href="#Helper">Helper</a></li>
+<li><a href="#registerExtension">registerExtension()</a></li>
 </ul>
 
-<h2>.debug:Object <a href="#.debug" id=".debug" class="deep-link">#</a></h2>
+<h3>debug <a href="#debug" id="debug" class="deep-link">#</a></h3>
 
-<p>Debugger instance used for console logging and gremlin highlighting in the document. With activated debugging, all gremlins
+<h4><code>.debug:gremlin.util.Debug</code></h4>
+
+<p>Instance of <a href="gremlin/util/debug.html"><code>gremlin.util.Debug</code></a>. <br />
+Used for console logging and gremlin highlighting in the document. With activated debugging, all gremlins
 will be highlighted visually by GremlinJS, listing components that are ready, pending or broken.</p>
 
 <p>To enable the debug mode, set <code>debug</code> to <code>true</code> at the body of your document.</p>
@@ -48,41 +97,40 @@ will be highlighted visually by GremlinJS, listing components that are ready, pe
 <p>The debugger instance provides a reference to the browsers <code>console</code> object. If debugging is disabled, all <code>console</code>
 statements will be muted.</p>
 
-<p>For more details see: <a href="gremlin/util/debug.html"><code>gremlin.util.Debug</code></a></p>
+<h4>Example</h4>
 
-<h3>Example</h3>
+<p>Open your console to see the logging there.</p>
 
-<pre class="brush:js">
-
-   GremlinJS.debug.console.log('Hello World');
-
-   GremlinJS.debug.console.warn('Heads up, something wrent wrong');
+<pre class="codepen" data-height="250" data-type="result" data-href="qpmEc" data-user="grmlin" data-safe="true">
 </pre>
 
-<h2>.define(name, constructor, instanceMembers, staticMembers):Function <a href="#.define" id=".define" class="deep-link">#</a></h2>
+<script async src="http://codepen.io/assets/embed/ei.js">
+</script>
+
+<h3>define() <a href="#define" id="define" class="deep-link">#</a></h3>
 
 <p>Defines a new gremlin. <br />
 Creates a gremlin definition (<em>"class"</em>) that later will be used to activate elements in the document for this gremlin.</p>
 
-<h3>Arguments</h3>
+<h4><code>.define(name, constructor [, instanceMembers] [, staticMembers]):Gremlin</code></h4>
 
 <ul>
-<li><p><strong><code>name:String</code></strong> <br />
-A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the <code>data-gremlin</code> attribute of
-a dom element to select the gremlin.</p></li>
-<li><p><strong><code>constructor:Function</code></strong> <br />
-The constructor function being called every time a gremlin with <code>name</code> was found in the dom and gets instantiated. </p></li>
-<li><p><strong><code>instanceMembers:Object</code></strong> <br />
-All instance members of this class as an object literal. Will be mixed into the <code>prototype</code> of the gremlin (the 
-constructor function returned by <code>GremlinJS.define</code>). </p></li>
-<li><p><strong><code>staticMembers:Object</code></strong> <br />
-All static members of this class as an object literal. <br> To access static members from inside gremlin instances, 
-<code>&amp;lt;gremlinInstance&amp;gt;.&lt;strong&gt;klass&lt;/strong&gt;</code> references the original constructor function.</p></li>
+<li><p><strong><code>name</code></strong> : String    </p>
+
+<p>A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the <code>data-gremlin</code> attribute of a dom element to select the gremlin.</p></li>
+<li><p><strong><code>constructor</code></strong> : Function    </p>
+
+<p>The constructor function being called every time a gremlin with <code>name</code> was found in the dom and gets instantiated. <br />
+<code>this</code> inside the constructor refers to the instance of <code>AbstractGremlin</code></p></li>
+<li><p><strong><code>instanceMembers</code></strong> : Object <em>optional</em></p>
+
+<p>All instance members of this class as an object literal. Will be mixed into the <code>prototype</code> of the gremlin (the constructor function returned by <code>GremlinJS.define</code>). </p></li>
+<li><p><strong><code>staticMembers</code></strong> : Object <em>optional</em></p>
+
+<p>All static members of this class as an object literal. <br> To access static members from inside gremlin instances, <code>AbstractGremlin.klass</code> references the original constructor function.</p></li>
 </ul>
 
-<p><code>this</code> inside the constructor refers to the <a href="/api.html#gremlin-instance">gremlin instance</a>.</p>
-
-<h3>Example</h3>
+<h4>Example</h4>
 
 <h5>HTML</h5>
 
@@ -117,45 +165,56 @@ All static members of this class as an object literal. <br> To access static mem
 <script async src="http://codepen.io/assets/embed/ei.js">
 </script>
 
-<h2>.Helper:Function <a href="#.Helper" id=".Helper" class="deep-link">#</a></h2>
+<h3>Helper <a href="#Helper" id="Helper" class="deep-link">#</a></h3>
+
+<p>Reference of <a href="gremlin/util/Helper.html"><code>gremlin.util.Helper</code></a></p>
+
+<h4><code>.Helper:Object</code></h4>
 
 <p>Object providing some useful utility methods.</p>
 
-<p>See <a href="gremlin/util/Helper.html"><code>gremlin.util.Helper</code></a> for details  </p>
+<h3>registerExtension()  <a href="#registerExtension" id="registerExtension" class="deep-link">#</a></h3>
 
-<h2>.registerExtension(Extension)  <a href="#.registerExtension" id=".registerExtension" class="deep-link">#</a></h2>
+<p>Adds a new extension to GremlinJS.</p>
 
-<p>Add a new extension to GremlinJS.</p>
-
-<h3>Arguments</h3>
+<h4><code>.registerExtension(Extension)</code></h4>
 
 <ul>
-<li><strong><code>Extension:Function|Object</code></strong> <br />
-The new extension implementing  <a href="gremlin/gremlinDefinitions/IExtension.html"><code>gremlin.gremlinDefinitions.IExtension</code></a> </li>
+<li><p><strong><code>Extension</code></strong> : Object implementing gremlin.gremlinDefinitions.IExtension</p>
+
+<p><a href="gremlin/gremlinDefinitions/IExtension.html"><code>gremlin.gremlinDefinitions.IExtension</code></a> does not exist in code and there is no error handling when registring extensions at all. Take care and be sure to provide the necessary methods. </p></li>
 </ul>
 
-<blockquote>
-  <p>The Interface does not exist in code and there is no error handling when registring extensions at all. Take care and provide
-  the necessary methods. </p>
-</blockquote>
+<p><strong>Always include your extensions before your gremlin definitions</strong></p>
 
-<h3>Example</h3>
+<h4>Example</h4>
 
-<h5>Live Preview</h5>
+<p>The extension in the example below modifies the prototype for all gremlin instances, adds a property to the class itself and then binds custom data to each individual instance.</p>
 
 <pre class="codepen" data-height="430" data-type="js" data-href="mAGDC" data-user="grmlin" data-safe="true">
 </pre>
 
 <script async src="http://codepen.io/assets/embed/ei.js">
 </script>
+
+                </div>
+              </div>
+            </div>
                 <hr />
                 <small>Documentation generated by <a href="https://github.com/millermedeiros/mdoc">mdoc</a>.</small>
             </div>
         </div>
         <script src="assets_/js/lib/jquery.js"></script>
+        <script src="assets_/js/lib/bootstrap.min.js"></script>
         <script src="assets_/js/lib/syntax-highlighter/shCore.js"></script>
         <script src="assets_/js/lib/syntax-highlighter/shAutoloader.js"></script>
         <script src="assets_/js/main.js"></script>
+                <script>
+                    var $tocHeader = $('a[name="toc"]').parent();
+
+                    $tocHeader.next('ul').hide();
+                    $tocHeader.hide();
+                </script>
     </body>
 </html>
 
