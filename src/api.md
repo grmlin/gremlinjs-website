@@ -402,8 +402,54 @@ it will automatically be available for all your gremlins.
 ## Interests
 Pub Sub extension that allows gremlins to interact with each other by dispatching messages.
 
-> `Interests` will be available always!
+**Requirements:** None, `Interests` works always.
 
+### About Interests
+To use interests, there must be a gremlin emitting messages, and another one, subscribed to these messages.
+
+Dispatching messages is as easy as writing [`gremlin.emit()`](#abstractgremlin-emit). Every gremlin
+in the document that [defines an interest](#abstractgremlin-interests) for this message, will be informed and a callback gets called. 
+
+### AbstractGremlin.interests
+An Object defining message types the gremlin will be listening to and callbacks handling those messages. 
+
+###### `.interests:Object`
+
+The `interests` object consists of key value pairs, with the interest/message type as the key,
+and the name of the handler as a value.  
+`interests` is added as a static member of the gremlin's definition! `this` inside 
+the handler will be correctly bound to the gremlin instance you're currently in.
+
+``` js
+GremlinJS.define("Foo", function () {},
+    {
+        onFoo: function (data) {
+            console.dir(data);
+        }
+    },
+    {
+        interests: {
+            'FOO': 'onFoo'
+        }
+    }
+);
+```
+
+### AbstractGremlin#emit()
+Dispatch a new broadcasting message
+
+###### `#emit(name [, data])`
+- **`name`** : String   
+  The message type
+
+- **`data`** : Object *optional*   
+  Some additional event data that will be passed into the [`AbstractGremlin#on`](#abstractgremlin-on) handler.	
+
+``` js
+var Holly = GremlinJS.define("Bar", function () {
+    this.emit("FOO", {foo: 'bar'})
+});
+```
 
 ## DomElements
 
