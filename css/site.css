@@ -1,0 +1,95 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
+
+body,
+td,
+textarea,
+input {
+  font-family: Roboto, Helvetica Neue, Open Sans, sans-serif;
+  line-height: 1.6;
+  font-size: 13px;
+  color: #505050;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+  font-family: Roboto, Helvetica Neue, Open Sans, sans-serif;
+}
+.content h1 {
+	font-weight: 900;
+}
+
+.content h1 ~ h1 {
+	padding-top: 100px;
+}
+
+.content h1::before {
+	content: none;
+}
+
+.content h2 {
+	text-transform: none;
+	font-size: 1.6em;
+}
+
+.content h2::before {
+	height: 2px;
+}
+
+.content h3 {
+	font-size: 1.4em;
+}
+.content h3 small {
+	font-weight: 300;
+}
+.content h3 a {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.content h6 {
+
+}
+
+.content h6 code {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.large-brief .content > h1:first-child + p,
+.large-brief .content > h1 + p,
+.content > p.brief {
+  font-size: 1.3em;
+  font-family: Roboto, Helvetica Neue, Open Sans, sans-serif;
+  font-weight: 300;
+}
+
+.content pre,
+.content code,
+.menu.legend dl dt {
+	font-family: "Source Code Pro", Menlo, monospace;
+}
+
+.content blockquote {
+	padding-left: 20px;
+	border-left: 4px solid #ddd;
+	background: rgb(245, 245, 245);
+	margin: 10px 0 20px 15px;
+}
+
+.content blockquote p {
+
+}
+.cp_embed_iframe {
+	border: 1px solid #ccc;
+}	
+
+.menu a.level-1 {
+	font-size: 1.1em;
+	margin-bottom: 5px;
+}
+
+.menu .level-2 > li + li {
+	margin-top: 8px;
+}

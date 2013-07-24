@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title> : GremlinJS API Documentation</title>
+        <title>Static Members : GremlinJS API Documentation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="..\../assets_/css/shCore.css">
         <link rel="stylesheet" href="..\../assets_/css/shThemeDefault.css">
@@ -20,18 +20,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="brand with-icon" href="./index.html"><img src="..\../assets_/img/ico.png" alt="GremlinJS"/> GremlinJS</a>
+                    <a class="brand with-icon" href="..\../../index.html"><img src="..\../assets_/img/ico.png" alt="GremlinJS"/> GremlinJS</a>
     
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li>
-                                <a>Get started</a>
+                                <a href="..\../../">Get started</a> 
                             </li>
                             <li class="">
-                                <a href="guides.html">Guides</a>
+                                <a href="..\../../guides.html">Guides</a>
                             </li>
                             <li>
-                                <a href="samples/">Demos</a>
+                                <a href="..\../../samples/">Demos</a>
                             </li>
                             <li class="active">
                                 <a>API</a>
@@ -66,6 +66,8 @@
 
 <p>Utility methods used by GremlinJS.</p>
 
+<h2>Static Members</h2>
+
 <h3>Table of Contents <a href="#toc" name="toc" class="deep-link">#</a></h3>
 
 <ul>
@@ -78,19 +80,112 @@
 <li><a href="#.addStyleSheet">.addStyleSheet()</a></li>
 </ul>
 
-<h3>.extend(target, *objects):Function|Object  <a href="#.extend" id=".extend" class="deep-link">#</a></h3>
+<h3>.extend() <a href="#.extend" id=".extend" class="deep-link">#</a></h3>
 
-<h3>.mixin(targetClass, mixinObject) <a href="#.mixin" id=".mixin" class="deep-link">#</a></h3>
+<p>Extends an object. Copy all properties of the source objects into the target, overwriting existing properties.</p>
 
-<h3>.clone(obj):Object <a href="#.clone" id=".clone" class="deep-link">#</a></h3>
+<h4><code>.extend(target, *objects):Function|Object</code></h4>
 
-<h3>.hasClass(element, className):Boolean <a href="#.hasClass" id=".hasClass" class="deep-link">#</a></h3>
+<ul>
+<li><p><strong><code>target</code></strong> : Object</p>
 
-<h3>.addClass(element, className) <a href="#.addClass" id=".addClass" class="deep-link">#</a></h3>
+<p>The object to extend</p></li>
+<li><p><strong><code>objects</code></strong> : Object</p>
 
-<h3>.removeClass(element, className) <a href="#.removeClass" id=".removeClass" class="deep-link">#</a></h3>
+<p>One or more source objects</p></li>
+</ul>
 
-<h3>.addStyleSheet(cssText)  <a href="#.addStyleSheet" id=".addStyleSheet" class="deep-link">#</a></h3>
+<h3>.mixin() <a href="#.mixin" id=".mixin" class="deep-link">#</a></h3>
+
+<p>Mix an object into a constructor functions prototype</p>
+
+<h4><code>.mixin(targetClass, mixinObject)</code></h4>
+
+<ul>
+<li><p><strong><code>targetClass</code></strong> : Function</p>
+
+<p>The constructor function to extend</p></li>
+<li><p><strong><code>mxinObject</code></strong> : Object</p>
+
+<p>An object containing all properties that will be mixed into the prototype of <code>targetClass</code></p></li>
+</ul>
+
+<h3>.clone() <a href="#.clone" id=".clone" class="deep-link">#</a></h3>
+
+<p>Create a deep copy of an object</p>
+
+<h4><code>.clone(obj):Object</code></h4>
+
+<ul>
+<li><p><strong><code>obj</code></strong> : Object</p>
+
+<p>The object to clone</p></li>
+</ul>
+
+<h3>.hasClass() <a href="#.hasClass" id=".hasClass" class="deep-link">#</a></h3>
+
+<p>Test, if a dom element has a certain class.</p>
+
+<h4><code>.hasClass(element, className):Boolean</code></h4>
+
+<ul>
+<li><p><strong><code>element</code></strong> : Object</p>
+
+<p>The dom element</p></li>
+<li><p><strong><code>className</code></strong> : String</p>
+
+<p>The class name</p></li>
+</ul>
+
+<h3>.addClass() <a href="#.addClass" id=".addClass" class="deep-link">#</a></h3>
+
+<p>Add a new class to a dom element.</p>
+
+<h4><code>.addClass(element, className)</code></h4>
+
+<ul>
+<li><p><strong><code>element</code></strong> : Object</p>
+
+<p>The dom element</p></li>
+<li><p><strong><code>className</code></strong> : String</p>
+
+<p>The class name</p></li>
+</ul>
+
+<h3>.removeClass() <a href="#.removeClass" id=".removeClass" class="deep-link">#</a></h3>
+
+<p>Remove a class from a dom element</p>
+
+<h4><code>.removeClass(element, className)</code></h4>
+
+<ul>
+<li><p><strong><code>element</code></strong> : Object</p>
+
+<p>The dom element</p></li>
+<li><p><strong><code>className</code></strong> : String</p>
+
+<p>The class name</p></li>
+</ul>
+
+<h3>.addStyleSheet()  <a href="#.addStyleSheet" id=".addStyleSheet" class="deep-link">#</a></h3>
+
+<p>Add some new css styles to your document</p>
+
+<h4><code>.addStyleSheet(cssText)</code></h4>
+
+<ul>
+<li><p><strong><code>cssText</code></strong> : String</p>
+
+<p>The css you want to add to your document</p></li>
+</ul>
+
+<h4>Example</h4>
+
+<pre class="brush:js">
+
+    var css = '.foo {color:red;}';
+    GremlinJS.Helper.addStyleSheet(css);
+</pre>
 
                 </div>
               </div>
