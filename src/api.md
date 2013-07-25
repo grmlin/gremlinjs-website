@@ -399,16 +399,19 @@ Add some new css styles to your document
 GremlinJS includes some useful extensions. If the browser supports the extension, 
 it will automatically be available for all your gremlins.
 
-## Interests
+## Interests (PubSub)
 Pub Sub extension that allows gremlins to interact with each other by dispatching messages.
 
-**Requirements:** None, `Interests` works always.
-
 ### About Interests
-To use interests, there must be a gremlin emitting messages, and another one, subscribed to these messages.
+The interests extension works always, there are no additional dependencies.   
+To use interests, there must be a gremlin emitting messages and another one that subscribed to these messages.
 
 Dispatching messages is as easy as writing [`gremlin.emit()`](#abstractgremlin-emit). Every gremlin
 in the document that [defines an interest](#abstractgremlin-interests) for this message, will be informed and a callback gets called. 
+
+#### Why do I need this?
+Gremlins are components, self-contained and isolated. But sometimes it's really useful when these components can talk to each other.   
+Think of a gremlin that asks the user for his [`geolocation`](http://devdocs.io/dom/window.navigator.geolocation). There may be other gremlins in the page, that rely on this information. Emit a message with a new location and all other (listening)  gremlins will be informed.  
 
 ### AbstractGremlin.interests
 An Object defining message types the gremlin will be listening to and callbacks handling those messages. 
@@ -452,5 +455,145 @@ var Holly = GremlinJS.define("Bar", function () {
 ```
 
 ## DomElements
+Extension providing element maps "vanilla javascript style".
 
-## JQuery
+### About dom elements
+Newer browsers come with a very powerful dom element selector engine, [`element.querySelectorAll()`](http://devdocs.io/dom/element.queryselectorall). The `DomElements` extension allows you to define element maps utilizing `querySelectorAll` for gremlins.
+
+**If you want to use DomElements with older browsers, include a `querySelectorAll` shim first!**
+### AbstractGremlin.elements 
+
+###### `.elements:Object`
+Object literal / map,  defining node lists to be added to the [`AbstractGremlin`](#abstractgremlin) instance.
+
+The object has to be composed of a selector as a key, and an instance property name as the value.   
+`{SELECTOR:NAME, *SELECTOR:NAME}`  
+
+**`querySelectorAll` will always be executed relatively to the [gremlin's dom element](#abstractgremlin-el)**.
+
+``` html
+<div data-gremlin="Foo">
+	<h1 class="content"></h1>
+</div>
+```
+``` js
+GremlinJS.define("Foo",
+  function () {
+    alert(this.contentEl.length); //alerts "1"
+  },
+  {},
+  {
+    elements: {
+      "div.content": "contentEl"
+  	}
+  });
+```
+
+## jQuery
+jQuery extension providing element and event maps.
+
+
+### About jQuery
+GremlinJS doesn't require jQuery, but it's used a lot these days. That's why this handy extension is included.     
+Keep the code defining gremlins clean with element and event maps. 
+
+To use the jQuery extension, [download and include it](http://jquery.com/) in your document **before** including GremlinJS. Than, the extension provides access to  
+
+- **event maps** utilizing jQuery's powerful event delegation 
+- **element maps** defined with jQuery's selector engine 
+
+### AbstractGremlin#$el
+
+###### `#$el:jQuery`
+The gremlin's dom element as jQuery object
+ 
+### AbstractGremlin.$elements
+
+###### `.$elements:Object`
+Object literal / map,  defining jQuery objects to be added to the [`AbstractGremlin`](#abstractgremlin) instance.
+
+The object has to be composed of jQuery selectors as a key, and an instance property name as the value.   
+`{SELECTOR:NAME, *SELECTOR:NAME}`  
+
+**The selector will always be executed relatively to the [gremlin's dom element](#abstractgremlin-el).**
+
+``` html
+<div data-gremlin="Foo">
+	<h1 class="content"></h1>
+</div>
+```
+``` js
+GremlinJS.define("Foo",
+  function () {
+    this.$content.html('Hello World!');
+  },
+  {},
+  {
+    $elements: {
+      "div.content": "$content"
+  	}
+  });
+```
+
+### AbstractGremlin.$events
+
+###### `.$events:Object`
+Object literal / map,  defining jQuery event handler to be added to the [`AbstractGremlin`](#abstractgremlin) instance.
+
+The object has to be composed of an event description combining the event type and a selector as a key, and an instance method name as the value.  
+**If you use a handler name not available on your gremlin's instance, GremlinJS throws an Error.**
+
+#### Event map description
+It's possible to to bind events to the gremlin's dom element or to delegate events deeper into the gremlin.
+
+##### Binding events to [`#el`](#abstractgremlin-el)
+Add the event type as a key, and the name of the handler as the value of the event map entry.
+
+``` js
+$events = {
+	'click' : 'onClick'
+}
+```
+
+##### Delegating events into the gremlin
+To delegate events, add a selector to the event type separated by a single whitespace.
+
+``` js
+$events = {
+	'click div.content' : 'onClick'
+}
+```
+
+Feel free to use all the event types jQuery provides and read the jQuery API docs to learn how to bind events with [`jQuery#on()`](http://api.jquery.com/on/)    
+
+#### Callback context and arguments
+
+Inside the callback you define, the context will be set to the gremlin instance. The callback function will
+be called with two arguments
+
+1. `event`: the [jQuery event object](http://api.jquery.com/category/event-object/)
+2. `context`: the original context (`this`) of the jQuery event.
+
+	from the [jQuery event docs](http://api.jquery.com/on/#event-handler)
+	> When jQuery calls a handler, the this keyword is a reference to the element where the event is being delivered; for directly bound events this is the element where the event was attached and for delegated events this is an element matching selector. (Note that this may not be equal to event.target if the event has bubbled from a descendant element.) To create a jQuery object from the element so that it can be used with jQuery methods, use $(this).
+
+
+``` html
+<div data-gremlin="Foo">
+	<button>Click me</button>
+</div>
+```
+``` js
+GremlinJS.define("Foo", 
+  function () {},
+  {
+    onClick: function(event, context){
+		alert('Hello World');
+    }
+  },
+  {
+    $elements: {
+      "click button": "onClick"
+  }
+});
+```

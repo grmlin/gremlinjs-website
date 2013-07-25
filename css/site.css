@@ -1,11 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic);
+
 
 body,
 td,
 textarea,
 input {
-  font-family: Roboto, Helvetica Neue, Open Sans, sans-serif;
+  font-family: 'Source Sans Pro', Helvetica Neue, Open Sans, sans-serif;
   line-height: 1.6;
   font-size: 13px;
   color: #505050;
@@ -14,7 +16,7 @@ input {
 .content h1,
 .content h2,
 .content h3 {
-  font-family: Roboto, Helvetica Neue, Open Sans, sans-serif;
+  font-family: 'Source Sans Pro', Helvetica Neue, Open Sans, sans-serif;
 }
 .content h1 {
 	font-weight: 900;
@@ -61,7 +63,7 @@ input {
 .large-brief .content > h1 + p,
 .content > p.brief {
   font-size: 1.3em;
-  font-family: Roboto, Helvetica Neue, Open Sans, sans-serif;
+  font-family: 'Source Sans Pro', Helvetica Neue, Open Sans, sans-serif;
   font-weight: 300;
 }
 

@@ -5,7 +5,7 @@ $(function(){
 			link.href = '#' + this.id;
 			link.textContent = '#';
 
-			this.innerHTML = this.textContent.replace(/^(.*)(\.|#)/gi,'<small>$1</small>$2');
+			this.innerHTML = this.textContent.replace(/^(.*)(\.|#)/gi,'$2');
 			//console.log(link.href)
 			$(this).append(link);
 		});
