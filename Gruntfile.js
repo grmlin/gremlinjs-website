@@ -23,7 +23,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         watch: {
             docs: {
-                files: ['api.html','src/**/*','css/**/*','js/**/*'],
+                files: ['*.html','src/**/*','css/**/*','js/**/*'],
                 options: {
                     livereload: true
                 }
