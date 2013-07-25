@@ -115,7 +115,7 @@ The extension in the example below modifies the prototype for all gremlin instan
 
 All gremlin definitions added with [`GremlinJS.define()`](#gremlinjs-define) are inheriting from this class.
 
-> This class is not directly accessible from outside GremlinJS and used interally, only 
+**This class is not directly accessible from outside GremlinJS and used internally, only!** 
 
 ### Gremlin()
 
