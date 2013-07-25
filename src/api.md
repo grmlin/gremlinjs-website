@@ -13,7 +13,7 @@ Access GremlinJS via `window.GremlinJS` or asynchronously with an AMD-Loader.
 [Debugger](#debug) instance used by GremlinJS for console logging and gremlin highlighting in the document.    
 With activated debugging, all gremlins will be highlighted visually by GremlinJS, listing components that are ready, pending or broken.
 
-To enable the debug mode, set `debug` to `true` at the body of your document. See [here](#abstractgremlin-data) to learn how to add JSON to data attributes in GremlinJS. 
+To enable the debug mode, set `debug` to `true` at the body of your document. See [here](#gremlin-data) to learn how to add JSON to data attributes in GremlinJS. 
 
 ``` html
 <body data-gremlin-config='{"debug":true}'> ... </body>
@@ -38,20 +38,20 @@ Open your console to see the logging there.
 
 Creates a gremlin definition aka class, that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.
 
-###### `.define(name, constructor [, instanceMembers] [, staticMembers]):`[`AbstractGremlin`](#abstractgremlin)
+###### `.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](#gremlin)
 
 - **`name`** : String    
 	A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the `data-gremlin` attribute of a dom element to select the gremlin.
 
 - **`constructor`** : Function    
 	The constructor function being called every time a gremlin with `name` was found in the dom and gets instantiated.   
-	`this` inside the constructor refers to the instance of `AbstractGremlin`
+	`this` inside the constructor refers to the instance of `Gremlin`
 
 - **`instanceMembers`** : Object *optional*  
 	All instance members of this class as an object literal. Will be mixed into the `prototype` of the gremlin (the constructor function returned by `GremlinJS.define`). 
 
 - **`staticMembers`** : Object *optional*   
-	All static members of this class as an object literal. <br> To access static members from inside gremlin instances, `AbstractGremlin.klass` references the original constructor function.
+	All static members of this class as an object literal. <br> To access static members from inside gremlin instances, `Gremlin.klass` references the original constructor function.
 
 
 For a basic gremlin add some HTML markup and create a Gremlin called `HelloWorld`, that processes the new element. 
@@ -86,7 +86,7 @@ For a basic gremlin add some HTML markup and create a Gremlin called `HelloWorld
 ### GremlinJS.Helper
 ###### `.Helper:`[`Helper`](#helper)
 Object providing some useful utility methods.
-References [`gremlin.util.Helper`](#gremlin-util-helper)
+References [`Helper`](#helper)
 
 ### GremlinJS.registerExtension() 
 
@@ -110,20 +110,20 @@ The extension in the example below modifies the prototype for all gremlin instan
 </script>
 
 
-## AbstractGremlin
+## Gremlin
 `gremlin.gremlinDefinitions.AbstractGremlin`
 
 All gremlin definitions added with [`GremlinJS.define()`](#gremlinjs-define) are inheriting from this class.
 
 > This class is not directly accessible from outside GremlinJS and used interally, only 
 
-### AbstractGremlin()
+### Gremlin()
 
 Constructor
 
-###### `AbstractGremlin(el, data, id, init)` 
+###### `Gremlin(el, data, id, init)` 
 
-- **`el`** : [element](https://developer.mozilla.org/en-US/docs/Web/API/element)   
+- **`el`** : [element](http://devdocs.io/dom/element)   
 	The dom element the gremlin is bound to.
 
 - **`data`** : Object    
@@ -135,13 +135,13 @@ Constructor
 - **`init`** : Function   
 	A init function called inside the constructor. Here, the extensions will be bound to the newly created instance.
 
-### AbstractGremlin#data
+### Gremlin#data
 
 ###### `#data:Object`
 All data-attributes of the gremlin's dom element.   
 GremlinJS will parse all the data-attributes for you and tries to guess their types. Numbers will be Javascript Numbers, the strings *true* and *false* Booleans... and it's possible to define native Objects as JSON. 
 
-GremlinJS converts the attribute names separated by '-' into camel cased keys without the leading *data*. `data-foo-bar` becomes `data.fooBar`.
+GremlinJS converts the attribute names separated by '-' into camel cased keys without the leading *data*. `data-foo-bar` becomes `#data.fooBar`.
 
 ###### JSON inside data-attributes
 
@@ -168,23 +168,23 @@ console.log(this.data.config.foo); // prints bar
 console.log(typeof this.data.config); // prints object
 ```
 
-### AbstractGremlin#el
+### Gremlin#el
 
-###### `#el : `[`element`](https://developer.mozilla.org/en-US/docs/Web/API/element "Open Mozilla Web API Reference")
+###### `#el : `[`element`](http://devdocs.io/dom/element)
 
 A reference of the dom element the gremlin was added to.  
 **This element should always be the starting point for all your dom manipulations, queryselectors etc...**
 
 
-### AbstractGremlin#id
+### Gremlin#id
 
 ###### `#id : Number`
 Unique id amongst all gremlin instances.
 
-### AbstractGremlin#klass
+### Gremlin#klass
 
-###### `#klass : `[`AbstractGremlin`](#abstractgremlin)
-Points to the [`AbstractGremlin`](#abstractgremlin) the instance belongs to. 
+###### `#klass : `[`Gremlin`](#gremlin)
+Points to the [`Gremlin`](#gremlin) the instance belongs to. 
 
 Especially handy, when you define static gremlin members with [`GremlinJS.define()`](#gremlinjs-define) and want to access them from inside an instance.
 
@@ -210,16 +210,19 @@ GremlinJS.define('HelloWorld', function () {
 
 Interface every extension has to implement.
 
+**This is pseudo code that can't be found in the GremlinJS sources. There will be no
+error checking or whatsoever when processing extensions**
+
 ### IExtension.bind()
 
 Binds the extension to a gremlin instance. Do whatever yout want to do with a gremlins instance in here. 
 
 ###### `.bind(gremlin)`
 
-- **`gremlin`** : [AbstractGremlin](#abstractgremlin)   
-	The [`AbstractGremlin`](#abstractgremlin) instance the extension will be bound to.
+- **`gremlin`** : [Gremlin](#gremlin)   
+	The [`Gremlin`](#gremlin) instance the extension will be bound to.
 
-> Will be called **for every** gremlin element in the document separately
+**called for every gremlin element in the document separately**
 
 ```js
 Extension.bind = function(gremlin) {
@@ -230,13 +233,13 @@ Extension.bind = function(gremlin) {
 
 Change and extend the gremlin definition (constructor function, aka. class) in this handler.  
 
-###### `.extend(AbstractGremlin)`
-- **`AbstractGremlin`** : [AbstractGremlin](#abstractgremlin)      
+###### `.extend(Gremlin)`
+- **`Gremlin`** : [Gremlin](#gremlin)      
 	The constructor function used to create gremlin instances later.
 
 `extend` is the place where you might want to add static members to the classes or extend their prototypes. 
 
-> Will be called **once** when adding the extension
+**called once when adding the extension**
 
 ```js
 Extension.extend= function(Gremlin) {
@@ -254,7 +257,7 @@ Should return `true`, if the extension is available, `false` otherwise.
 
 This little helper is needed to prevent errors for the some of the build in extensions. In most cases you will return `true` here.
 
-> Will be called **once** when adding the extension
+**called once when adding the extension**
 
 ```js
 Extension.test= function() {
@@ -269,7 +272,7 @@ If instantiated with activated debugging, all gremlins
 will be highlighted visually by GremlinJS, and components that are ready, pending or broken are listed at the bottom left
 part of the site.
 
-> This class is not directly accessible and listed here for reference. Use the [`GremlinJS.debug`](#gremlinjs-debug) instance to debug your gremlins!
+**This class is not directly accessible and listed here for reference. Use the [`GremlinJS.debug`](#gremlinjs-debug) instance to debug your gremlins!**
 
 ### Debug()
 Constructor
@@ -282,11 +285,11 @@ Constructor
 ### Debug#console
 A reference to the console object you know and love.
 
-###### `#console:`[`Console`](https://developer.mozilla.org/en-US/docs/Web/API/console)
+###### `#console:`[`Console`](http://devdocs.io/dom/console)
 
 **If** GremlinJS is in debug mode, the `console` methods are linked directly to the native `console` object. Otherwise all your `console.log` statements will be muted.
 
-The following list of commands is currently supported by `GremlinJS.debug` *(if the browser supports them, of course)*:
+The following console commands are currently supported by `GremlinJS.debug.console` *(if the browser supports them, of course)*:
 
 ```js
 ["debug", "error", "info", "log", "warn", "dir", "dirxml", "trace", "assert", "count", "markTimeline", "profile", "profileEnd", "time", "timeEnd", "timeStamp", "group", "groupCollapsed", "groupEnd", "clear"]
@@ -406,14 +409,14 @@ Pub Sub extension that allows gremlins to interact with each other by dispatchin
 The interests extension works always, there are no additional dependencies.   
 To use interests, there must be a gremlin emitting messages and another one that subscribed to these messages.
 
-Dispatching messages is as easy as writing [`gremlin.emit()`](#abstractgremlin-emit). Every gremlin
-in the document that [defines an interest](#abstractgremlin-interests) for this message, will be informed and a callback gets called. 
+Dispatching messages is as easy as writing [`gremlin.emit()`](#gremlin-emit). Every gremlin
+in the document that [defines an interest](#gremlin-interests) for this message, will be informed and a callback gets called. 
 
 #### Why do I need this?
 Gremlins are components, self-contained and isolated. But sometimes it's really useful when these components can talk to each other.   
 Think of a gremlin that asks the user for his [`geolocation`](http://devdocs.io/dom/window.navigator.geolocation). There may be other gremlins in the page, that rely on this information. Emit a message with a new location and all other (listening)  gremlins will be informed.  
 
-### AbstractGremlin.interests
+### Gremlin.interests
 An Object defining message types the gremlin will be listening to and callbacks handling those messages. 
 
 ###### `.interests:Object`
@@ -438,7 +441,7 @@ GremlinJS.define("Foo", function () {},
 );
 ```
 
-### AbstractGremlin#emit()
+### Gremlin#emit()
 Dispatch a new broadcasting message
 
 ###### `#emit(name [, data])`
@@ -446,7 +449,7 @@ Dispatch a new broadcasting message
   The message type
 
 - **`data`** : Object *optional*   
-  Some additional event data that will be passed into the [`AbstractGremlin#on`](#abstractgremlin-on) handler.	
+  Some additional event data that will be passed into the [`Gremlin#on`](#gremlin-on) handler.	
 
 ``` js
 var Holly = GremlinJS.define("Bar", function () {
@@ -461,15 +464,15 @@ Extension providing element maps "vanilla javascript style".
 Newer browsers come with a very powerful dom element selector engine, [`element.querySelectorAll()`](http://devdocs.io/dom/element.queryselectorall). The `DomElements` extension allows you to define element maps utilizing `querySelectorAll` for gremlins.
 
 **If you want to use DomElements with older browsers, include a `querySelectorAll` shim first!**
-### AbstractGremlin.elements 
+### Gremlin.elements 
 
 ###### `.elements:Object`
-Object literal / map,  defining node lists to be added to the [`AbstractGremlin`](#abstractgremlin) instance.
+Object literal / map,  defining node lists to be added to the [`Gremlin`](#gremlin) instance.
 
 The object has to be composed of a selector as a key, and an instance property name as the value.   
 `{SELECTOR:NAME, *SELECTOR:NAME}`  
 
-**`querySelectorAll` will always be executed relatively to the [gremlin's dom element](#abstractgremlin-el)**.
+**`querySelectorAll` will always be executed relatively to the [gremlin's dom element](#gremlin-el)**.
 
 ``` html
 <div data-gremlin="Foo">
@@ -502,20 +505,20 @@ To use the jQuery extension, [download and include it](http://jquery.com/) in yo
 - **event maps** utilizing jQuery's powerful event delegation 
 - **element maps** defined with jQuery's selector engine 
 
-### AbstractGremlin#$el
+### Gremlin#$el
 
 ###### `#$el:jQuery`
 The gremlin's dom element as jQuery object
  
-### AbstractGremlin.$elements
+### Gremlin.$elements
 
 ###### `.$elements:Object`
-Object literal / map,  defining jQuery objects to be added to the [`AbstractGremlin`](#abstractgremlin) instance.
+Object literal / map,  defining jQuery objects to be added to the [`Gremlin`](#gremlin) instance.
 
 The object has to be composed of jQuery selectors as a key, and an instance property name as the value.   
 `{SELECTOR:NAME, *SELECTOR:NAME}`  
 
-**The selector will always be executed relatively to the [gremlin's dom element](#abstractgremlin-el).**
+**The selector will always be executed relatively to the [gremlin's dom element](#gremlin-el).**
 
 ``` html
 <div data-gremlin="Foo">
@@ -535,10 +538,10 @@ GremlinJS.define("Foo",
   });
 ```
 
-### AbstractGremlin.$events
+### Gremlin.$events
 
 ###### `.$events:Object`
-Object literal / map,  defining jQuery event handler to be added to the [`AbstractGremlin`](#abstractgremlin) instance.
+Object literal / map,  defining jQuery event handler to be added to the [`Gremlin`](#gremlin) instance.
 
 The object has to be composed of an event description combining the event type and a selector as a key, and an instance method name as the value.  
 **If you use a handler name not available on your gremlin's instance, GremlinJS throws an Error.**
@@ -546,7 +549,7 @@ The object has to be composed of an event description combining the event type a
 #### Event map description
 It's possible to to bind events to the gremlin's dom element or to delegate events deeper into the gremlin.
 
-##### Binding events to [`#el`](#abstractgremlin-el)
+##### Binding events to [`#el`](#gremlin-el)
 Add the event type as a key, and the name of the handler as the value of the event map entry.
 
 ``` js
@@ -572,9 +575,8 @@ Inside the callback you define, the context will be set to the gremlin instance.
 be called with two arguments
 
 1. `event`: the [jQuery event object](http://api.jquery.com/category/event-object/)
-2. `context`: the original context (`this`) of the jQuery event.
-
-	from the [jQuery event docs](http://api.jquery.com/on/#event-handler)
+2. `context`: the original context (`this`) of the jQuery event.   
+	The [jQuery event docs](http://api.jquery.com/on/#event-handler):
 	> When jQuery calls a handler, the this keyword is a reference to the element where the event is being delivered; for directly bound events this is the element where the event was attached and for delegated events this is an element matching selector. (Note that this may not be equal to event.target if the event has bubbled from a descendant element.) To create a jQuery object from the element so that it can be used with jQuery methods, use $(this).
 
 
