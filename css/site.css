@@ -1,6 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic);
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic);
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900);
 @import url(http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic);
@@ -63,10 +61,15 @@ a:focus
     font-family: 'Raleway', Helvetica Neue, Open Sans, sans-serif;
     font-size: 15px;
     font-weight: 700;
+    margin: 0;
 }
 
 .header h1.current a {
     color: #000;
+}
+
+.header ul {
+    margin-bottom: 0;
 }
 
 .header li a {
@@ -100,6 +103,11 @@ a:focus
 .logo h1 small {
     font-size: 22px;
     font-weight: 500;
+}
+
+.hero-unit ul {
+    padding-left: 15px;
+    list-style: square;
 }
 .content h1,
 .content h2,
