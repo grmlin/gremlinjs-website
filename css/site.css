@@ -93,6 +93,14 @@ a:focus
     text-shadow: 0 0 1px #fff;
 }
 
+.logo h1 span {
+    color: #999;
+}
+
+.logo h1 small {
+    font-size: 22px;
+    font-weight: 500;
+}
 .content h1,
 .content h2,
 .content h3,
@@ -190,37 +198,68 @@ body.no-literate .content pre > code,
 }
 
 .top-link {
-    font-weight: 900;
+    opacity: 0;
+    display: block;
+    font-weight: 200;
+    background-color: #f5f5f5;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
     position: fixed;
-    right: 5px;
-    bottom: 5px;
-    font-size: 36px;
-    font-family: 'Raleway', Helvetica Neue, Open Sans, sans-serif;
-    -moz-transform: translateX(0px) translateY(30px) rotate(90deg);
-    -webkit-transform: translateX(0px) translateY(30px) rotate(90deg);
-    -o-transform: translateX(0px) translateY(30px) rotate(90deg);
-    -ms-transform: translateX(0px) translateY(30px) rotate(90deg);
-    transform: translateX(0px) translateY(30px) rotate(90deg);
+    right: 15px;
+    bottom: 50%;
+    margin-top: -25px;
+    font-size: 60px;
+    font-family: 'Lato', Helvetica Neue, Open Sans, sans-serif;
+    -moz-transform: translateX(0px) translateY(60px);
+    -webkit-transform: translateX(60px) translateY(0);
+    -o-transform: translateX(60px) translateY(0);
+    -ms-transform: translateX(60px) translateY(0);
+    transform: translateX(60px) translateY(0);
     -webkit-transition: all 120ms ease-in;
     -moz-transition: all 120ms ease-in;
     -ms-transition: all 120ms ease-in;
     -o-transition: all 120ms ease-in;
     transition: all 120ms ease-in;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    box-shadow: inset 2px 1px 4px rgba(0,0,0,0.4);
+    -webkit-box-shadow: inset 2px 1px 4px rgba(0,0,0,0.4);
+    text-align: center;
     }
 
+.top-link::after {
+    content: '^';
+    position: absolute;
+    left: 9px;
+    top: 9px;
+}
 .top-link:hover {
     text-decoration: none;
-    color: #006697;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    box-shadow: inset 5px 3px 2px rgba(0,0,0,0.4);
+    -webkit-box-shadow: inset 5px 3px 2px rgba(0,0,0,0.4);
+}
+
+.top-link:hover::after {
+
+    -webkit-perspective: 300px;
+    -moz-perspective: 300px;
+    -ms-perspective: 300px;
+    perspective: 300px;
+    -webkit-transform: rotateY(-30deg);  -webkit-transform-style: preserve-3d;
+    -moz-transform: rotateY(-30deg);     -moz-transform-style: preserve-3d;
+    -ms-transform: rotateY(-30deg);      -ms-transform-style: preserve-3d;
+    transform: rotateY(-30deg);          transform-style: preserve-3d;
+
 }
 
 .menubar.fixed + .top-link {
-    -moz-transform: translateX(0px) translateY(0px)  rotate(90deg);
-    -webkit-transform: translateX(0px) translateY(0px)  rotate(90deg);
-    -o-transform: translateX(0px) translateY(0px)  rotate(90deg);
-    -ms-transform: translateX(0px) translateY(0px)  rotate(90deg);
-    transform: translateX(0px) translateY(0px) rotate(-90deg);
+    opacity: 1;
+    -moz-transform: translateX(0px) translateY(0px) ;
+    -webkit-transform: translateX(0px) translateY(0px) ;
+    -o-transform: translateX(0px) translateY(0px) ;
+    -ms-transform: translateX(0px) translateY(0px) ;
+    transform: translateX(0px) translateY(0px);
 }
 .menu a.level-1, .menu a.level-1:visited {
     color: #999;

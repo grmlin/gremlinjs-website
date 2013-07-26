@@ -73,6 +73,9 @@ body > footer a + a {
     vertical-align: top;
 }
 
+.logo h1 span {
+    
+}
 .logo h1 small {
     display: block;
     text-align: right;
