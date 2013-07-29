@@ -35,7 +35,9 @@ Open your console to see the logging there.
 </script>
 
 ### GremlinJS.define()
-
+<!---
+UPDATE guides.md if the define documentation changes!!!
+-->
 Creates a gremlin definition aka class, that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.
 
 ###### `.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](#gremlin)
