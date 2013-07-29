@@ -17,14 +17,7 @@ The code will be cleaner, easier to understand and understanding the work of oth
 You don't have to start or initialize it, you don't have to wait for anything, include it and you're done.
 
 ``` html
-<!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    <script src="js/gremlinjs.min.js"></script>
-  </body>
-</html>
+<script src="js/gremlinjs.min.js"></script>
 ``` 
 
 ### Browser support
@@ -40,6 +33,7 @@ A more complete lists of supported browsers (desktop and mobile) will follow som
 
 Gremlins are build by writing a javascript definition and then added to dom elements via a custom data attribute `data-gremlin`.
 
+** No matter if you define your Gremlins inline or in separate files, add the definitions AFTER including GremlinJS and additional [extensions](#using-extensions).**
 ### HTML
 Adding gremlins to the document is easy. Choose a name for your gremlin, eg. *Gizmo*, and add the `data-gremlin` attribute to the dom element of your choice.
 
@@ -74,3 +68,39 @@ To make the developer's life easier, GremlinJS provides a helper method to add g
 	All static members of this class as an object literal. <br> To access static members from inside gremlin instances, `Gremlin.klass` references the original constructor function.
 
 
+### Hello World!
+
+The most basic gremlin alerting *"Hello World!"* would look like this:
+
+``` html
+<div data-gremlin="HelloWorld"></div>
+
+<script>
+  GremlinJS.define('HelloWorld', function () {
+    alert("Hello World!");
+  });
+</script>
+
+```
+
+## The Gremlin
+### name
+### constructor
+
+### instance properties
+
+### static properties
+
+### defining options
+
+### lazy loading
+
+  
+
+## Using Extensions
+
+## Building Extensions
+
+## Grunt
+
+## AMD
