@@ -11,9 +11,18 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/gremlin.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian"></script>
+    <!-- Flatdoc -->
+    <script src="js/jquery.min.js"></script>
+    <script src='js/flatdoc/legacy.js'></script>
+    <script src='js/flatdoc/flatdoc.js'></script>
+    <!-- Initializer -->
+    <script>
+        Flatdoc.run({
+            fetcher: Flatdoc.file('src/index.md')
+        });
+    </script>
 </head>
-<body role='flatdoc' class='no-literate big-h3 large-brief'>
+<body role='flatdoc' class='no-literate big-h3 large-brief home'>
 
 <div id="site-nav" class='header'>
     <div class='left'>
@@ -88,58 +97,7 @@
     <div class="container">
         <div class="row buffered">
             <div class="span12">
-                <h2>Quick Start</h2>
-            </div>
-        </div>
-        <div class="row buffered">
-            <div class="span6">
-                <h3>1. Include GremlinJS</h3>
-                <p>&nbsp;</p>
-
-<div class="well"><pre class="prettyprint">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    <strong>&lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;</strong>
-  &lt;/body&gt;
-&lt;/html&gt;
-</pre></div>
-            </div>
-            <div class="span6">
-                <h3>2. Add a gremlin</h3>
-                <p>&nbsp;</p>
-
-
-<div class="well"><pre class="prettyprint">
-&lt;body&gt;
-  <strong>&lt;div data-gremlin=&quot;Gizmo&quot;&gt;
-    &lt;p&gt;
-      &lt;strong&gt;Loading images...&lt;/strong&gt;
-    &lt;/p&gt;
-  &lt;/div&gt;</strong>
-  <span class="muted">&lt;script src=&quot;js/gremlinjs.min.js&quot;&gt;&lt;/script&gt;   </span>
-  <strong>&lt;script src=&quot;js/Gizmo.js&quot;&gt;&lt;/script&gt;</strong>
-&lt;/body&gt;
-</pre></div>
-
-            </div>
-
-        </div>
-        <hr>
-
-        <div class="row">
-            <div class="span12">
-                <h3>3. Done</h3>
-                <p>&nbsp;</p>
-
-                <div class="live-preview">
-                    <pre class="codepen" data-height="500" data-type="result" data-href="vsxDk" data-user="grmlin"
-                         data-safe="true"><code></code><a href="http://codepen.io/grmlin/pen/vsxDk">Check out this
-                        Pen!</a></pre>
-                    <script async src="http://codepen.io/assets/embed/ei.js"></script>
-                </div>
+                <div role='flatdoc-content' class='content'></div>
             </div>
         </div>
     </div>
