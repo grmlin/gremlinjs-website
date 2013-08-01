@@ -14,6 +14,8 @@ $(function () {
       $('.menu ul.level-3 li a').each(function () {
         this.innerHTML = this.textContent.replace(/^(.*)(\.|#)/gi, '$2');
       });
+
+          
     })
     .on('click', '.top-link', function (event) {
       event.preventDefault();

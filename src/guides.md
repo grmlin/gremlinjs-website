@@ -46,13 +46,17 @@ That's all, nothing else to do here.
 ### Javascript 
 Gremlin definitions are Javascript snippets describing the gremlin. With these definitions you will create constructor functions which are inherited from an abstract gremlin class behind the scenes.
 
+The order including your gremlin definitions does **not** matter, feel free to add them at the top or bottom of the page, as long as GremlinJS was included before, of course.  
+Gremlins will be found as well, if you add the definitions some time later, eg. asynchronously with a script loader.
+
 If GremlinJS finds a suitable dom element, one that provides the `data-gremlin="NAME"` attribute, a new instance of the Gremlin `NAME`, inherited from the [abstract gremlin class](api.html#gremlin), will be created. This instance does, beside the members and methods you defined, provide some useful properties you may need later.
 
 > GremlinJS uses constructor functions, the protoype chain and the new keyword to create gremlin instances internally. So no matter how many gremlins of a certain type are present in the document and instantiated, they'll use the beauty and speed of the prototype.
 
 To make the developer's life easier, GremlinJS provides a helper method to add gremlin definitions.  [`GremlinJS.define()`](api.html#gremlinjs-define)
 
-#### `GremlinJS.define(name, constructor [, instanceMembers] [, staticMembers])`
+#### `GremlinJS.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](api.html#gremlin)
+returns a Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document
 
 - **`name`** : String    
 	A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the `data-gremlin` attribute of a dom element to select the gremlin.
@@ -84,16 +88,80 @@ The most basic gremlin alerting *"Hello World!"* would look like this:
 ```
 
 ## The Gremlin
-### name
-### constructor
+When you define gremlins with [`GremlinJS.define()`](api.html#gremlinjs-define), GremlinJS creates a Javascript constructor function that later will be instantiated with `new` for every gremlin element found in the document.  
+This class inherits from an [abstract Gremlin class](api.html#gremlin). All it's properties, all the properties added by extensions and all the properties you define are available in every instance of this gremlin type.
 
-### instance properties
+### GremlinJS.define() in detail
+Learn how to use [`GremlinJS.define(name, constructor [, instanceMembers] [, staticMembers])`](api.html#gremlinjs-define) in detail below.
 
-### static properties
 
-### defining options
+#### `name`
+The name identifies your gremlin and is essential. The name links the dom element with the definitions you provide.
+ 
+If you add a gremlin with the name `Foo` to an element as in 
+``` html
+<div data-gremlin="Foo"></div>
+```
+a gremlin has to be defined with this name in order to make it work.
+``` js
+GremlinJS.define("Foo", ...);
+```
 
-### lazy loading
+If a gremlin definition with this name is missing, or you forgot to add a name, the developer tool's console will tell you. Furthermore GremlinJS comes with a [debug mode](api.html#gremlinjs-debug), that helps you to find working and defect gremlins in the document.
+
+#### `constructor`
+The constructor function will be called for all gremlin elements in the dom matching the `name`. The constructor function is called after all the default properties were added to the gremlin and with all extensions bound.  
+Within the constructor `this` points to the gremlin instance which gives access to all properties added by GremlinJS, the available extensions and yourself (by providing the instance and static properties objects). 
+
+``` js
+GremlinJS.define("Foo", function() {
+	console.log(this.id); // logs the unique id of the gremlin
+});
+```
+
+The constructor is mandatory, but it can be an empty function of course. You don't have to do anything special in it, GremlinJS takes care of everything that has to be done to get the gremlin instance up and running.
+
+#### `instance properties`
+The instance properties argument has to be an object mixed into the `prototype` of the gremlin class.   
+That's why all methods and properties are accessible through the gremlin instance, eg. within the constructor.
+
+
+``` js
+GremlinJS.define("Foo", function() {
+	this.logId();	
+  },
+  {
+	logId: function() {
+	  console.log(this.id); // logs the unique id of the gremlin
+	}	
+  }
+);
+```
+
+#### `static properties`
+The static properties parameter has to be an object, too. This time, all methods and members are added to the Gremlin class itself.  
+Static properties are really useful if you have to define properties that don't have to clutter the gremlin's prototype, eg string constants. 
+
+``` js
+GremlinJS.define("Foo", function() {
+	this.logId();	
+  },
+  {
+	logId: function() {
+	  console.log(this.klass.GREETING + this.id); // logs "Hello, I'm the gremlin #ID"
+	}	
+  },
+  {
+    GREETING: "Hello, I'm the gremlin #"
+  }
+);
+```
+
+### Inherited properties
+
+### Add Options
+
+### Lazy loading
 
   
 
