@@ -12,6 +12,8 @@ Components you'll write with GremlinJS are isolated from each other and function
 The code will be cleaner, easier to understand and understanding the work of others gets much easier, because whenever you see an element with a `data-gremlin` attribute, you will always and instantly know what javascript is responsible for it's behaviour.
 
 ### Include GremlinJS
+
+#### Script element
 [Download GremlinJS](http://grml.in) and include it in your HTML. From now on all gremlin components in the site will be found and instantiated.
 
 You don't have to start or initialize it, you don't have to wait for anything, include it and you're done.
@@ -22,6 +24,29 @@ You don't have to start or initialize it, you don't have to wait for anything, i
 
 The order including your gremlin definitions does **not** matter, feel free to add them at the top or bottom of the page, as long as GremlinJS was included before, of course.  
 Gremlins will be found as well, if you add the definitions some time later, eg. asynchronously with a script loader.
+
+#### AMD
+If you want to use a Javascript module loader like RequireJS, GremlinJS is available as `GremlinJS`
+
+```js
+require(["GremlinJS"], function(G) {
+
+});
+```
+
+### The GremlinJS Namespace
+Once GremlinJS was loaded, a globally accessible Object is present: 
+
+
+	GremlinJS
+
+
+There will also be a shorter alias for GremlinJS if not already in use:
+
+
+	G
+
+
 ### Browser support
 
 GremlinJS works in all modern browsers, including Internet Explorer down to version 8.
@@ -47,7 +72,9 @@ That's all, nothing else to do here.
 
 ### CoffeeScript
 
-Using CoffeeScript it's easy to create new gremlins. Create a new class extending [`G.Gremlin`](api.html#gremlinjs-gremlin), use a proper name (the name used in `data-gremlin`) and [add](api.html#gremlinjs-add) it.
+With CoffeeScript it's easy to create new gremlins. Create a new class extending [`G.Gremlin`](api.html#gremlinjs-gremlin) and [add](api.html#gremlinjs-add) it with a proper name (the name used in `data-gremlin`).
+
+The only thing to remember: **Always call super inside the constructor!** Without, the gremlin will miss all the members of the abstract [`Gremlin`](api.html#gremlin)   
 
 ``` js
 class Gizmo extends G.Gremlin
@@ -57,6 +84,8 @@ class Gizmo extends G.Gremlin
 
 G.add "Gizmo", Gizmo
 ```
+
+If you know what you're doing, you can of cause do all the work by yourself. Read the api docs to learn which parameters are available when the class gets instantiated.
 
 ### Javascript 
 With vanilla Javascript, the CoffeeScript syntax sugar isn't available, of course.   
@@ -94,10 +123,6 @@ GremlinJS.define('Gizmo', function () {
 </script>
 
 ```
-
-## The Gremlin
-When you define gremlins with [`GremlinJS.define()`](api.html#gremlinjs-define), GremlinJS creates a Javascript constructor function that later will be instantiated with `new` for every gremlin element found in the document.  
-This class inherits from an [abstract Gremlin class](api.html#gremlin). All it's properties, all the properties added by extensions and all the properties you define are available in every instance of this gremlin type.
 
 ### GremlinJS.define() in detail
 Learn how to use [`GremlinJS.define(name, constructor [, instanceMembers] [, staticMembers])`](api.html#gremlinjs-define) in detail below.
@@ -166,28 +191,183 @@ GremlinJS.define("Foo", function() {
   }
 );
 ```
+## Detecting Gremlins
+You are adding some `data-gremlin` attributes to dom elements and create Javascript functions defining them. How will GremlinJS associate and instantiate them, what do you have to do?
+
+### Auto discovery
+**Nothing**!  
+GremlinJS finds every single dom element with a `data-gremlin` attribute in the document and instantiates the related gremlin class. 
+
+It does not matter if the element is a child of the document on page load or added later with Javascript, GremlinJS will find it.
+
+
+
+#### Detection strategies
+
+Sorted by preference, first strategy a browser supports is used.
+
+1. [`MutationObserver`](http://devdocs.io/dom/mutationobserver)
+2. CSS animation callbacks
+3. Interval
+
+This works best in modern browsers of course. The old ones, not supporting CSS-Animations or the [`MutationObserver`](http://devdocs.io/dom/mutationobserver) will use an interval to check the dom for changes.   
+The old, slow and deprecated events to detect changes in the document are not included!
+
+### CSS animations
+GremlinJS uses the [`animationstart`](http://devdocs.io/dom_events/animationstart) event to detect new gremlin elements in browsers not supporting [`MutationObserver`](http://devdocs.io/dom/mutationobserver) and checks the animation name before searching for new elements.  
+
+**DON'T ADD ANY CSS-ANIMATIONS TO THE GREMLIN ELEMENT ITSELF!**    
+**It will break the auto detection of GremlinJS**
+ 
+## The Gremlin
+When you define gremlins with [`GremlinJS.define()`](api.html#gremlinjs-define), GremlinJS creates a Javascript constructor function that later will be instantiated with `new` for every gremlin element found in the document.  
+This class inherits from an [abstract Gremlin class](api.html#gremlin). All it's properties, all the properties added by extensions and all the properties you define are available in every instance of this gremlin type.   
+The same applies to classes added with `GremlinJS.add()`.
 
 ### Inherited properties
+Every class properly created will add some useful members to every gremlin instance.
+
+#### Gremlin#data
+
+Object providing all parsed data-attributes of the gremlin's dom element. 
+
+See ["add options"](#add-options) for a more detailed explanation.
+
+#### Gremlin#el
+
+A reference of the dom element the gremlin was added to.  
+**This element should always be the starting point for all your dom manipulations, queryselectors etc...**
+
+``` js
+this.el.innerHTML = "Hello World!";
+```
+
+#### Gremlin#id
+
+Unique id amongst all gremlin instances.
+
+#### Gremlin#klass
+
+Reflects the [`Gremlin`](api.htmml#gremlin) the instance belongs to. 
+
+Especially handy, when you define static gremlin members with [`GremlinJS.define()`](api.html#gremlinjs-define) and want to access them from inside an instance.
+
+``` js
+GremlinJS.define('HelloWorld', function () {
+        this.talk();
+    },
+    {
+        talk: function () {
+            this.el.innerHTML = this.klass.GREETING;
+        }
+    },
+    {
+        GREETING: 'Hello World!'
+    }
+);
+```
 
 ### Add Options
 
+With a modular approach like GremlinJS, there will always be the need to add some configuration to your components.   
+GremlinJS fulfills this desire by parsing data-attributes similar to jQuery. GremlinJS adds a `data`-property to every instance providing the values of the attributes.  See [`Gremlin#data`](api.html#gremlin-data) for details.
+
+Think of a slideshow gremlin like the one on the front page, that should have a configurable slideshow interval in milliseconds.
+
+Add a data attribute storing this information
+
+``` html
+<div data-gremlin="Slideshow" data-interval="2500"></div>
+```
+
+and use the information inside your instance.
+
+
+``` js
+window.setInterval(this.onInterval, this.data.interval);	
+```
+
 ### Lazy loading
 
-### Gremlin inheritance
+GremlinJS supports lazy loading of your gremlins. If you want to execute a gremlin's javascript **only** if it's in the browsers viewport, activate lazy loading for the element, by setting the ` data-gremlin-lazy` attribute to `true`.
 
-## Gremlins for experts (and Coffeescript)
+``` html
+<div data-gremlin="Foo" data-gremlin-lazy="true"></div>	
+```
 
-GremlinJS is written in CoffeeScript and uses it's [class abstraction](http://coffeescript.org/#classes) internally to create Gremlin classes. 
+#### Browser Support
+Lazy loading isn't available in older browsers. It's inactive then and all Gremlins will be loaded immediately.
 
-If you plan to write your gremlins in Coffeescript, too, it `GremlinJS.define()` might be a little verbose, if you could use the `class` keyword instead.
+GremlinJS uses [`element.getBoundingClientRect`](http://devdocs.io/dom/element.getboundingclientrect) to decide, if an element is in the viewport.
 
-### GremlinJS.addClass()
-  
+### Inheriting Gremlins
 
+#### CoffeeScript
+
+To inherit an existing gremlin, extend it, call `super` in the constructor and add it.
+
+``` js
+class Mogwai extends G.Gremlin
+	constructor: ->
+		super
+
+class Gizmo extends Mogwai
+  constructor : ->
+    super
+    alert "Hello World!"
+
+G.add "Gizmo", Gizmo
+```
+
+#### Javascript
+*coming soon*
+<!--
+To inherit a gremlin with Javascript you can use `GremlinJS.derive()`. It works the same way  as `GremlinJS.define()` but expects the name of a Gremlin to inherit from as a first parameter.
+-->
 ## Using Extensions
 
+To use an extension make sure, that you include the extension before any gremlin. Once you've added an extension, it's automatically available to all of your gremlins.
+
+Some extensions are already included in GremlinJS, if you meet the requirements, feel free to use them.
+
+### Interests (PubSub)
+Pub Sub extension that allows gremlins to interact with each other by dispatching messages.
+
+See [Interests Docs](api.html#interests-pubsub)
+
+
+### Dom Elements
+Extension providing element maps "vanilla javascript style".
+
+See [Dom Elements Docs](api.html#domelements)
+
+### jQuery
+jQuery extension providing element and event maps.
+
+See [jQuery Docs](api.html#jquery)
+
 ## Building Extensions
+
+Building extensions is easy. Create an object that implements the [`IExtension`](api.html#iextension) interface and register the extension.
+
+Each extension has to provide three methods, `.bind()`, `.extend()` and `.test()`. Extensions won't be instantiated or called in a special context, extending GremlinJS in a meaningful way is your task.  
+If you created the extension add it with `GremlinJS.registerExtension()`.
+
+If you're interested what the GremlinJS does with the included extension, read the code. You'll find the extensions at `app\scripts\extensions`
+
+### Example
+
+A working example can be seen below.   
+The extension modifies the prototype for all gremlin instances, adds a property to the class itself and then binds custom data to each individual instance.
+
+<pre class="codepen" data-height="430" data-type="js" data-href="mAGDC" data-user="grmlin" data-safe="true">
+</pre>
+<script async src="http://codepen.io/assets/embed/ei.js">
+</script>
+
 
 ## Grunt
 
 ## AMD
+
+*coming soon*

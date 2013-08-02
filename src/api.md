@@ -174,9 +174,8 @@ The extension in the example below modifies the prototype for all gremlin instan
 ## Gremlin
 `gremlin.gremlinDefinitions.AbstractGremlin`
 
-All gremlin definitions added with [`GremlinJS.define()`](#gremlinjs-define) are inheriting from this class.
-
-**This class is not directly accessible from outside GremlinJS and used internally, only!** 
+All gremlin definitions added with [`GremlinJS.define()`](#gremlinjs-define) are inheriting from this class.   
+If you want to extend the abstract gremlin class (eg. CoffeeScript), access it via `GremlinJS.Gremlin`!
 
 ### Gremlin()
 
@@ -214,7 +213,7 @@ Enclose the JSON string in single quotes and write your JSON.
 ```
 
 ###### Using data-attributes
-The following attributes are becoming a number (`this.data.myNumber`) and an object (`this.data.config`) inside the gremlin instance.
+The following attributes will be available as a number (`this.data.myNumber`) and an object (`this.data.config`) inside the gremlin instance.
                                                            
 ``` html
 <div data-gremlin="foo" 
@@ -222,6 +221,9 @@ The following attributes are becoming a number (`this.data.myNumber`) and an obj
     data-my-number="42">
 </div>
 ```
+    
+    
+
 ``` js
 console.log(this.data.number); // prints 42
 console.log(typeof this.data.number); // prints number

@@ -207,6 +207,11 @@ body.no-literate .content pre > code,
     background: transparent;
 }
 
+.content h4 + pre,
+.content pre + pre {
+    margin-top: 20px;
+}
+
 .content blockquote {
     padding-left: 20px;
     border-left: 4px solid #ddd;
