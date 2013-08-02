@@ -43,10 +43,12 @@ Adds a gremlin class to GremlinJS that later will be used to activate [elements]
 
 `GremlinJS.add()` is primarily used with CoffeeScript, as there is no need to use `GremlinJS.define()` 
 
-   
-###### `.add(Gremlin):`[`Gremlin`](#gremlin)
+------ 
 
-returns the Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document
+###### `.add(name, Gremlin):`[`Gremlin`](#gremlin)
+
+- **`name`** : String    
+	A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the `data-gremlin` attribute of a dom element to select the gremlin.
 
 - **`Gremlin`** : [Gremlin](#gremlin)    
 	The Gremlin class inherited from `GremlinJS.Gremlin`
@@ -68,8 +70,15 @@ class HelloWorld extends G.Gremlin
   talk: ->
     @el.innerHTML = @klass.GREETING  
 
-G.add HelloWorld
+G.add "HelloWorld", HelloWorld
 ```
+#### Example
+
+<pre class="codepen" data-height="150" data-type="result" data-href="yDrKb" data-user="grmlin" data-safe="true">
+</pre>
+<script async src="http://codepen.io/assets/embed/ei.js">
+</script>
+
 
 ### GremlinJS.define()
 <!---

@@ -47,7 +47,7 @@ That's all, nothing else to do here.
 
 ### CoffeeScript
 
-Using CoffeeScript it's easy to create new gremlins. Create a new class extending `G.Gremlin`, use a proper name (the name used in `data-gremlin`) and add it.
+Using CoffeeScript it's easy to create new gremlins. Create a new class extending [`G.Gremlin`](api.html#gremlinjs-gremlin), use a proper name (the name used in `data-gremlin`) and [add](api.html#gremlinjs-add) it.
 
 ``` js
 class Gizmo extends G.Gremlin
@@ -55,7 +55,7 @@ class Gizmo extends G.Gremlin
     super
     alert "Hello World!"
 
-G.add Espresso
+G.add "Gizmo", Gizmo
 ```
 
 ### Javascript 
