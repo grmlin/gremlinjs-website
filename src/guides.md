@@ -70,6 +70,12 @@ Adding gremlins to the document is easy. Choose a name for your gremlin, eg. *Gi
 
 That's all, nothing else to do here.
 
+If you want to link multiple gremlins to a single element, separate the names with a comma.
+
+``` html
+<div data-gremlin="Gizmo,Water,Food"></div>
+``` 
+
 ### CoffeeScript
 
 With CoffeeScript it's easy to create new gremlins. Create a new class extending [`G.Gremlin`](api.html#gremlinjs-gremlin) and [add](api.html#gremlinjs-add) it with a proper name (the name used in `data-gremlin`).
