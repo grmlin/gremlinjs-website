@@ -11,6 +11,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at expedita 
 </div>
 ```
 ## 3. Done
-<pre class="codepen" data-height="500" data-type="result" data-href="vsxDk" data-user="grmlin"
+
+<pre class="codepen" data-height="500" data-type="result" data-href="jhIig" data-user="grmlin"
                          data-safe="true"></pre>
 <script async src="http://codepen.io/assets/embed/ei.js"></script>
+
+or [Javascript Example](http://codepen.io/grmlin/pen/vsxDk) here

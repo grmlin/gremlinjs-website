@@ -10,33 +10,6 @@ The GremlinJS namespace. This is the only directly available interface exposed t
 
 Access GremlinJS via `window.GremlinJS` or asynchronously with an AMD-Loader. 
 
-### GremlinJS.debug
-###### `.debug:`[`Debug`](#debug)
-
-[Debugger](#debug) instance used by GremlinJS for console logging and gremlin highlighting in the document.    
-With activated debugging, all gremlins will be highlighted visually by GremlinJS, listing components that are ready, pending or broken.
-
-To enable the debug mode, set `debug` to `true` at the body of your document. See [here](#gremlin-data) to learn how to add JSON to data attributes in GremlinJS. 
-
-``` html
-<body data-gremlin-config='{"debug":true}'> ... </body>
-```
-
-Moreover, the debugger wraps the browser's `console` object with `GremlinJS.debug.console` which is safe to use in browsers that don't have a console. In addition, if debugging is disabled, all `console` statements will be muted.
-
-``` js
-GremlinJS.debug.console.log('Hello World!');
-```
-
-#### Example
-
-Open your console to see the logging there.
-
-<pre class="codepen" data-height="250" data-type="result" data-href="qpmEc" data-user="grmlin" data-safe="true">
-</pre>
-<script async src="http://codepen.io/assets/embed/ei.js">
-</script>
-
 ### GremlinJS.add()
 
 Adds a gremlin class to GremlinJS that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.   
@@ -63,6 +36,7 @@ Adding a `HelloWorld` gremlin with CoffeeScript would look like
 ```js
 class HelloWorld extends G.Gremlin
   @GREETING : 'Hello World!'
+  
   constructor : ->
     super
     @talk()
@@ -79,6 +53,32 @@ G.add "HelloWorld", HelloWorld
 <script async src="http://codepen.io/assets/embed/ei.js">
 </script>
 
+### GremlinJS.debug
+###### `.debug:`[`Debug`](#debug)
+
+[Debugger](#debug) instance used by GremlinJS for console logging and gremlin highlighting in the document.    
+With activated debugging, all gremlins will be highlighted visually by GremlinJS, listing components that are ready, pending or broken.
+
+To enable the debug mode, set `debug` to `true` at the body of your document. See [here](#gremlin-data) to learn how to add JSON to data attributes in GremlinJS. 
+
+``` html
+<body data-gremlin-config='{"debug":true}'> ... </body>
+```
+
+Moreover, the debugger wraps the browser's `console` object with `GremlinJS.debug.console` which is safe to use in browsers that don't have a console. In addition, if debugging is disabled, all `console` statements will be muted.
+
+``` js
+GremlinJS.debug.console.log('Hello World!');
+```
+
+#### Example
+
+Open your console to see the logging there.
+
+<pre class="codepen" data-height="250" data-type="result" data-href="qpmEc" data-user="grmlin" data-safe="true">
+</pre>
+<script async src="http://codepen.io/assets/embed/ei.js">
+</script>
 
 ### GremlinJS.define()
 <!---
