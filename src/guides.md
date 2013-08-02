@@ -20,6 +20,8 @@ You don't have to start or initialize it, you don't have to wait for anything, i
 <script src="js/gremlinjs.min.js"></script>
 ``` 
 
+The order including your gremlin definitions does **not** matter, feel free to add them at the top or bottom of the page, as long as GremlinJS was included before, of course.  
+Gremlins will be found as well, if you add the definitions some time later, eg. asynchronously with a script loader.
 ### Browser support
 
 GremlinJS works in all modern browsers, including Internet Explorer down to version 8.
@@ -43,11 +45,22 @@ Adding gremlins to the document is easy. Choose a name for your gremlin, eg. *Gi
 
 That's all, nothing else to do here.
 
-### Javascript 
-Gremlin definitions are Javascript snippets describing the gremlin. With these definitions you will create constructor functions which are inherited from an abstract gremlin class behind the scenes.
+### CoffeeScript
 
-The order including your gremlin definitions does **not** matter, feel free to add them at the top or bottom of the page, as long as GremlinJS was included before, of course.  
-Gremlins will be found as well, if you add the definitions some time later, eg. asynchronously with a script loader.
+Using CoffeeScript it's easy to create new gremlins. Create a new class extending `G.Gremlin`, use a proper name (the name used in `data-gremlin`) and add it.
+
+``` js
+class Gizmo extends G.Gremlin
+  constructor : ->
+    super
+    alert "Hello World!"
+
+G.add Espresso
+```
+
+### Javascript 
+With vanilla Javascript, the CoffeeScript syntax sugar isn't available, of course.   
+If you don't want to implement the class mechanics with Javascript by yourself, you can write  Gremlin definitions. With these definitions you will create constructor functions aka classes which are inherited from the abstract gremlin for you behind the scenes.
 
 If GremlinJS finds a suitable dom element, one that provides the `data-gremlin="NAME"` attribute, a new instance of the Gremlin `NAME`, inherited from the [abstract gremlin class](api.html#gremlin), will be created. This instance does, beside the members and methods you defined, provide some useful properties you may need later.
 
@@ -72,17 +85,12 @@ returns a Gremlin class (constructor function) that is later used to instantiate
 	All static members of this class as an object literal. <br> To access static members from inside gremlin instances, `Gremlin.klass` references the original constructor function.
 
 
-### Hello World!
+So *Gizmo* from above written with `GremlinJS.define()` would look like this:
 
-The most basic gremlin alerting *"Hello World!"* would look like this:
-
-``` html
-<div data-gremlin="HelloWorld"></div>
-
-<script>
-  GremlinJS.define('HelloWorld', function () {
-    alert("Hello World!");
-  });
+``` js
+GremlinJS.define('Gizmo', function () {
+  alert("Hello World!");
+});
 </script>
 
 ```
@@ -142,6 +150,8 @@ GremlinJS.define("Foo", function() {
 The static properties parameter has to be an object, too. This time, all methods and members are added to the Gremlin class itself.  
 Static properties are really useful if you have to define properties that don't have to clutter the gremlin's prototype, eg string constants. 
 
+To access static properties, use the [`Gremlin#klass`](api.html#gremlin-klass) member, reflecting the class.
+
 ``` js
 GremlinJS.define("Foo", function() {
 	this.logId();	
@@ -163,6 +173,15 @@ GremlinJS.define("Foo", function() {
 
 ### Lazy loading
 
+### Gremlin inheritance
+
+## Gremlins for experts (and Coffeescript)
+
+GremlinJS is written in CoffeeScript and uses it's [class abstraction](http://coffeescript.org/#classes) internally to create Gremlin classes. 
+
+If you plan to write your gremlins in Coffeescript, too, it `GremlinJS.define()` might be a little verbose, if you could use the `class` keyword instead.
+
+### GremlinJS.addClass()
   
 
 ## Using Extensions

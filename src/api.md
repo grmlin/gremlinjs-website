@@ -3,6 +3,9 @@ Reference of the publicly available methods and properties of GremlinJS.
 
 This is **not** a documentation of the GremlinJS sources, you have to read the code to see what's going on behind the scenes. 
 ## GremlinJS
+
+**The shorter alias `G` is available, if not used in the global namespace already!**
+
 The GremlinJS namespace. This is the only directly available interface exposed to the global scope!
 
 Access GremlinJS via `window.GremlinJS` or asynchronously with an AMD-Loader. 
@@ -34,6 +37,40 @@ Open your console to see the logging there.
 <script async src="http://codepen.io/assets/embed/ei.js">
 </script>
 
+### GremlinJS.add()
+
+Adds a gremlin class to GremlinJS that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.   
+
+`GremlinJS.add()` is primarily used with CoffeeScript, as there is no need to use `GremlinJS.define()` 
+
+   
+###### `.add(Gremlin):`[`Gremlin`](#gremlin)
+
+returns the Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document
+
+- **`Gremlin`** : [Gremlin](#gremlin)    
+	The Gremlin class inherited from `GremlinJS.Gremlin`
+
+Adding a `HelloWorld` gremlin with CoffeeScript would look like
+
+```html
+<div data-gremlin="HelloWorld"></div>
+```
+
+**Always call `super` inside the constructor!**
+```js
+class HelloWorld extends G.Gremlin
+  @GREETING : 'Hello World!'
+  constructor : ->
+    super
+    @talk()
+  
+  talk: ->
+    @el.innerHTML = @klass.GREETING  
+
+G.add HelloWorld
+```
+
 ### GremlinJS.define()
 <!---
 UPDATE guides.md if the define documentation changes!!!
@@ -41,7 +78,7 @@ UPDATE guides.md if the define documentation changes!!!
 Creates a gremlin definition aka class, that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.
 
 ###### `.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](#gremlin)
-returns a Gremlin class (constructor function)
+returns a Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document
 
 - **`name`** : String    
 	A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the `data-gremlin` attribute of a dom element to select the gremlin.
@@ -85,6 +122,18 @@ For a basic gremlin add some HTML markup and create a Gremlin called `HelloWorld
 <script async src="http://codepen.io/assets/embed/ei.js">
 </script>
 
+### GremlinJS.Gremlin
+
+Reference of [`Gremlin`](#gremlin).  
+Extend `GremlinJS.Gremlin` when creating Gremlin classes with CoffeeScript.
+
+
+``` js
+class Gizmo extends G.Gremlin
+  constructor : ->
+    super
+    alert "Hello World!"
+```
 
 ### GremlinJS.Helper
 ###### `.Helper:`[`Helper`](#helper)
