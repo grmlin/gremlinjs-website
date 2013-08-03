@@ -56,6 +56,8 @@ GremlinJS uses the javascript JSON API to parse JSON strings in custom dom eleme
 
 A more complete lists of supported browsers (desktop and mobile) will follow some day.
 
+# Master the horde
+
 ## Creating Gremlins
 
 Gremlins are build by writing a javascript definition and then added to dom elements via a custom data attribute `data-gremlin`.
@@ -330,27 +332,50 @@ G.add "Gizmo", Gizmo
 <!--
 To inherit a gremlin with Javascript you can use `GremlinJS.derive()`. It works the same way  as `GremlinJS.define()` but expects the name of a Gremlin to inherit from as a first parameter.
 -->
+
+# Extend GremlinJS
+
+GremlinJS is highly extensible and allows you to add functionality to all of your gremlins at once.  
+
+You want to use a template engine like handlebars in your gremlins but don't want to add the code multiple times? Write an extension for it.
+
 ## Using Extensions
 
 To use an extension make sure, that you include the extension before any gremlin. Once you've added an extension, it's automatically available to all of your gremlins.
 
-Some extensions are already included in GremlinJS, if you meet the requirements, feel free to use them.
+Some extensions are exist for GremlinJS, if you meet the requirements, feel free to use them.
 
 ### Interests (PubSub)
 Pub Sub extension that allows gremlins to interact with each other by dispatching messages.
 
-See [Interests Docs](api.html#interests-pubsub)
+``` html
+<script src="gremlin.interests.min.js"></script>
+```
+
+[Download](https://github.com/grmlin/gremlinjs-interests) at Github, see the [Interests Docs](api.html#interests-pubsub) for details.
 
 
 ### Dom Elements
 Extension providing element maps "vanilla javascript style".
 
-See [Dom Elements Docs](api.html#domelements)
+**Don't use the jquery and dom elements extension at the same time!**
+
+``` html
+<script src="gremlin.domelements.min.js"></script>
+```
+
+[Download](https://github.com/grmlin/gremlinjs-domelements) at Github, see the [Dom Elements Docs](api.html#domelements) for details.
 
 ### jQuery
 jQuery extension providing element and event maps.
 
-See [jQuery Docs](api.html#jquery)
+**Don't use the jquery and dom elements extension at the same time!**
+
+``` html
+<script src="gremlin.jquery.min.js"></script>
+```
+
+[Download](https://github.com/grmlin/gremlinjs-jquery) at Github, see the [jQuery Docs](api.html#jquery) for details.
 
 ## Building Extensions
 
@@ -360,6 +385,20 @@ Each extension has to provide three methods, `.bind()`, `.extend()` and `.test()
 If you created the extension add it with `GremlinJS.registerExtension()`.
 
 If you're interested what the GremlinJS does with the included extension, read the code. You'll find the extensions at `app\scripts\extensions`
+
+### .bind()
+
+Binds the extension to a gremlin instance. Do whatever yout want to do with a gremlins instance in here. 
+
+[API docs](api.html#iextension-bind)
+
+
+### .extend()
+
+Change and extend the gremlin definition (constructor function, aka. class) in this handler.  
+
+[API docs](api.html#iextension-extend)
+
 
 ### Example
 
@@ -371,6 +410,7 @@ The extension modifies the prototype for all gremlin instances, adds a property 
 <script async src="http://codepen.io/assets/embed/ei.js">
 </script>
 
+# Tools
 
 ## Grunt
 

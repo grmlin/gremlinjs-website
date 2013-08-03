@@ -312,21 +312,7 @@ Extension.extend= function(Gremlin) {
     }
 };
 ```
-### IExtension.test()
-Test the extensions availability
 
-###### `.test():Boolean`
-Should return `true`, if the extension is available, `false` otherwise.
-
-This little helper is needed to prevent errors for the some of the build in extensions. In most cases you will return `true` here.
-
-**called once when adding the extension**
-
-```js
-Extension.test= function() {
-    return Modernizr.geolocation
-};
-```
 ## Debug
 `gremlin.util.Debug` 
 
@@ -461,12 +447,19 @@ Add some new css styles to your document
 ```
 
 
-# Build In Extensions
-GremlinJS includes some useful extensions. If the browser supports the extension, 
-it will automatically be available for all your gremlins.
+# Available Extensions
+GremlinJS already provides some useful extensions. Feel free to use them.
+
+You'll find them at Github, with the following naming pattern: `gremlinjs-EXTENSION` inside the `dist` directory.
 
 ## Interests (PubSub)
 Pub Sub extension that allows gremlins to interact with each other by dispatching messages.
+
+``` html
+<script src="gremlin.interests.min.js"></script>
+```
+
+[Download](https://github.com/grmlin/gremlinjs-interests) at Github
 
 ### About Interests
 The interests extension works always, there are no additional dependencies.   
@@ -523,6 +516,14 @@ var Holly = GremlinJS.define("Bar", function () {
 ## DomElements
 Extension providing element maps "vanilla javascript style".
 
+``` html
+<script src="gremlin.domelements.min.js"></script>
+```
+
+**Don't use the jquery and dom elements extension at the same time!**
+
+[Download](https://github.com/grmlin/gremlinjs-domelements) at Github
+
 ### About dom elements
 Newer browsers come with a very powerful dom element selector engine, [`element.querySelectorAll()`](http://devdocs.io/dom/element.queryselectorall). The `DomElements` extension allows you to define element maps utilizing `querySelectorAll` for gremlins.
 
@@ -558,6 +559,13 @@ GremlinJS.define("Foo",
 ## jQuery
 jQuery extension providing element and event maps.
 
+``` html
+<script src="gremlin.jquery.min.js"></script>
+```
+
+**Don't use the jquery and dom elements extension at the same time!**
+
+[Download](https://github.com/grmlin/gremlinjs-jquery) at Github
 
 ### About jQuery
 GremlinJS doesn't require jQuery, but it's used a lot these days. That's why this handy extension is included.     
@@ -573,9 +581,9 @@ To use the jQuery extension, [download and include it](http://jquery.com/) in yo
 ###### `#$el:jQuery`
 The gremlin's dom element as jQuery object
  
-### Gremlin.$elements
+### Gremlin.elements
 
-###### `.$elements:Object`
+###### `.elements:Object`
 Object literal / map,  defining jQuery objects to be added to the [`Gremlin`](#gremlin) instance.
 
 The object has to be composed of jQuery selectors as a key, and an instance property name as the value.   
@@ -595,15 +603,15 @@ GremlinJS.define("Foo",
   },
   {},
   {
-    $elements: {
+    elements: {
       "div.content": "$content"
   	}
   });
 ```
 
-### Gremlin.$events
+### Gremlin.events
 
-###### `.$events:Object`
+###### `.events:Object`
 Object literal / map,  defining jQuery event handler to be added to the [`Gremlin`](#gremlin) instance.
 
 The object has to be composed of an event description combining the event type and a selector as a key, and an instance method name as the value.  
@@ -616,7 +624,7 @@ It's possible to to bind events to the gremlin's dom element or to delegate even
 Add the event type as a key, and the name of the handler as the value of the event map entry.
 
 ``` js
-$events = {
+events = {
 	'click' : 'onClick'
 }
 ```
@@ -625,7 +633,7 @@ $events = {
 To delegate events, add a selector to the event type separated by a single whitespace.
 
 ``` js
-$events = {
+events = {
 	'click div.content' : 'onClick'
 }
 ```
@@ -657,7 +665,7 @@ GremlinJS.define("Foo",
     }
   },
   {
-    $elements: {
+    events: {
       "click button": "onClick"
   }
 });
