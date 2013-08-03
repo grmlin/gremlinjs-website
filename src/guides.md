@@ -128,8 +128,6 @@ So *Gizmo* from above written with `GremlinJS.define()` would look like this:
 GremlinJS.define('Gizmo', function () {
   alert("Hello World!");
 });
-</script>
-
 ```
 
 ### GremlinJS.define() in detail
