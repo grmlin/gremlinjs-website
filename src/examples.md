@@ -67,7 +67,7 @@ When attached to the document, the `HelloWorld` gremlin is found and processed. 
 
 An awesome feature is lazy loading of the gremlins in the document. They will be instantiated if they are scrolled into the viewport.
 
-The embedded codepen samples on this page are lazy loaded gremlins. The page loads fast this way, and if you scroll another example into the viewport, the codepen script will be executed.
+The embedded codepen samples on this page are lazy loaded gremlins. The page loads fast and examples are loaded only when necessary.
 
 ### HTML
 
