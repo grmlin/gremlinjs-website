@@ -62,7 +62,47 @@ When attached to the document, the `HelloWorld` gremlin is found and processed. 
 
 <p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="300" data-theme-id="0" data-slug-hash="wCthx" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/wCthx'>GremlinJS - Auto loading (JS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
+## Gremlin properties 
 
+Every Gremlin instance comes with some useful properties. 
+
+### #data, setting gremlin options
+
+Object providing all parsed data-attributes of the gremlin's dom element. Everything you add to the element via an `data` attribute will be published into the gremlins `#data` property.
+
+See ["add options"](#add-options) for a more detailed explanation.
+
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="193" data-theme-id="0" data-slug-hash="zBtHn" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/zBtHn'>GremlinJS - #data (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+
+[This example in Javascript](http://codepen.io/grmlin/pen/Ljwod)
+
+
+### #el,  the gremlin element
+
+A reference of the dom element the gremlin was added to. See the example above. The gremlin's content is changed by setting the `innerHTML` property of `#el`.
+
+``` html
+@el.innerHTML = html 
+```
+
+### #id, unique identifier
+
+Every gremlin has a unique ID, a number incremented for every gremlin found in the document. 
+
+In the example below, `GREETING` is a static property of the `HelloWorld` gremlin and used to change the gremlin's `innerHTML`.
+
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="200" data-theme-id="0" data-slug-hash="grstB" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/grstB'>GremlinJS - #id (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+
+[This example in Javascript](http://codepen.io/grmlin/pen/ndCgD)
+
+### #klass, class reflection
+
+If you add static members to a gremlin class with CoffeeScript, or create some with `.define()`, the `Gremlin#klass` property will be useful. It reflects the original class. Use it to access static members from inside the instance.
+
+<p data-gremlin="Codepen" data-height="300" data-theme-id="0" data-slug-hash="yDrKb" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/yDrKb'>GremlinJS - Hello World</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+
+[This example in Javascript](http://codepen.io/grmlin/pen/IqFbf)
+ 
 ## Lazy loading
 
 An awesome feature is lazy loading of the gremlins in the document. They will be instantiated if they are scrolled into the viewport.
