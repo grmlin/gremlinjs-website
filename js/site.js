@@ -1,5 +1,5 @@
 (function () {
-  var ids = {};
+  var SEP = '_';
 
   function slugify(text) {
     var slug = text.toLowerCase().match(/[a-z0-9]+/g).join('-');
@@ -12,9 +12,11 @@
       var text = $el.text();
       var id = slugify(text);
       if ($el.is('h2')) {
-        id = $el.prevAll('h1:first').attr('id') + '_' + id;
+        id = $el.prevAll('h1:first').attr('id') + SEP + id;
       } else if ($el.is('h3')) {
-        id = $el.prevAll('h1:first').attr('id') + '__' + id;
+        var id2 = $el.prevAll('h2:first').attr('id'),
+          start = id2.indexOf(SEP) + 1;
+        id = $el.prevAll('h1:first').attr('id') + SEP + id2.substr(start) + SEP + id;
       }
       $el.attr('id', id);
     });

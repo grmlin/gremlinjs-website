@@ -306,6 +306,8 @@ Lazy loading isn't available in older browsers. It's inactive then and all Greml
 
 GremlinJS uses [`element.getBoundingClientRect`](http://devdocs.io/dom/element.getboundingclientrect) to decide, if an element is in the viewport.
 
+**Be careful when you plan to use lazy loaded gremlins on a mobile device. In most mobile browsers, the scroll event does not fire continuously but only when the scrolling stops completely.**
+
 ### Inheriting Gremlins
 
 #### CoffeeScript
