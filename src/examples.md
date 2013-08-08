@@ -66,7 +66,7 @@ When attached to the document, the `HelloWorld` gremlin is found and processed. 
 
 Every Gremlin instance comes with some useful properties. 
 
-### #data, setting gremlin options
+### setting gremlin options
 
 Object providing all parsed data-attributes of the gremlin's dom element. Everything you add to the element via an `data` attribute will be published into the gremlins `#data` property.
 
@@ -77,7 +77,7 @@ See ["add options"](#add-options) for a more detailed explanation.
 [This example in Javascript](http://codepen.io/grmlin/pen/Ljwod)
 
 
-### #el,  the gremlin element
+### the gremlin element
 
 A reference of the dom element the gremlin was added to. See the example above. The gremlin's content is changed by setting the `innerHTML` property of `#el`.
 
@@ -85,7 +85,7 @@ A reference of the dom element the gremlin was added to. See the example above. 
 @el.innerHTML = html 
 ```
 
-### #id, unique identifier
+### unique identifier
 
 Every gremlin has a unique ID, a number incremented for every gremlin found in the document. 
 
@@ -95,7 +95,7 @@ In the example below, `GREETING` is a static property of the `HelloWorld` gremli
 
 [This example in Javascript](http://codepen.io/grmlin/pen/ndCgD)
 
-### #klass, class reflection
+### class reflection
 
 If you add static members to a gremlin class with CoffeeScript, or create some with `.define()`, the `Gremlin#klass` property will be useful. It reflects the original class. Use it to access static members from inside the instance.
 
@@ -131,6 +131,35 @@ Furthermore the debug mode is enabled. Have a look into the lower left corner of
 <p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="260" data-theme-id="0" data-slug-hash="FDuhg" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/FDuhg'>GremlinJS - Lazy Loading (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 
+## Debugging
+
+Sometimes, with documents full of gremlins, it can be very helpful to get visual feedback in the site and console logs or errors of the gremlins. `GremlinJS.debug` does that.
+
+### HTML
+
+Activate debugging by changing the GremlinJS configuration at the document `body`. By doing so, debugging is activated, console logs are printed and gremlins are highlighted visually in the document.
+
+``` html
+<body data-gremlin-config='{"debug":true}'> ... </body>
+```
+
+### Definition
+
+``` js
+G.debug.console.log("Hello World!");
+```
+
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="282" data-theme-id="0" data-slug-hash="qpmEc" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/qpmEc'>qpmEc</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+
+
 # Extensions
+
+## Interests
+
+## jQuery
+
+## domElements
+
+## Building your own
 
 # AMD / Require
