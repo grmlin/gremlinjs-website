@@ -13,9 +13,6 @@ input {
     color: #505050;
 }
 
-body.with-logo {
-
-}
 a,
 a:visited,
 .menu a,
@@ -306,17 +303,6 @@ body.no-literate .content pre > code,
 .menubar {
 }
 
-.menubar::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height:100px;
-    background: transparent url(../img/logo.svg) no-repeat left bottom;
-    background-size: contain;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-}
 
 .menubar.fixed + .top-link {
     opacity: 1;
