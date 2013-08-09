@@ -227,7 +227,6 @@ body.no-literate .content pre > code,
 .content blockquote {
     padding-left: 20px;
     border-left: 4px solid #ddd;
-    background: rgb(245, 245, 245);
     margin: 10px 0 20px 15px;
 }
 
