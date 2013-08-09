@@ -133,6 +133,20 @@ Furthermore the debug mode is enabled. Have a look into the lower left corner of
 
 <p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="260" data-theme-id="0" data-slug-hash="FDuhg" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/FDuhg'>GremlinJS - Lazy Loading (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
+## Events
+
+GremlinJS dispatches some events while searching gremlins and instantiating them.
+
+- [`GremlinJS.ON_ELEMENT_FOUND`](api.html#gremlinjs-reference_gremlinjs_on-element-found)
+
+- [`GremlinJS.ON_DEFINITION_PENDING`](api.html#gremlinjs-reference_gremlinjs_on-definition-pending)
+
+- [`GremlinJS.ON_GREMLIN_LOADED`](api.html#gremlinjs-reference_gremlinjs_on-gremlin-loaded)
+
+
+The example below uses all three events and logs the event type and the affected element into the console.
+
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="306" data-theme-id="0" data-slug-hash="cyxbB" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/cyxbB'>GremlinJS - Events (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 ## Debugging
 

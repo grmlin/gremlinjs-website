@@ -399,6 +399,11 @@ Change and extend the gremlin definition (constructor function, aka. class) in t
 
 [API docs](api.html#iextension-extend)
 
+## Events
+
+GremlinJS dispatches events while processing the document.   
+
+See the [api docs](api.html#gremlinjs-reference_gremlinjs_gremlinjs-on) and [example](examples.html#gremlinjs-basics_events) for more information.
 # Tools
 
 ## Grunt

@@ -135,6 +135,31 @@ class Gizmo extends G.Gremlin
 Object providing some useful utility methods.
 References [`Helper`](#helper)
 
+### GremlinJS.on()
+
+Add an event listener to GremlinJS.
+
+##### `.on(eventType, callback)`
+
+- **`eventType`** : String    
+	The name of the event
+
+- **`callback(element)`** : Function   
+   The callback function called, if the event was dispatched. The first and only argument passed into the callback will be the affected dom element.
+
+``` js
+G.on G.ON_ELEMENT_FOUND, (el) ->
+  console.log "Gremlin element found, but yet not instantiated"
+  
+G.on G.ON_DEFINITION_PENDING,(el) ->
+  console.log "Gremlin element found, but the definition for it is pending..."
+    
+G.on G.ON_GREMLIN_LOADED, (el) ->
+  console?.log "Gremlin element found and instantiated"
+```
+
+[**Open example &raquo;**](examples.html#gremlinjs-basics_events)
+
 ### GremlinJS.registerExtension() 
 
 Adds a new extension to GremlinJS.
@@ -149,6 +174,22 @@ Adds a new extension to GremlinJS.
 
 [**Open example &raquo;**](examples.html#extensions_building-your-own)
 
+### .ON_ELEMENT_FOUND
+
+Event dispatched, if an element with the `data-gremlin` attribute was found in the document.   
+**The gremlin is not instantiated at this moment!**
+
+[**Open example &raquo;**](examples.html#gremlinjs-basics_events)
+
+### .ON_DEFINITION_PENDING
+Event dispatched, if an element with the `data-gremlin` attribute was found in the document but a definition for it is missing. Useful if you want to load your gremlins with a script loader on demand.
+
+[**Open example &raquo;**](examples.html#gremlinjs-basics_events)
+
+### .ON_GREMLIN_LOADED
+Event dispatched, if an element with the `data-gremlin` attribute was found in the document and instantiated successfully.
+
+[**Open example &raquo;**](examples.html#gremlinjs-basics_events)
 
 
 ## Gremlin
@@ -257,50 +298,6 @@ GremlinJS.define('HelloWorld', function () {
 
 [**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_class-reflection)
 
-## IExtension
-`gremlin.gremlinDefinitions.IExtension`
-
-Interface every extension has to implement.
-
-**This is pseudo code that can't be found in the GremlinJS sources. There will be no
-error checking or whatsoever when processing extensions**
-
-### IExtension.bind()
-
-Binds the extension to a gremlin instance. Do whatever yout want to do with a gremlins instance in here. 
-
-###### `.bind(gremlin)`
-
-- **`gremlin`** : [Gremlin](#gremlin)   
-	The [`Gremlin`](#gremlin) instance the extension will be bound to.
-
-**called for every gremlin element in the document separately**
-
-```js
-Extension.bind = function(gremlin) {
-    gremlin.foo = 'bar';
-};
-```
-### IExtension.extend()
-
-Change and extend the gremlin definition (constructor function, aka. class) in this handler.  
-
-###### `.extend(Gremlin)`
-- **`Gremlin`** : [Gremlin](#gremlin)      
-	The constructor function used to create gremlin instances later.
-
-`extend` is the place where you might want to add static members to the classes or extend their prototypes. 
-
-**called once when adding the extension**
-
-```js
-Extension.extend= function(Gremlin) {
-    Gremlin.foo = 'bar';
-    Gremlin.prototype.talk = function(){
-        alert(this.klass.foo);
-    }
-};
-```
 
 ## Debug
 `gremlin.util.Debug` 
@@ -433,6 +430,51 @@ Add some new css styles to your document
 ```js
     var css = '.foo {color:red;}';
 	GremlinJS.Helper.addStyleSheet(css);
+```
+
+## IExtension
+`gremlin.gremlinDefinitions.IExtension`
+
+Interface every extension has to implement.
+
+**This is pseudo code that can't be found in the GremlinJS sources. There will be no
+error checking or whatsoever when processing extensions**
+
+### IExtension.bind()
+
+Binds the extension to a gremlin instance. Do whatever yout want to do with a gremlins instance in here. 
+
+###### `.bind(gremlin)`
+
+- **`gremlin`** : [Gremlin](#gremlin)   
+	The [`Gremlin`](#gremlin) instance the extension will be bound to.
+
+**called for every gremlin element in the document separately**
+
+```js
+Extension.bind = function(gremlin) {
+    gremlin.foo = 'bar';
+};
+```
+### IExtension.extend()
+
+Change and extend the gremlin definition (constructor function, aka. class) in this handler.  
+
+###### `.extend(Gremlin)`
+- **`Gremlin`** : [Gremlin](#gremlin)      
+	The constructor function used to create gremlin instances later.
+
+`extend` is the place where you might want to add static members to the classes or extend their prototypes. 
+
+**called once when adding the extension**
+
+```js
+Extension.extend= function(Gremlin) {
+    Gremlin.foo = 'bar';
+    Gremlin.prototype.talk = function(){
+        alert(this.klass.foo);
+    }
+};
 ```
 
 
