@@ -46,12 +46,8 @@ class HelloWorld extends G.Gremlin
 
 G.add "HelloWorld", HelloWorld
 ```
-#### Example
 
-<pre class="codepen" data-height="150" data-type="result" data-href="yDrKb" data-user="grmlin" data-safe="true">
-</pre>
-<script async src="http://codepen.io/assets/embed/ei.js">
-</script>
+[**Open example &raquo;**](examples.html#gremlinjs-basics_hello-world)
 
 ### GremlinJS.debug
 ###### `.debug:`[`Debug`](#debug)
@@ -71,14 +67,7 @@ Moreover, the debugger wraps the browser's `console` object with `GremlinJS.debu
 GremlinJS.debug.console.log('Hello World!');
 ```
 
-#### Example
-
-Open your console to see the logging there.
-
-<pre class="codepen" data-height="250" data-type="result" data-href="qpmEc" data-user="grmlin" data-safe="true">
-</pre>
-<script async src="http://codepen.io/assets/embed/ei.js">
-</script>
+[**Open example &raquo;**](examples.html#gremlinjs-basics_debugging)
 
 ### GremlinJS.define()
 <!---
@@ -124,12 +113,7 @@ For a basic gremlin add some HTML markup and create a Gremlin called `HelloWorld
 </script>
 ```
 
-#### Example
-
-<pre class="codepen" data-height="150" data-type="result" data-href="IqFbf" data-user="grmlin" data-safe="true">
-</pre>
-<script async src="http://codepen.io/assets/embed/ei.js">
-</script>
+[**Open example &raquo;**](examples.html#gremlinjs-basics_hello-world)
 
 ### GremlinJS.Gremlin
 
@@ -143,6 +127,8 @@ class Gizmo extends G.Gremlin
     super
     alert "Hello World!"
 ```
+
+[**Open example &raquo;**](examples.html#gremlinjs-basics_hello-world)
 
 ### GremlinJS.Helper
 ###### `.Helper:`[`Helper`](#helper)
@@ -161,14 +147,8 @@ Adds a new extension to GremlinJS.
 
 **Always include your extensions before your gremlin definitions**
 
-#### Example
+[**Open example &raquo;**](examples.html#extensions_building-your-own)
 
-The extension in the example below modifies the prototype for all gremlin instances, adds a property to the class itself and then binds custom data to each individual instance.
-
-<pre class="codepen" data-height="430" data-type="js" data-href="mAGDC" data-user="grmlin" data-safe="true">
-</pre>
-<script async src="http://codepen.io/assets/embed/ei.js">
-</script>
 
 
 ## Gremlin
@@ -231,6 +211,9 @@ console.log(this.data.config.foo); // prints bar
 console.log(typeof this.data.config); // prints object
 ```
 
+[**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_setting-gremlin-options)
+
+
 ### Gremlin#el
 
 ###### `#el : `[`element`](http://devdocs.io/dom/element)
@@ -238,11 +221,14 @@ console.log(typeof this.data.config); // prints object
 A reference of the dom element the gremlin was added to.  
 **This element should always be the starting point for all your dom manipulations, queryselectors etc...**
 
+[**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_the-gremlin-element)
 
 ### Gremlin#id
 
 ###### `#id : Number`
 Unique id amongst all gremlin instances.
+
+[**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_unique-identifier)
 
 ### Gremlin#klass
 
@@ -268,6 +254,9 @@ GremlinJS.define('HelloWorld', function () {
     }
 );
 ```
+
+[**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_class-reflection)
+
 ## IExtension
 `gremlin.gremlinDefinitions.IExtension`
 
@@ -461,6 +450,8 @@ Pub Sub extension that allows gremlins to interact with each other by dispatchin
 
 [Download](https://github.com/grmlin/gremlinjs-interests) at Github
 
+[**Open example &raquo;**](examples.html#extensions_interests)
+
 ### About Interests
    
 To use interests, there must be a gremlin emitting messages and another one that subscribed to these messages.
@@ -524,6 +515,8 @@ Extension providing element maps "vanilla javascript style".
 
 [Download](https://github.com/grmlin/gremlinjs-domelements) at Github
 
+[**Open example &raquo;**](examples.html#extensions_domelements)
+
 ### About dom elements
 Newer browsers come with a very powerful dom element selector engine, [`element.querySelectorAll()`](http://devdocs.io/dom/element.queryselectorall). The `DomElements` extension allows you to define element maps utilizing `querySelectorAll` for gremlins.
 
@@ -566,6 +559,8 @@ jQuery extension providing element and event maps.
 **Don't use the jquery and dom elements extension at the same time!**
 
 [Download](https://github.com/grmlin/gremlinjs-jquery) at Github
+
+[**Open example &raquo;**](examples.html#extensions_jquery)
 
 ### About jQuery
 GremlinJS doesn't require jQuery, but it's used a lot these days. That's why this handy extension is included.     

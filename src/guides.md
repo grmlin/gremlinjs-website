@@ -381,7 +381,7 @@ jQuery extension providing element and event maps.
 
 Building extensions is easy. Create an object that implements the [`IExtension`](api.html#iextension) interface and register the extension.
 
-Each extension has to provide two methods, `.bind()`, `.extend()` and `.test()`. Extensions won't be instantiated or called in a special context, extending GremlinJS in a meaningful way is your task.  
+Each extension has to provide two methods, `.bind()` and `.extend()`. Extensions won't be instantiated or called in a special context, extending GremlinJS in a meaningful way is your task.  
 If you created the extension add it with `GremlinJS.registerExtension()`.
 
 If you're interested what the GremlinJS does with the included extension, read the code of the extension [already available](#extend-gremlinjs_using-extensions) for GremlinJS. 
@@ -399,20 +399,11 @@ Change and extend the gremlin definition (constructor function, aka. class) in t
 
 [API docs](api.html#iextension-extend)
 
-
-### Example
-
-A working example can be seen below.   
-The extension modifies the prototype for all gremlin instances, adds a property to the class itself and then binds custom data to each individual instance.
-
-<pre class="codepen" data-height="430" data-type="js" data-href="mAGDC" data-user="grmlin" data-safe="true">
-</pre>
-<script async src="http://codepen.io/assets/embed/ei.js">
-</script>
-
 # Tools
 
 ## Grunt
+
+*coming soon*
 
 ## AMD
 
