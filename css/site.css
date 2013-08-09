@@ -325,3 +325,7 @@ body.no-literate .content pre > code,
 .menu .level-2 > li + li {
     margin-top: 8px;
 }
+
+.download-button-wrapper a {
+    color: #fff;
+}

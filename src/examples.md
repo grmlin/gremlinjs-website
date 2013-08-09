@@ -145,6 +145,8 @@ Activate debugging by changing the GremlinJS configuration at the document `body
 
 ### Definition
 
+Programmatically the debugger can be used to use the browser console in debug mode.
+ 
 ``` js
 G.debug.console.log("Hello World!");
 ```
@@ -183,9 +185,50 @@ Every time any gremlin dispatches the event `"log"`, the `onLog()` method will b
 
 The jQuery introduces two new features to every gremlin, [event](api.html#available-extensions_jquery_gremlin-events) and [element](api.html#available-extensions_jquery_gremlin-elements) maps. Additionally, the instance property `$el` references the jQuery object of the gremlin's dom element.
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="353" data-theme-id="0" data-slug-hash="jIhyA" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/jIhyA'>GremlinJS - Extension - Interests (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+The example uses all of these features.  
+A click handler on the button is added
+
+``` js
+events : {
+	"click button" : "onClick"
+}
+```
+
+The span the timestamp will be added to on click is bound
+
+``` js
+elements: { 
+    '.timestamp' : 'timestamp' 
+}
+```
+
+Even `$el` is used to add a border to the gremlin.
+
+see [momentjs](http://momentjs.com/)
+
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="353" data-theme-id="0" data-slug-hash="jIhyA" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/jIhyA'>GremlinJS - Extension - Interests (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 ## domElements
+
+Extension providing element maps javascript "vanilla style".
+
+The example adds the instance property `timestamp`, a node list. Internally `timestamp` is the result of `this.el.querySelectorAll(".timestamp")`
+
+``` js
+elements : {
+	".timestamp" : "timestamp"
+}
+```
+
+In the constructor `timestamp` is used to add a, surprise, timestamp to the document.
+
+``` js
+this.timestamp.innerHTML = moment().format('LLL') 
+```
+
+see [momentjs](http://momentjs.com/)
+
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="234" data-theme-id="0" data-slug-hash="mJkHL" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/mJkHL'>GremlinJS - Extension - domElements (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 ## Building your own
 
