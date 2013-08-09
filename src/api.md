@@ -462,7 +462,7 @@ Pub Sub extension that allows gremlins to interact with each other by dispatchin
 [Download](https://github.com/grmlin/gremlinjs-interests) at Github
 
 ### About Interests
-The interests extension works always, there are no additional dependencies.   
+   
 To use interests, there must be a gremlin emitting messages and another one that subscribed to these messages.
 
 Dispatching messages is as easy as writing [`gremlin.emit()`](#gremlin-emit). Every gremlin

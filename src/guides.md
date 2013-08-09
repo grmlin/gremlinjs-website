@@ -352,7 +352,7 @@ Pub Sub extension that allows gremlins to interact with each other by dispatchin
 <script src="gremlin.interests.min.js"></script>
 ```
 
-[Download](https://github.com/grmlin/gremlinjs-interests) at Github, see the [Interests Docs](api.html#interests-pubsub) for details.
+[Download](https://github.com/grmlin/gremlinjs-interests) at Github, see the [Interests Docs](api.html#available-extensions_interests-pubsub) for details.
 
 
 ### Dom Elements
@@ -381,10 +381,10 @@ jQuery extension providing element and event maps.
 
 Building extensions is easy. Create an object that implements the [`IExtension`](api.html#iextension) interface and register the extension.
 
-Each extension has to provide three methods, `.bind()`, `.extend()` and `.test()`. Extensions won't be instantiated or called in a special context, extending GremlinJS in a meaningful way is your task.  
+Each extension has to provide two methods, `.bind()`, `.extend()` and `.test()`. Extensions won't be instantiated or called in a special context, extending GremlinJS in a meaningful way is your task.  
 If you created the extension add it with `GremlinJS.registerExtension()`.
 
-If you're interested what the GremlinJS does with the included extension, read the code. You'll find the extensions at `app\scripts\extensions`
+If you're interested what the GremlinJS does with the included extension, read the code of the extension [already available](#extend-gremlinjs_using-extensions) for GremlinJS. 
 
 ### .bind()
 

@@ -235,6 +235,9 @@ body.no-literate .content pre > code,
 
 }
 
+.content .codepen-lazy {
+    margin-top: 20px;
+}
 .cp_embed_iframe {
     border: 1px solid #ccc;
 }
