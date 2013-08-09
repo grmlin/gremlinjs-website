@@ -18,12 +18,12 @@ Adds a gremlin class to GremlinJS that later will be used to activate [elements]
 
 ------ 
 
-###### `.add(name, Gremlin):`[`Gremlin`](#gremlin)
+###### `.add(name, Gremlin):`[`Gremlin`](#gremlinjs-reference_gremlin)
 
 - **`name`** : String    
 	A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the `data-gremlin` attribute of a dom element to select the gremlin.
 
-- **`Gremlin`** : [Gremlin](#gremlin)    
+- **`Gremlin`** : [Gremlin](#gremlinjs-reference_gremlin)    
 	The Gremlin class inherited from `GremlinJS.Gremlin`
 
 Adding a `HelloWorld` gremlin with CoffeeScript would look like
@@ -75,7 +75,7 @@ UPDATE guides.md if the define documentation changes!!!
 -->
 Creates a gremlin definition aka class, that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.
 
-###### `.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](#gremlin)
+###### `.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](#gremlinjs-reference_gremlin)
 returns a Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document
 
 - **`name`** : String    
@@ -117,7 +117,7 @@ For a basic gremlin add some HTML markup and create a Gremlin called `HelloWorld
 
 ### GremlinJS.Gremlin
 
-Reference of [`Gremlin`](#gremlin).  
+Reference of [`Gremlin`](#gremlinjs-reference_gremlin).  
 Extend `GremlinJS.Gremlin` when creating Gremlin classes with CoffeeScript.
 
 
@@ -273,8 +273,8 @@ Unique id amongst all gremlin instances.
 
 ### Gremlin#klass
 
-###### `#klass : `[`Gremlin`](#gremlin)
-Points to the [`Gremlin`](#gremlin) the instance belongs to. 
+###### `#klass : `[`Gremlin`](#gremlinjs-reference_gremlin)
+Points to the [`Gremlin`](#gremlinjs-reference_gremlin) the instance belongs to. 
 
 Especially handy, when you define static gremlin members with [`GremlinJS.define()`](#gremlinjs-define) and want to access them from inside an instance.
 
@@ -446,8 +446,8 @@ Binds the extension to a gremlin instance. Do whatever yout want to do with a gr
 
 ###### `.bind(gremlin)`
 
-- **`gremlin`** : [Gremlin](#gremlin)   
-	The [`Gremlin`](#gremlin) instance the extension will be bound to.
+- **`gremlin`** : [Gremlin](#gremlinjs-reference_gremlin)   
+	The [`Gremlin`](#gremlinjs-reference_gremlin) instance the extension will be bound to.
 
 **called for every gremlin element in the document separately**
 
@@ -461,7 +461,7 @@ Extension.bind = function(gremlin) {
 Change and extend the gremlin definition (constructor function, aka. class) in this handler.  
 
 ###### `.extend(Gremlin)`
-- **`Gremlin`** : [Gremlin](#gremlin)      
+- **`Gremlin`** : [Gremlin](#gremlinjs-reference_gremlin)      
 	The constructor function used to create gremlin instances later.
 
 `extend` is the place where you might want to add static members to the classes or extend their prototypes. 
@@ -566,7 +566,7 @@ Newer browsers come with a very powerful dom element selector engine, [`element.
 ### Gremlin.elements 
 
 ###### `.elements:Object`
-Object literal / map,  defining node lists to be added to the [`Gremlin`](#gremlin) instance.
+Object literal / map,  defining node lists to be added to the [`Gremlin`](#gremlinjs-reference_gremlin) instance.
 
 The object has to be composed of a selector as a key, and an instance property name as the value.   
 `{SELECTOR:NAME, *SELECTOR:NAME}`  
@@ -621,7 +621,7 @@ The gremlin's dom element as jQuery object
 ### Gremlin.elements
 
 ###### `.elements:Object`
-Object literal / map,  defining jQuery objects to be added to the [`Gremlin`](#gremlin) instance.
+Object literal / map,  defining jQuery objects to be added to the [`Gremlin`](#gremlinjs-reference_gremlin) instance.
 
 The object has to be composed of jQuery selectors as a key, and an instance property name as the value.   
 `{SELECTOR:NAME, *SELECTOR:NAME}`  
@@ -649,7 +649,7 @@ GremlinJS.define("Foo",
 ### Gremlin.events
 
 ###### `.events:Object`
-Object literal / map,  defining jQuery event handler to be added to the [`Gremlin`](#gremlin) instance.
+Object literal / map,  defining jQuery event handler to be added to the [`Gremlin`](#gremlinjs-reference_gremlin) instance.
 
 The object has to be composed of an event description combining the event type and a selector as a key, and an instance method name as the value.  
 **If you use a handler name not available on your gremlin's instance, GremlinJS throws an Error.**
