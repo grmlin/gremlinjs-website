@@ -2,19 +2,19 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at expedita 
 
 ## Gremlins?
 
-### Include GremlinJS
+#### 1. Include GremlinJS
 
 ``` html
 <script src="js/gremlinjs.min.js"></script>    
 ```
-### Add a Gremlin
+#### 2. Add a Gremlin
 
 ``` html
 <div data-gremlin="Gizmo">
   <p> Loading images... </p>
 </div>
 ```
-### Done
+#### 3. Done
 
 <p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="500" data-theme-id="0" data-slug-hash="jhIig" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/jhIig'>GremlinJS - Slideshow (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
