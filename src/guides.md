@@ -14,7 +14,7 @@ The code will be cleaner, easier to understand and understanding the work of oth
 ### Include GremlinJS
 
 #### Script element
-[Download GremlinJS](http://grml.in) and include it in your HTML. From now on all gremlin components in the site will be found and instantiated.
+[Download GremlinJS](build/0.4.0/gremlin.min.js) and include it in your HTML. From now on all gremlin components in the site will be found and instantiated.
 
 You don't have to start or initialize it, you don't have to wait for anything, include it and you're done.
 
@@ -254,7 +254,7 @@ Unique id amongst all gremlin instances.
 
 #### Gremlin#klass
 
-Reflects the class of the instance. 
+Reflects the class of the instance (something that Javascript doesn't). 
 
 Especially handy, when you define static gremlin members with [`GremlinJS.define()`](api.html#gremlinjs-reference_gremlinjs_gremlinjs-define) and want to access them from inside an instance.
 
