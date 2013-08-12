@@ -85,7 +85,7 @@ If GremlinJS finds a suitable dom element, one that provides the `data-gremlin="
 
 ### CoffeeScript
 
-With CoffeeScript it's easy to create new gremlins. Create a new class extending [`G.Gremlin`](api.html#gremlinjs-reference_gremlin) and [add](api.html#gremlinjs-reference_gremlinjs_gremlinjs-add) it with a proper name (the name used in `data-gremlin`).
+With CoffeeScript it's easy to create new gremlins. Create a new class extending [`G.Gremlin`](api.html#gremlinjs-reference_gremlinjs_gremlinjs-gremlin) and [add](api.html#gremlinjs-reference_gremlinjs_gremlinjs-add) it with a proper name (the name used in `data-gremlin`).
 
 The only thing to remember: **Always call super inside the constructor!** Without, the gremlin will miss all the members of the abstract [`Gremlin`](api.html#gremlinjs-reference_gremlin)   
 
@@ -213,14 +213,14 @@ It does not matter if the element is a child of the document on page load or add
 Sorted by preference, first strategy a browser supports is used.
 
 1. [`MutationObserver`](http://devdocs.io/dom/mutationobserver)
-2. CSS animation callbacks
+2. [CSS animation callbacks](http://www.backalleycoder.com/2012/04/25/i-want-a-damnodeinserted/)
 3. Interval
 
-This works best in modern browsers of course. The old ones, not supporting CSS-Animations or the [`MutationObserver`](http://devdocs.io/dom/mutationobserver) will use an interval to check the dom for changes.   
+This works best in modern browsers of course. The old ones, not supporting CSS-Animations or the `MutationObserver` will use an interval to check the dom for changes.   
 The old, slow and deprecated events to detect changes in the document are not included!
 
 ### CSS animations
-GremlinJS uses the [`animationstart`](http://devdocs.io/dom_events/animationstart) event to detect new gremlin elements in browsers not supporting [`MutationObserver`](http://devdocs.io/dom/mutationobserver) and checks the animation name before searching for new elements.  
+GremlinJS uses the [`animationstart`](http://devdocs.io/dom_events/animationstart) event to detect new gremlin elements in browsers not supporting `MutationObserver` and checks the animation name before searching for new elements.  
 
 **DON'T ADD ANY CSS-ANIMATIONS TO THE GREMLIN ELEMENT ITSELF!**    
 **It will break the auto detection of GremlinJS**
@@ -254,7 +254,7 @@ Unique id amongst all gremlin instances.
 
 #### Gremlin#klass
 
-Reflects the [`Gremlin`](api.htmml#gremlin) the instance belongs to. 
+Reflects the class of the instance. 
 
 Especially handy, when you define static gremlin members with [`GremlinJS.define()`](api.html#gremlinjs-reference_gremlinjs_gremlinjs-define) and want to access them from inside an instance.
 

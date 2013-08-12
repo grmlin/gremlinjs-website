@@ -73,7 +73,7 @@ Every Gremlin instance comes with some useful properties.
 
 Object providing all parsed data-attributes of the gremlin's dom element. Everything you add to the element via an `data` attribute will be published into the gremlins `#data` property.
 
-See ["add options"](#add-options) for a more detailed explanation.
+See ["add options"](api.html#gremlinjs-reference_gremlin_gremlin-data) for a more detailed explanation.
 
 <p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="193" data-theme-id="0" data-slug-hash="zBtHn" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/zBtHn'>GremlinJS - #data (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
