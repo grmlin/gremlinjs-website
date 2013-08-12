@@ -16,7 +16,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at expedita 
 ```
 #### 3. Done
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="500" data-theme-id="0" data-slug-hash="jhIig" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/jhIig'>GremlinJS - Slideshow (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="580" data-theme-id="0" data-slug-hash="jhIig" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/jhIig'>GremlinJS - Slideshow (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 [This example in Javascript](http://codepen.io/grmlin/pen/vsxDk)
 
