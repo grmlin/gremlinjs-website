@@ -79,7 +79,7 @@ body > footer a + a {
 .logo h1 small {
     display: block;
     text-align: right;
-    margin-top: -22px;
+    margin-top: -18px;
 }
 
 @media (max-width: 979px) {
