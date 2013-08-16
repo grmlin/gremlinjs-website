@@ -106,6 +106,12 @@ a:focus {
     font-weight: 500;
 }
 
+.logo h1 small em {
+    font-weight: 300;
+    font-style: normal;
+    color: #D5D5D5;
+}
+
 .hero-unit ul {
     /*padding-left: 15px;*/
     /*list-style: square;*/
