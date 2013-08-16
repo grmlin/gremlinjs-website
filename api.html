@@ -32,13 +32,9 @@
     <meta content="web components the easy way" name="description">
 
     <!-- Initializer -->
-    <script>
-        Flatdoc.run({
-            fetcher: Flatdoc.file('src/api.md')
-        });
-    </script>
+
 </head>
-<body role='flatdoc' class='no-literate big-h3 large-brief'>
+<body role='flatdoc' class='no-literate big-h3 large-brief'  data-gremlin="Flatdoc" data-flatdoc-src="src/api.md">
 
 <div id="site-nav" class='header'>
     <div class='left'>
@@ -50,15 +46,8 @@
         </ul>
     </div>
     <div class='right'>
-        <ul>
-            <li><a href='https://github.com/grmlin/gremlinjs'>View on GitHub</a></li>
-        </ul>
-        <!-- GitHub buttons: see http://ghbtns.com -->
-        <!--<iframe src="http://ghbtns.com/github-btn.html?user=grmlin&repo=gremlinjs&type=watch&count=true&size=large"
-                allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
-        <iframe src="http://ghbtns.com/github-btn.html?user=grmlin&repo=gremlinjs&type=fork&count=false&size=large"
-                allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
-        <iframe src="http://ghbtns.com/github-btn.html?user=grmlin&amp;repo=gremlinjs&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>-->
+        <iframe src="http://ghbtns.com/github-btn.html?user=grmlin&repo=gremlinjs&type=watch&count=true"
+                allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
     </div>
 </div>
 
@@ -70,19 +59,8 @@
     <a class="top-link" href="#"></a>
     <div role='flatdoc-content' class='content'></div>
 </div>
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="span4">
-                <span>Andreas Wehr 2013</span>
-            </div>
-            <div class="span3 offset5 text-right">
-                <a href="#">github</a>
-                <a href="#">twitter</a>
-                <a href="#">google+</a>
-            </div>
-        </div>
-    </div>
-</footer>
+
+<script src="build/latest/gremlin.min.js"></script>
+<script src="js/gremlins/Flatdoc.js"></script>
 </body>
 </html>

@@ -25,20 +25,7 @@ h5 {
 .page-wrapper > .container {
     padding-bottom: 50px;
 }
-body > footer, .page-wrapper:after {
-    /* .push must be the same height as footer */
-    height: 20px;
-    padding: 5px 0;
-}
 
-body > footer {
-    xmargin-top: 50px;
-    background: #ccc;
-}
-
-body > footer a + a {
-    margin-left: 5px;
-}
 
 
 .navbar .brand.with-icon {

@@ -24,13 +24,8 @@
     <!-- Initializer -->
     <script src='js/site.js'></script>
 
-    <script>
-        Flatdoc.run({
-            fetcher: Flatdoc.file('src/index.md')
-        });
-    </script>
 </head>
-<body role='flatdoc' class='no-literate big-h3 large-brief home'>
+<body role='flatdoc' class='no-literate big-h3 large-brief home' data-gremlin="Flatdoc" data-flatdoc-src="src/index.md">
 
 <div id="site-nav" class='header'>
     <div class='left'>
@@ -42,9 +37,8 @@
         </ul>
     </div>
     <div class='right'>
-        <ul>
-            <li><a href='https://github.com/grmlin/gremlinjs'>View on GitHub</a></li>
-        </ul>
+        <iframe src="http://ghbtns.com/github-btn.html?user=grmlin&repo=gremlinjs&type=watch&count=true"
+                allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
         <!-- GitHub buttons: see http://ghbtns.com -->
         <!--<iframe src="http://ghbtns.com/github-btn.html?user=grmlin&repo=gremlinjs&type=watch&count=true&size=large"
                 allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
@@ -108,7 +102,8 @@
 
                             <p class="lead">
                                 GremlinJS was build with performance in mind. Using hundreds of inefficient dom
-                                selectors is slow. GremlinJS uses <strong>a single</strong> dom query to find elements in
+                                selectors is slow. GremlinJS uses <strong>a single</strong> dom query to find elements
+                                in
                                 the document that should be enhanced with Javascript
                             </p>
                         </div>
@@ -116,7 +111,8 @@
                             <h3>Easy to use</h3>
 
                             <p class="lead">
-                                GremlinJS is well documented and works completely autonomous. Concentrate on implementing dom behaviour and don't get lost in meta tasks anymore.
+                                GremlinJS is well documented and works completely autonomous. Concentrate on
+                                implementing dom behaviour and don't get lost in meta tasks anymore.
                             </p>
                         </div>
                     </div>
@@ -126,14 +122,16 @@
                             <h3>Lazy Loading</h3>
 
                             <p class="lead">
-                                Want to add lots of cpu intensive components to the document? Load the components when entering the viewport and minimize the load times of a site.
+                                Want to add lots of cpu intensive components to the document? Load the components when
+                                entering the viewport and minimize the load times of a site.
                             </p>
                         </div>
                         <div class="span6">
                             <h3>Extensions</h3>
 
                             <p class="lead">
-                                Extend GremlinJS by yourself or use the existing AMD, PubSub, jQuery and domElements extensions.
+                                Extend GremlinJS by yourself or use the existing AMD, PubSub, jQuery and domElements
+                                extensions.
                             </p>
                         </div>
                     </div>
@@ -165,19 +163,40 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="span4">
-                <span>Andreas Wehr 2013</span>
+            <div class="span12">
+                <span>GremlinJS</span>
+                <div class="pull-right text-right">
+                    <div class="ghbtn">
+                        <iframe src="http://ghbtns.com/github-btn.html?user=grmlin&type=follow&count=true"
+                                allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe>
+                    </div>
+
+                    <div class="ghbtn">
+                        <!-- Place this tag where you want the widget to render. -->
+                        <div class="g-follow" data-annotation="bubble" data-height="20"
+                             data-href="//plus.google.com/104634813875212534057" data-rel="author"></div>
+
+                        <!-- Place this tag after the last widget tag. -->
+                        <script type="text/javascript">
+                            (function () {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                </div>
             </div>
-            <div class="span3 offset5 text-right">
-                <a href="#">github</a>
-                <a href="#">twitter</a>
-                <a href="#">google+</a>
-            </div>
+
         </div>
     </div>
 </footer>
 
 <script src="build/latest/gremlin.min.js"></script>
+<script src="js/gremlins/Flatdoc.js"></script>
 <script src="js/gremlins/Codepen.js"></script>
 
 </body>
