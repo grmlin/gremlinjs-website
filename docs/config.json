@@ -1,0 +1,28 @@
+{
+	"title": "GremlinJS",
+	"tagline": "cuddly javascript components",
+	"image": "img/logo.png",
+  "theme": "custom",
+  "colors": {
+    "sidebar-background": "#f7f7f7",
+    "sidebar-hover": "#c5c5cb",
+    "lines": "#e7e7e9",
+    "dark": "#3f4657",
+    "light": "#82becd",
+    "text": "#2d2d2d",
+    "syntax-string": "#022e99",
+    "syntax-comment": "#84989b",
+    "syntax-number": "#2f9b92",
+    "syntax-label": "#840d7a"
+  },
+	"date_modified": true,
+  "float": false,
+	"repo": "grmlin/gremlinjs",
+	"twitter": ["hahrdwehr"],
+	"xgoogle_analytics": "UA-12653604-10",
+	"links": {
+		"Download": "build/latest/gremlin.min.js",
+		"GitHub Repo": "https://github.com/grmlin/gremlinjs",
+		"Help/Support/Bugs": "https://github.com/grmlin/gremlinjs/issues"
+	}
+}

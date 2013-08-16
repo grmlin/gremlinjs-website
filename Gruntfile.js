@@ -1,51 +1,39 @@
-/*jshint camelcase:false */
-/*
- * Mantri • ember.js • TodoMVC
- * https://github.com/thanpolas/todoAppMantri
- *
- * Copyright (c) 2013 Thanasis Polychronakis,
- *     Tom Dale, Стас Сушков
- * Licensed under the MIT license.
- */
+module.exports = function(grunt) {
+  grunt.loadNpmTasks('grunt-php');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-module.exports = function (grunt) {
-    'use strict';
-
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-
-    //
-    // Grunt configuration:
-    //
-    //
-    grunt.initConfig({
-        watch: {
-            docs: {
-                files: ['*.html','src/**/*','css/**/*','js/**/*'],
-                options: {
-                    livereload: true
-                }
-                
-            }
-            
+  grunt.initConfig({
+    php: {
+      dist: {
+        options: {
+          keepalive: true,
+          open: true,
+          port: 8085
+        }
+      }
+    },
+    less: {
+      development: {
+        files: {
+          "css/daux-blue.css": "less/daux-blue.less",
+          "css/daux-green.css": "less/daux-green.less",
+          "css/daux-navy.css": "less/daux-navy.less",
+          "css/daux-red.css": "less/daux-red.less"
+        }
+      }
+    },
+    watch: {
+      scripts: {
+        files: ['less/**/*.less'],
+        tasks: ['less'],
+        options: {
+          nospawn: true
         },
-        connect: {
-            docs: {
-                options: {
-                    port: 4242,
-                    base: './'
-                }
-            }
-        },
-        pkg: grunt.file.readJSON('package.json')
-    });
+      },
+    },
+  });
 
-
-    // Create shortcuts to main operations.
-    //grunt.registerTask('server', ['docs', 'connect:gremlinjs', 'watch:docs']);
-
-    // the default task, when 'grunt' is executed with no options.
-    grunt.registerTask('default', ['connect:docs', 'watch:docs']);
-
-};
-
+  //grunt.registerTask('default', ['less', 'watch']);
+  grunt.registerTask('default', ['php']);
+}
