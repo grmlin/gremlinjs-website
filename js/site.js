@@ -46,14 +46,6 @@ $(function () {
         });
 
       });
-
-      var $target = $(window.location.hash);
-      if ($target.length > 0 &&  $target[0].scrollIntoView) {
-        $(window).load(function(){
-          $target[0].scrollIntoView();
-        });
-      }
-
     }
   ).
     on('click', '.top-link', function (event) {
