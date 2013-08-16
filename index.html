@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GremlinJS - web components the easy way</title>
+    <link  href='css/flatdoc-white.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Flatdoc -->
+    <script src='js/flatdoc/legacy.js'></script>
+    <script src='js/flatdoc/flatdoc.js'></script>
+    <!-- Initializer -->
+    <script src='js/site.js'></script>
+
+    <script>
+        Flatdoc.run({
+            fetcher: Flatdoc.file('src/index.md')
+        });
+    </script>
+</head>
+<body role='flatdoc' class='no-literate big-h3 large-brief home'>
+
+<div id="site-nav" class='header'>
+    <div class='left'>
+        <h1 class="current"><a href="index.html">GremlinJS</a></h1>
+        <ul>
+            <li><a href='guides.html'>Guides</a></li>
+            <li><a href="api.html">API Reference</a></li>
+            <li><a href="examples.html">Examples</a></li>
+        </ul>
+    </div>
+    <div class='right'>
+        <ul>
+            <li><a href='https://github.com/grmlin/gremlinjs'>View on GitHub</a></li>
+        </ul>
+        <!-- GitHub buttons: see http://ghbtns.com -->
+        <!--<iframe src="http://ghbtns.com/github-btn.html?user=grmlin&repo=gremlinjs&type=watch&count=true&size=large"
+                allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+        <iframe src="http://ghbtns.com/github-btn.html?user=grmlin&repo=gremlinjs&type=fork&count=false&size=large"
+                allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+        <iframe src="http://ghbtns.com/github-btn.html?user=grmlin&amp;repo=gremlinjs&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>-->
+    </div>
+</div>
+
+<div class="page-wrapper">
+    
+    <div class="hero-unit">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="logo">
+                        <img src="img/logo.png" alt="GremlinJS Logo"/>
+
+                        <h1>Gremlin<span>JS</span>
+                            <small>cuddly javascript components for the web</small>
+                        </h1>
+                    </div>
+
+                </div>
+                <div class="span5">
+                    <p class="lead">
+                        GremlinJS is a dependency-free library to build <abbr title="Gremlins">reusable
+                        Javascript components</abbr>.<br>
+                    </p>
+
+                    <p class="lead">
+                        Gremlins are modular and flexible pieces of code describing the behaviour of dom elements.
+                        Don't waste your time managing dozens of dom queries, let GremlinJS handle that for you.
+                    </p>
+
+                </div>
+                <div class="span6 offset1">
+                    <ul class="unstyled">
+                        <li><strong><em>tasty vanilla</em>, no dependencies</strong></li>
+                        <li><strong>fast and lightweight</strong></li>
+                        <li><strong>easy to use, well documented and works completely autonomous</strong></li>
+                        <li><strong>lazy loading of javascript components</strong></li>
+                        <li><strong>build in extensions interface</strong></li>
+                        <li><strong>optional AMD support, load the javascripts asynchronously</strong></li>
+                    </ul>
+                </div>
+                <div class="span12 buffered">
+                    <div class="text-center">
+
+                        <div class="download-button-wrapper">
+                            <a class="btn btn-primary btn-large download-button" href="build/latest/gremlin.min.js">Download GremlinJS</a>
+                            <span class="download-info muted"><strong>v0.4.0</strong> ~4k minified and gzipped</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row buffered">
+            <div class="span12">
+                <div role='flatdoc-content' class='content'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <span>Andreas Wehr 2013</span>
+            </div>
+            <div class="span3 offset5 text-right">
+                <a href="#">github</a>
+                <a href="#">twitter</a>
+                <a href="#">google+</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="build/latest/gremlin.min.js"></script>
+<script src="js/gremlins/Codepen.js"></script>
+
+</body>
+</html>
