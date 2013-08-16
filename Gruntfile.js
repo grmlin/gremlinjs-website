@@ -14,7 +14,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('mantri');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-clean');
 
     //
     // Grunt configuration:
@@ -38,9 +37,6 @@ module.exports = function (grunt) {
                     base: './'
                 }
             }
-        },
-        clean: {
-            docs: ["api"]
         },
         pkg: grunt.file.readJSON('package.json')
     });
