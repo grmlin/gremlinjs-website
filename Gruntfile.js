@@ -11,7 +11,6 @@
 module.exports = function (grunt) {
     'use strict';
 
-    grunt.loadNpmTasks('mantri');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
 

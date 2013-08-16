@@ -2,19 +2,19 @@
 <html>
 <head>
     <title>GremlinJS - web components the easy way</title>
-    <link  href='css/flatdoc-white.css' rel='stylesheet'>
+    <link href='css/flatdoc-white.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" type="text/css" href="css/site.css">
 
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
 
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png"/>
 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -55,47 +55,96 @@
 </div>
 
 <div class="page-wrapper">
-    
+
     <div class="hero-unit">
         <div class="container">
             <div class="row">
-                <div class="span12">
-                    <div class="logo">
-                        <img src="img/logo.png" alt="GremlinJS Logo"/>
 
+                <div class="logo">
+                    <div class="span5">
+                        <img src="img/logo.png" alt="GremlinJS Logo"/>
+                    </div>
+                    <div class="span7">
                         <h1>Gremlin<span>JS</span>
-                            <small><em>cuddly</em> javascript components for the web</small>
+                            <small><em>cuddly</em> javascript components</small>
                         </h1>
+                        <div class="row">
+                            <div class="span6">
+                                <p class="xlead">
+                                    GremlinJS is a dependency-free library to build <abbr title="aka: Gremlins">reusable
+                                    Javascript components</abbr>.<br>
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="span12 buffered facts">
+                    <div class="row">
+                        <div class="span6">
+                            <h3>Tasty Vanilla</h3>
+
+                            <p class="lead">
+                                GremlinJS has no dependencies! Use it with
+                                <a href="https://developer.mozilla.org/docs/JavaScript">vanilla js</a>,
+                                <a href="http://jquery.com/">jQuery</a>,
+                                <a href="http://zeptojs.com/">zepto</a> or any other library you want.
+                            </p>
+                        </div>
+                        <div class="span6">
+                            <h3>Modular</h3>
+
+                            <p class="lead">
+                                Gremlins are modular pieces of code describing the behaviour of dom
+                                elements.
+                                Fight the unorganized code masses, GremlinJS does the dirty work.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span6">
+                            <h3>Fast and Lightweight</h3>
+
+                            <p class="lead">
+                                GremlinJS was build with performance in mind. Using hundreds of inefficient dom
+                                selectors is slow. GremlinJS uses <strong>a single</strong> dom query to find elements in
+                                the document that should be enhanced with Javascript
+                            </p>
+                        </div>
+                        <div class="span6">
+                            <h3>Easy to use</h3>
+
+                            <p class="lead">
+                                GremlinJS is well documented and works completely autonomous. Concentrate on implementing dom behaviour and don't get lost in meta tasks anymore.
+                            </p>
+                        </div>
                     </div>
 
-                </div>
-                <div class="span5">
-                    <p class="lead">
-                        GremlinJS is a dependency-free library to build <abbr title="Gremlins">reusable
-                        Javascript components</abbr>.<br>
-                    </p>
+                    <div class="row">
+                        <div class="span6">
+                            <h3>Lazy Loading</h3>
 
-                    <p class="lead">
-                        Gremlins are modular and flexible pieces of code describing the behaviour of dom elements.
-                        Don't waste your time managing dozens of dom queries, let GremlinJS handle that for you.
-                    </p>
+                            <p class="lead">
+                                Want to add lots of cpu intensive components to the document? Load the components when entering the viewport and minimize the load times of a site.
+                            </p>
+                        </div>
+                        <div class="span6">
+                            <h3>Extensions</h3>
 
+                            <p class="lead">
+                                Extend GremlinJS by yourself or use the existing AMD, PubSub, jQuery and domElements extensions.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="span6 offset1">
-                    <ul class="unstyled">
-                        <li><strong><em>tasty vanilla</em>, no dependencies</strong></li>
-                        <li><strong>fast and lightweight</strong></li>
-                        <li><strong>easy to use, well documented and works completely autonomous</strong></li>
-                        <li><strong>lazy loading of javascript components</strong></li>
-                        <li><strong>build in extensions interface</strong></li>
-                        <li><strong>optional AMD support, load the javascripts asynchronously</strong></li>
-                    </ul>
-                </div>
+
                 <div class="span12 buffered">
                     <div class="text-center">
 
                         <div class="download-button-wrapper">
-                            <a class="btn btn-primary btn-large download-button" href="build/latest/gremlin.min.js">Download GremlinJS</a>
+                            <a class="btn btn-primary btn-large download-button" href="build/latest/gremlin.min.js">Download
+                                GremlinJS</a>
                             <span class="download-info muted"><strong>v0.4.0</strong> ~4k minified and gzipped</span>
                         </div>
                     </div>

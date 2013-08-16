@@ -64,13 +64,13 @@ body > footer a + a {
 
 .logo img {
     display: inline-block;
-    margin-left: -66px;
 }
 
 .logo h1 {
     display: inline-block;
     font-size: 90px;
     vertical-align: top;
+    margin-bottom: 40px;
 }
 
 .logo h1 span {
@@ -82,6 +82,14 @@ body > footer a + a {
     margin-top: -18px;
 }
 
+.facts h3 {
+    font-weight: 500;
+}
+
+.facts p.lead {
+    font-size: 18px;
+    line-height: 22px;
+}
 @media (max-width: 979px) {
     .logo img {
         display: block;

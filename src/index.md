@@ -1,5 +1,6 @@
-GremlinJS will help you add modular, robust and well organized Javascript functionality to all the *classic* websites incoming.   
-**GremlinJS isn't for everyone**: it is no MVC library, does not provide magic binding tricks... but all the sites built *Spaghetti* style without **any** supporting layer at all will benefit greatly.
+GremlinJS will help you add modular, robust and well organized Javascript functionality to all the *classic* websites existing and created in the future.   
+
+*Classic?* GremlinJS isn't for every website: it is no MVC library, does not provide magic binding tricks, it was not created to add another SPA (single page application) client library to the list... **It's a library for the masses.** All the sites currently built *Spaghetti* style without **any** supporting layer that helps you structuring the site and organizing the code at all will benefit greatly.
 
 ## Gremlins?
 
