@@ -62,115 +62,55 @@
                         <h1>Gremlin<span>JS</span>
                             <small><em>cuddly</em> javascript components</small>
                         </h1>
-                        <div class="row">
-                            <div class="span6">
-                                <p class="xlead">
-                                    GremlinJS is a dependency-free library to build <abbr title="aka: Gremlins">reusable
-                                    Javascript components</abbr>.<br>
-                                </p>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="span12 buffered facts">
-                    <div class="row">
-                        <div class="span6">
-                            <h3>Tasty Vanilla</h3>
-
-                            <p class="lead">
-                                GremlinJS has no dependencies! Use it with
-                                <a href="https://developer.mozilla.org/docs/JavaScript">vanilla js</a>,
-                                <a href="http://jquery.com/">jQuery</a>,
-                                <a href="http://zeptojs.com/">zepto</a> or any other library you want.
-                            </p>
-                        </div>
-                        <div class="span6">
-                            <h3>Modular</h3>
-
-                            <p class="lead">
-                                Gremlins are modular pieces of code describing the behaviour of dom
-                                elements.
-                                Fight the unorganized code masses, GremlinJS does the dirty work.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="span6">
-                            <h3>Fast and Lightweight</h3>
-
-                            <p class="lead">
-                                GremlinJS was build with performance in mind. Using hundreds of inefficient dom
-                                selectors is slow. GremlinJS uses <strong>a single</strong> dom query to find elements
-                                in
-                                the document that should be enhanced with Javascript
-                            </p>
-                        </div>
-                        <div class="span6">
-                            <h3>Easy to use</h3>
-
-                            <p class="lead">
-                                GremlinJS is well documented and works completely autonomous. Concentrate on
-                                implementing dom behaviour and don't get lost in meta tasks anymore.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="span6">
-                            <h3>Lazy Loading</h3>
-
-                            <p class="lead">
-                                Want to add lots of cpu intensive components to the document? Load the components when
-                                entering the viewport and minimize the load times of a site.
-                            </p>
-                        </div>
-                        <div class="span6">
-                            <h3>Extensions</h3>
-
-                            <p class="lead">
-                                Extend GremlinJS by yourself or use the existing AMD, PubSub, jQuery and domElements
-                                extensions.
-                            </p>
-                        </div>
                     </div>
                 </div>
 
-                <div class="span12 buffered">
-                    <div class="text-center">
-
-                        <div class="download-button-wrapper">
-                            <a class="btn btn-primary btn-large download-button" href="build/latest/gremlin.min.js">Download
-                                GremlinJS</a>
-                            <span class="download-info muted"><strong>v0.4.0</strong> ~4k minified and gzipped</span>
-                        </div>
-                    </div>
                 </div>
-
-            </div>
         </div>
     </div>
+
+    <div class="text-center button-hero">
+
+        <div class="download-button-wrapper">
+            <a class="btn btn-large" href="build/latest/gremlin.min.js">Github</a>
+            <span class="download-info muted">&nbsp;</span>
+        </div>
+
+        <div class="download-button-wrapper">
+            <a class="btn btn-primary btn-large download-button" href="build/latest/gremlin.min.js">Download</a>
+            <span class="download-info muted"><strong>v0.4.0</strong> ~4k minified and gzipped</span>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row buffered">
-            <div class="span12">
+            <div class="span10 offset1">
                 <div role='flatdoc-content' class='content'></div>
             </div>
         </div>
     </div>
 </div>
 
-<footer>
+<div class="homepage-footer well container-fluid">
     <div class="container">
         <div class="row">
-            <div class="span12">
-                <span>GremlinJS</span>
-                <div class="pull-right text-right">
+            <div class="span5 offset1">
+                <ul class="footer-nav">
+                    <li><a href="build/latest/gremlin.min.js" target="_blank">Download</a></li>
+                    <li><a href="https://github.com/grmlin/gremlinjs" target="_blank">GitHub Repo</a></li>
+                    <li><a href="https://github.com/grmlin/gremlinjs/issues" target="_blank">Help/Support/Bugs</a></li>
+                </ul>
+            </div>
+            <div class="span5">
+                <div class="pull-right">
                     <div class="ghbtn">
                         <iframe src="http://ghbtns.com/github-btn.html?user=grmlin&type=follow&count=true"
                                 allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe>
                     </div>
-
+                    <div class="ghbtn">
+                        <a href="https://twitter.com/hardwehr" class="twitter-follow-button" data-show-count="false" data-lang="de">@hardwehr folgen</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    </div>
                     <div class="ghbtn">
                         <!-- Place this tag where you want the widget to render. -->
                         <div class="g-follow" data-annotation="bubble" data-height="20"
@@ -190,10 +130,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-</footer>
+</div>
 
 <script src="build/latest/gremlin.min.js"></script>
 <script src="js/gremlins/Flatdoc.js"></script>

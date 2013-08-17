@@ -14,9 +14,12 @@
       if ($el.is('h2')) {
         id = $el.prevAll('h1:first').attr('id') + SEP + id;
       } else if ($el.is('h3')) {
-        var id2 = $el.prevAll('h2:first').attr('id'),
-          start = id2.indexOf(SEP) + 1;
-        id = $el.prevAll('h1:first').attr('id') + SEP + id2.substr(start) + SEP + id;
+        try {
+          var id2 = $el.prevAll('h2:first').attr('id'),
+            start = id2.indexOf(SEP) + 1;
+          id = $el.prevAll('h1:first').attr('id') + SEP + id2.substr(start) + SEP + id;
+        } catch (e) {}
+
       }
       $el.attr('id', id);
     });
