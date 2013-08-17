@@ -1,7 +1,7 @@
 $(function() {
-	$('.aj-nav').click(function(e) {
+	$('#sub-nav-collapse > .nav-list > li > .aj-nav').click(function(e) {
 		e.preventDefault();
-		$(this).parent().siblings().find('ul').slideUp();
+		$(this).parent().siblings().find('ul:first').slideUp();
 		$(this).next().slideToggle();
 	});
 
