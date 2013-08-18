@@ -106,6 +106,50 @@ h5 {
     line-height: 22px;
 }
 
+.button-hero {
+    padding: 20px 0;
+    background: #45413e;
+}
+
+.button-hero .btn {
+    text-shadow: none;
+    color: #fff;
+    background: transparent;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    background-clip: padding-box;
+    border: 4px solid #f2f2f2;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 20px 30px;
+    font-family: 'Lato', Helvetica Neue, Open Sans, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -webkit-transition: background 120ms ease-out;
+    -moz-transition: background 120ms ease-out;
+    -o-transition: background 120ms ease-out;
+    transition: background 120ms ease-out;
+
+}
+
+.button-hero .btn:hover,
+.button-hero .btn:active {
+    background: #333;
+}
+
+.button-hero .download-button-wrapper + .download-button-wrapper {
+    margin-left: 20px;
+}
+
+.button-hero .btn.btn-primary {
+    background: #555;
+}
+
+.button-hero .btn.btn-primary:hover,
+.button-hero .btn.btn-primary:active {
+    background: #333;
+}
+
 @media (max-width: 979px) {
     .logo img {
         display: block;
@@ -177,6 +221,20 @@ h5 {
         font-size: 18px;
         margin-top: -5px;
     }
+
+    .button-hero {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .button-hero .download-button-wrapper {
+        display: block;
+        margin-left: 0 !important;
+    }
+
+    .button-hero .download-button-wrapper .btn {
+        display: block;
+    }
 }
 
 body > .hero-unit ul {
@@ -207,49 +265,7 @@ body > .hero-unit ul {
     }
 }
 
-.button-hero {
-    padding: 20px 0;
-    background: #45413e;
-}
 
-.button-hero .btn {
-    text-shadow: none;
-    color: #fff;
-    background: transparent;
-    -webkit-border-radius: 0;
-    border-radius: 0;
-    background-clip: padding-box;
-    border: 4px solid #f2f2f2;
-    font-weight: 700;
-    font-size: 18px;
-    padding: 20px 30px;
-    font-family: 'Lato', Helvetica Neue, Open Sans, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    -webkit-transition: background 120ms ease-out;
-    -moz-transition: background 120ms ease-out;
-    -o-transition: background 120ms ease-out;
-    transition: background 120ms ease-out;
-
-}
-
-.button-hero .btn:hover,
-.button-hero .btn:active {
-    background: #333;
-}
-
-.button-hero .download-button-wrapper + .download-button-wrapper {
-    margin-left: 20px;
-}
-
-.button-hero .btn.btn-primary {
-    background: #555;
-}
-
-.button-hero .btn.btn-primary:hover,
-.button-hero .btn.btn-primary:active {
-    background: #333;
-}
 
 #doc-nav.sidebar .well {
     position: fixed;
