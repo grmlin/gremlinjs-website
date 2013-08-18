@@ -715,7 +715,7 @@ a.big.button:hover:visited {
     border-right: solid 1px #dfe2e7;
   }
   .menubar.fixed {
-    /*position: fixed;*/
+    position: fixed;
     overflow-y: auto;
   }
   .menubar.fixed {

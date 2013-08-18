@@ -58,6 +58,62 @@ a:focus {
     float: left;
 }
 
+
+
+.the-menu .menubar {
+    -webkit-overflow-scrolling: touch;
+}
+.the-menu .menubar::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+.the-menu .menubar::-webkit-scrollbar-thumb {
+    background: #ddd;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: solid 4px #fff;
+}
+.the-menu .menubar:hover::-webkit-scrollbar-thumb {
+    background: #999;
+    -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+}
+
+.the-menu .menubar {
+    /*position: fixed;*/
+    width: 219px;
+    bottom: 0;
+    top: 0;
+
+}
+
+@media (min-width: 1200px) {
+    .the-menu .menubar {
+        width: 269px;
+    }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    .the-menu .menubar {
+        width: 209px;
+        margin-left: -44px;
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    .the-menu .menubar {
+        position: static !important;
+        width: auto;
+        
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+}
+
 .btn.btn-sidebar {
     padding: 7px 10px;
     background-image: none;
@@ -95,6 +151,7 @@ a:focus {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
 }
+
 
 @media (min-width: 769px) /* tablet - desktop*/ {
     .the-menu .menubar {
