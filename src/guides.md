@@ -104,8 +104,10 @@ If you know what you're doing, you can of cause do all the work by yourself. Rea
 With vanilla Javascript, the CoffeeScript syntax sugar isn't available, of course.   
 If you don't want to implement the class mechanics with Javascript by yourself, you can write  Gremlin definitions with [`GremlinJS.define()`](api.html#gremlinjs-reference_gremlinjs_gremlinjs-define)	. This method will create constructor functions aka classes for you which are inherited from the abstract gremlin behind the scenes.
 
+<div class="method-definition"></div>
 
-#### `GremlinJS.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](api.html#gremlinjs-reference_gremlin)
+###### `GremlinJS.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](api.html#gremlinjs-reference_gremlin)
+
 returns a Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document
 
 - **`name`** : String    

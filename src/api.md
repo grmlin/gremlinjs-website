@@ -4,6 +4,9 @@ Reference of the publicly available methods and properties of GremlinJS.
 This is **not** a documentation of the GremlinJS sources, you have to read the code to see what's going on behind the scenes. 
 ## GremlinJS
 
+- **`window.GremlinJS`**   
+- **`window.G`**
+
 **The shorter alias `G` is available, if not used in the global namespace already!**
 
 The GremlinJS namespace. This is the only directly available interface exposed to the global scope!
@@ -16,9 +19,13 @@ Adds a gremlin class to GremlinJS that later will be used to activate [elements]
 
 `GremlinJS.add()` is primarily used with CoffeeScript, as there is no need to use `GremlinJS.define()` 
 
------- 
+------
+ 
+<div class="method-definition"></div>
 
 ###### `.add(name, Gremlin):`[`Gremlin`](#gremlinjs-reference_gremlin)
+
+returns a Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document  
 
 - **`name`** : String    
 	A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the `data-gremlin` attribute of a dom element to select the gremlin.
@@ -75,7 +82,10 @@ UPDATE guides.md if the define documentation changes!!!
 -->
 Creates a gremlin definition aka class, that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.
 
+<div class="method-definition"></div>
+
 ###### `.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](#gremlinjs-reference_gremlin)
+
 returns a Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document
 
 - **`name`** : String    
@@ -139,7 +149,9 @@ References [`Helper`](#helper)
 
 Add an event listener to GremlinJS.
 
-##### `.on(eventType, callback)`
+<div class="method-definition"></div>
+
+###### `.on(eventType, callback)`
 
 - **`eventType`** : String    
 	The name of the event
@@ -164,10 +176,11 @@ G.on G.ON_GREMLIN_LOADED, (el) ->
 
 Adds a new extension to GremlinJS.
 
+<div class="method-definition"></div>
+
 ###### `.registerExtension(Extension)`
 
-- **`Extension`** : Object implementing [`IExtension`](#iextension)
-
+- **`Extension`** : Object implementing [`IExtension`](#iextension)   
 	[`IExtension`](#iextension) does not exist in code and there is no error handling when registring extensions at all. Take care and be sure to provide the necessary methods. 
 
 **Always include your extensions before your gremlin definitions**
@@ -201,6 +214,8 @@ If you want to extend the abstract gremlin class (eg. CoffeeScript), access it v
 ### Gremlin()
 
 Constructor
+
+<div class="method-definition"></div>
 
 ###### `Gremlin(el, data, id, init)` 
 
@@ -312,6 +327,8 @@ part of the site.
 ### Debug()
 Constructor
 
+<div class="method-definition"></div>
+
 ###### `Debug(isDebug)`
 
 - **`isDebug`** : Boolean  
@@ -338,6 +355,8 @@ Utility methods used by GremlinJS that may be useful.
 
 Extends an object. Copy all properties of the source objects into the target, overwriting existing properties.
 
+<div class="method-definition"></div>
+
 ###### `.extend(target, *objects):Object` 
 - **`target`** : Object   
 	The object to extend
@@ -355,6 +374,8 @@ console.log(options.foo); //logs 'baz'
 ###  Helper.mixin()
 
 Mix an object into a constructor functions prototype
+
+<div class="method-definition"></div>
 
 ###### `.mixin(targetClass, mixinObject)`
 - **`targetClass`** : Function   
@@ -382,6 +403,8 @@ karl.bark(); // alerts "I'm a dog and my name is Karl"
 
 Creates a deep copy of an object and returns the copy.
 
+<div class="method-definition"></div>
+
 ###### `.clone(obj):Object`
 - **`obj`** : Object   
 	The object to clone 
@@ -389,6 +412,8 @@ Creates a deep copy of an object and returns the copy.
 ### Helper.hasClass()
 
 Test, if a dom element has a certain class.
+
+<div class="method-definition"></div>
 
 ###### `.hasClass(element, className):Boolean`
 - **`element`** : [element](https://developer.mozilla.org/en-US/docs/Web/API/element)   
@@ -401,6 +426,8 @@ Test, if a dom element has a certain class.
 
 Add a new class to a dom element.
 
+<div class="method-definition"></div>
+
 ###### `.addClass(element, className)`
 - **`element`** : [element](https://developer.mozilla.org/en-US/docs/Web/API/element)    
 	The dom element
@@ -412,6 +439,8 @@ Add a new class to a dom element.
 
 Remove a class from a dom element
 
+<div class="method-definition"></div>
+
 ###### `.removeClass(element, className)`
 - **`element`** : [elements](https://developer.mozilla.org/en-US/docs/Web/API/element)   
 	The dom element
@@ -422,6 +451,8 @@ Remove a class from a dom element
 ### Helper.addStyleSheet() 
 
 Add some new css styles to your document
+
+<div class="method-definition"></div>
 
 ###### `.addStyleSheet(cssText)`
 - **`cssText`** : String   
@@ -444,6 +475,8 @@ error checking or whatsoever when processing extensions**
 
 Binds the extension to a gremlin instance. Do whatever yout want to do with a gremlins instance in here. 
 
+<div class="method-definition"></div>
+
 ###### `.bind(gremlin)`
 
 - **`gremlin`** : [Gremlin](#gremlinjs-reference_gremlin)   
@@ -459,6 +492,8 @@ Extension.bind = function(gremlin) {
 ### IExtension.extend()
 
 Change and extend the gremlin definition (constructor function, aka. class) in this handler.  
+
+<div class="method-definition"></div>
 
 ###### `.extend(Gremlin)`
 - **`Gremlin`** : [Gremlin](#gremlinjs-reference_gremlin)      
@@ -532,6 +567,8 @@ GremlinJS.define("Foo", function () {},
 
 ### Gremlin#emit()
 Dispatch a new broadcasting message
+
+<div class="method-definition"></div>
 
 ###### `#emit(name [, data])`
 - **`name`** : String   
