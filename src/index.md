@@ -110,3 +110,11 @@ GremlinJS forces you to write modular and sandboxed Javascript that can be used 
 ## Awesome, where to start?
 
 [**Download GremlinJS**](build/latest/gremlin.min.js), read [the guides](guides.html), see [the examples](examples.html) or learn about GremlinJS in the [api docs](api.html).
+
+
+## Thanks
+
+- Everyone who supported me creating GremlinJS, of course 
+- Using CSS animation callbacks to detect dom changes [is an awesome idea](http://www.backalleycoder.com/2012/04/25/i-want-a-damnodeinserted/) 
+- [Flatdoc](http://ricostacruz.com/flatdoc/), this site was generated with it
+- [daux.io](http://daux.io/), for the layout inspirations

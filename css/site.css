@@ -500,6 +500,12 @@ body.no-literate .content pre > code,
 
 }
 
+@media (max-width: 767px) {
+    .top-link {
+        display: none;
+    }
+}
+
 .menubar {
 }
 
