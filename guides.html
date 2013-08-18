@@ -17,6 +17,9 @@
 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+
     <!-- Flatdoc -->
     <script src='js/flatdoc/legacy.js'></script>
     <script src='js/flatdoc/flatdoc.js'></script>
@@ -49,17 +52,27 @@
     </div>
 </div>
 
-<div class='content-root'>
-    <div class='menubar'>
-        <div class='menu section' role='flatdoc-menu'></div>
-
+<div class="container">
+    <div class="row">
+        <div class="span3 the-menu" data-gremlin="ResponsiveMenu">
+            <div class="responsive-collapse visible-phone">
+                <button type="button" class="btn btn-sidebar menu-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class='menubar'>
+                <div class='menu section' role='flatdoc-menu'></div>
+            </div>
+        </div>
+        <div class="span9"> <div role='flatdoc-content' class='content'></div> </div>
     </div>
-    <a class="top-link" href="#"></a>
-
-    <div role='flatdoc-content' class='content'></div>
 </div>
 
 <script src="build/latest/gremlin.min.js"></script>
+<script src="build/extensions/gremlin.jquery.min.js"></script>
+<script src="js/gremlins/ResponsiveMenu.js"></script>
 <script src="js/gremlins/Flatdoc.js"></script>
 
 </body>

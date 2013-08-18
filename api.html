@@ -7,22 +7,25 @@
 
     <title>GremlinJS - API Reference</title>
 
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
 
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png"/>
 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
 
     <!-- Flatdoc -->
     <script src='js/flatdoc/legacy.js'></script>
     <script src='js/flatdoc/flatdoc.js'></script>
 
     <!-- Flatdoc theme -->
-    <link  href='css/flatdoc-white.css' rel='stylesheet'>
+    <link href='css/flatdoc-white.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="css/site.css">
     <script src='js/flatdoc/script.js'></script>
     <script src='js/site.js'></script>
@@ -34,7 +37,7 @@
     <!-- Initializer -->
 
 </head>
-<body role='flatdoc' class='no-literate big-h3 large-brief'  data-gremlin="Flatdoc" data-flatdoc-src="src/api.md">
+<body role='flatdoc' class='no-literate big-h3 large-brief' data-gremlin="Flatdoc" data-flatdoc-src="src/api.md">
 
 <div id="site-nav" class='header'>
     <div class='left'>
@@ -51,16 +54,30 @@
     </div>
 </div>
 
-<div class='content-root'>
-    <div class='menubar'>
-        <div class='menu section' role='flatdoc-menu'></div>
-        
+<div class="container">
+    <div class="row">
+        <div class="span3 the-menu" data-gremlin="ResponsiveMenu">
+            <div class="responsive-collapse visible-phone">
+                <button type="button" class="btn btn-sidebar menu-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class='menubar'>
+                <div class='menu section' role='flatdoc-menu'></div>
+            </div>
+        </div>
+        <div class="span9">
+            <div role='flatdoc-content' class='content'></div>
+        </div>
     </div>
-    <a class="top-link" href="#"></a>
-    <div role='flatdoc-content' class='content'></div>
 </div>
 
 <script src="build/latest/gremlin.min.js"></script>
+<script src="build/extensions/gremlin.jquery.min.js"></script>
+<script src="js/gremlins/ResponsiveMenu.js"></script>
 <script src="js/gremlins/Flatdoc.js"></script>
+
 </body>
 </html>

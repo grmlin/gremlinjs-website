@@ -45,6 +45,32 @@ h5 {
     cursor: default;
     text-decoration: underline;
 }
+.logo h1 {
+    font-family: 'Raleway', Helvetica Neue, Open Sans, sans-serif;
+    font-weight: 700;
+    color: #444;
+    text-shadow: 0 0 1px #fff;
+}
+
+.logo h1 span {
+    color: #999;
+}
+
+.logo h1 small {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.logo h1 small em {
+    font-weight: 300;
+    font-style: normal;
+    color: #D5D5D5;
+}
+
+.hero-unit ul {
+    /*padding-left: 15px;*/
+    /*list-style: square;*/
+}
 
 .logo {
 
@@ -101,16 +127,55 @@ h5 {
 }
 
 @media (max-width: 767px) {
+    .hero-unit {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: -20px;
+        margin-right: -20px;
+        border-left: none;
+        border-right: none;
+    }
+
+
+    .button-hero {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    #site-nav {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
     .logo h1 {
         font-size: 60px;
-        /*display: block;*/
+        display: block;
+        padding-left: 60px;
     }
 
     .logo h1 small {
-        /*display: block;
+        display: block;
         text-align: left;
-        font-size: 16px;*/
-        margin-top: -10px;
+        font-size: 18px;
+        margin-top: -5px;
+    }
+
+    .logo img {
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) /* Mobile */ {
+    .logo h1 {
+        font-size: 36px;
+        /*display: block;*/
+        padding-left: 25px;
+    }
+
+    .logo h1 small {
+        display: block;
+        text-align: left;
+        font-size: 18px;
+        margin-top: -5px;
     }
 }
 
@@ -341,3 +406,4 @@ pre.prettyprint .muted {
 .api-item .signature ul li p code {
     font-size: 16px;
 }
+
