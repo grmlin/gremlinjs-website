@@ -98,13 +98,13 @@ GremlinJS will help you add modular, robust and well organized Javascript functi
 
 ## Why?
 
-**Because Gremlins are cute, of course!**
+**Because Gremlins are cute, of course!**   
 If this isn't enough for you, think of your current way adding Javascript functionality to websites. In most cases jQuery will be used, plugins are included, and in the best case, there is some sort of `main.js` that handles all the magic inside a `$(document).ready` handler.
 This tends to end in a huge mess of hardly maintainable code snippets and it's up to you to initialize new elements added with Javascript to the document.
 
 GremlinJS forces you to write modular and sandboxed Javascript that can be used everywhere. It will manage all components for you, takes care of them and initializes every single one when needed.
 
-*btw: it works fully autonomously*
+*btw: GremlinJS works fully autonomously*
 
 <br>
 ## Awesome, where to start?

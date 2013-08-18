@@ -229,7 +229,7 @@ a:focus {
 
 .home .content {
     padding: 0;
-    max-width: initial;
+    max-width: 100%;
 }
 
 .home .content p.lead {
