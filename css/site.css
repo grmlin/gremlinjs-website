@@ -307,6 +307,7 @@ a:focus {
 }
 .content code {
     background: #f9f2f4;
+    white-space: normal;
 }
 
 .content .method-definition + h6 {
