@@ -1,5 +1,5 @@
 <div class="lead">
-    <strong>gremlin.js</strong>, a dependency-free library to build <abbr title="aka: Gremlins">reusable
+    <strong>GREMLIN.JS</strong>, a dependency-free library to build <abbr title="aka: Gremlins">reusable
     Javascript components</abbr>.
 </div>
 <hr/>
