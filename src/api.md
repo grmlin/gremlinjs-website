@@ -126,7 +126,7 @@ For a basic gremlin add some HTML markup and create a Gremlin called `HelloWorld
 
 [**Open example &raquo;**](examples.html#gremlinjs-basics_hello-world)
 
-### Gremlin.Gremlin
+### Gremlin.Gizmo
 
 Reference of [`Gremlin`](#gremlinjs-reference_gremlin).  
 Extend `Gremlin.Gremlin` when creating Gremlin classes with CoffeeScript.
@@ -206,19 +206,19 @@ Event dispatched, if an element with the `data-gremlin` attribute was found in t
 [**Open example &raquo;**](examples.html#gremlinjs-basics_events)
 
 
-## Gremlin
+## Gizmo
 `gremlin.gremlinDefinitions.AbstractGremlin`
 
 All gremlin definitions added with [`Gremlin.define()`](#gremlinjs-define) are inheriting from this class.
 If you want to extend the abstract gremlin class (eg. CoffeeScript), access it via `Gremlin.Gremlin`!
 
-### Gremlin()
+### Gizmo()
 
 Constructor
 
 <div class="method-definition"></div>
 
-###### `Gremlin(el, data, id, init)` 
+###### `Gizmo(el, data, id, init)` 
 
 - **`el`** : [element](http://devdocs.io/dom/element)   
 	The dom element the gremlin is bound to.
@@ -232,7 +232,7 @@ Constructor
 - **`init`** : Function   
 	A init function called inside the constructor. Here, the extensions will be bound to the newly created instance.
 
-### Gremlin#data
+### Gizmo#data
 
 ###### `#data:Object`
 All data-attributes of the gremlin's dom element.   
@@ -271,7 +271,7 @@ console.log(typeof this.data.config); // prints object
 [**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_setting-gremlin-options)
 
 
-### Gremlin#el
+### Gizmo#el
 
 ###### `#el : `[`element`](http://devdocs.io/dom/element)
 
@@ -280,14 +280,14 @@ A reference of the dom element the gremlin was added to.
 
 [**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_the-gremlin-element)
 
-### Gremlin#id
+### Gizmo#id
 
 ###### `#id : Number`
 Unique id amongst all gremlin instances.
 
 [**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_unique-identifier)
 
-### Gremlin#klass
+### Gizmo#klass
 
 ###### `#klass : `[`Gremlin`](#gremlinjs-reference_gremlin)
 Points to the [`Gremlin`](#gremlinjs-reference_gremlin) the instance belongs to. 
