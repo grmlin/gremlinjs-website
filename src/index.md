@@ -85,7 +85,7 @@ gremlin.js will help you add modular, robust and well organized Javascript funct
 #### 2. Add a Gremlin
 
 ``` html
-<div data-gremlin="Gizmo"></div>
+<div data-gremlin="Slideshow"></div>
 ```
 
 #### 3. Done
