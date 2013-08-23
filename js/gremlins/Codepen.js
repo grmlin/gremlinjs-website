@@ -1,4 +1,4 @@
-GremlinJS.define('Codepen', function () {
+G.define('Codepen', function () {
     $(this.el).addClass('codepen').after('<script async src="' + this.klass.SCRIPT_SRC + '"></script>');
   },
   {},
