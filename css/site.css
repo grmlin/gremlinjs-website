@@ -1,13 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic);
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900);
-@import url(http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic);
+/*@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);*/
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,300,300italic);
 
 body,
 td,
 textarea,
 input {
-    font-family: 'Lato', Helvetica Neue, Open Sans, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 20px;
     font-size: 14px;
     color: #505050;
@@ -196,10 +194,12 @@ a:focus {
 }
 
 .header h1 {
-    font-family: 'Raleway', Helvetica Neue, Open Sans, sans-serif;
-    font-size: 15px;
-    font-weight: 700;
+    font-family: 'Roboto', Helvetica Neue, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 20px;
     margin: 0;
+    text-transform: uppercase;
 }
 
 .header h1.current a {
@@ -212,7 +212,7 @@ a:focus {
 
 .header li a {
     font-size: 13px;
-    font-weight: 500;
+    font-weight: normal;
     letter-spacing: 1px;
 }
 
@@ -233,8 +233,8 @@ a:focus {
 }
 
 .home .content p.lead {
-    font-family: 'Raleway', serif;
-    font-weight: 500;
+    font-family: 'Roboto', serif;
+    font-weight: normal;
 }
 
 .home .content .span5 h3::before {
@@ -248,13 +248,12 @@ a:focus {
 .content h1,
 .content h2,
 .content h3,
-.menu a.level-1,
-.menu a.level-2 {
-    font-family: 'Raleway', Helvetica Neue, Open Sans, sans-serif;
+.menu a {
+    font-family: 'Roboto', sans-serif;
 }
 
 .content h1 {
-    font-weight: 900;
+    font-weight: bold;
     font-size: 2.2em;
     line-height: 40px;
 }
@@ -282,7 +281,7 @@ a:focus {
 }
 
 .content h3 small {
-    font-weight: 300;
+    font-weight: normal;
 }
 
 .content h3 a {
@@ -301,7 +300,7 @@ a:focus {
 
 .content h6 code {
     font-size: 14px;
-    font-weight: 400;
+    font-weight: normal;
     white-space: normal;
     white-space: normal;
 }
@@ -329,7 +328,7 @@ a:focus {
     padding-right: 10px;
     background: #f5f5f5;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: bold;
     border: 1px solid #ccc;
     border-top: none;
     border-bottom: none;
@@ -386,8 +385,9 @@ a:focus {
 .large-brief .content > h1 + p,
 .content > p.brief {
     font-size: 1.3em;
-    font-family: 'Lato', Helvetica Neue, Open Sans, sans-serif;
-    font-weight: 300;
+    line-height: 24px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
 }
 
 pre,
@@ -395,7 +395,7 @@ pre,
 code,
 .content code,
 .menu.legend dl dt {
-    font-family: "Source Code Pro", Menlo, monospace;
+    font-family: Consolas, monaco, monospace;
 }
 
 .content pre {
@@ -455,7 +455,7 @@ body.no-literate .content pre > code,
     bottom: 50%;
     margin-top: -25px;
     font-size: 60px;
-    font-family: 'Lato', Helvetica Neue, Open Sans, sans-serif;
+    font-family: 'Roboto', sans-serif;
     -moz-transform: translateX(0px) translateY(60px);
     -webkit-transform: translateX(60px) translateY(0);
     -o-transform: translateX(60px) translateY(0);
@@ -474,7 +474,7 @@ body.no-literate .content pre > code,
 .top-link::after {
     content: '^';
     position: absolute;
-    left: 9px;
+    left: 12px;
     top: 9px;
 }
 
@@ -558,8 +558,8 @@ footer .ghbtn {
 }
 
 .homepage-footer.container-fluid .footer-nav li a {
-    font-family: 'Raleway', serif;
-    font-weight: 700;
+    font-family: 'Roboto', serif;
+    font-weight: bold;
     font-size: 16px;
     line-height: 32px;
     color: #f5f5f5;

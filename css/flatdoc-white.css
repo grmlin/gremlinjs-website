@@ -104,7 +104,7 @@ body,
 td,
 textarea,
 input {
-  font-family: Helvetica Neue, Lato, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
   font-size: 13px;
   color: #505050;
@@ -817,7 +817,7 @@ code .comment {
 .large-brief .content > h1:first-child + p,
 .content > p.brief {
   font-size: 1.3em;
-  font-family: Lato, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
 .title-area {
