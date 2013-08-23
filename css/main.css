@@ -82,7 +82,7 @@ h5 {
 
 .logo h1 {
     display: inline-block;
-    font-size: 90px;
+    font-size: 80px;
     vertical-align: top;
     margin-bottom: 40px;
 }
@@ -157,7 +157,7 @@ h5 {
     }
 
     .logo h1 {
-        font-size: 70px;
+        font-size: 60px;
         /*display: block;
         margin-bottom: 40px;*/
     }
