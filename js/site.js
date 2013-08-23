@@ -34,13 +34,13 @@ $(function () {
         link.href = '#' + this.id;
         link.textContent = '#';
 
-        this.innerHTML = this.textContent.replace(/^(.*)(\.|#)/gi, '$2');
+        this.innerHTML = this.textContent.replace(/^(\S*)(\.|#)/gi, '$2');
         //console.log(link.href)
         $(this).append(link);
       });
 
       $('.menu ul.level-3 li a').each(function () {
-        this.innerHTML = this.textContent.replace(/^(.*)(\.|#)/gi, '$2');
+        this.innerHTML = this.textContent.replace(/^(\S*)(\.|#)/gi, '$2');
       });
 
       $('.codepen-lazy').each(function () {
