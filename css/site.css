@@ -313,6 +313,10 @@ a:focus {
     white-space: pre-wrap;
 }
 
+.content pre + p {
+    margin-top: 20px;
+}
+
 .content .method-definition + h6 {
     margin-bottom: 0;
     background: #ddd;
