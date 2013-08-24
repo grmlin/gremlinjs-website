@@ -73,7 +73,7 @@ Every Gremlin instance comes with some useful properties.
 
 Object providing all parsed data-attributes of the gremlin's dom element. Everything you add to the element via an `data` attribute will be published into the gremlins `#data` property.
 
-See ["add options"](api.html#gremlinjs-reference_gremlin_gremlin-data) for a more detailed explanation.
+See ["add options"](api.html#api-reference_gizmo_gizmo-data) for a more detailed explanation.
 
 <p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="193" data-theme-id="543" data-slug-hash="zBtHn" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/zBtHn'>gremlin.js - #data (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
@@ -137,11 +137,11 @@ Furthermore the debug mode is enabled. Have a look into the lower left corner of
 
 gremlin.js dispatches some events while searching gremlins and instantiating them.
 
-- [`Gremlin.ON_ELEMENT_FOUND`](api.html#gremlinjs-reference_gremlinjs_on-element-found)
+- [`Gizmo.ON_ELEMENT_FOUND`](api.html#api-reference_gremlin_on-element-found)
 
-- [`Gremlin.ON_DEFINITION_PENDING`](api.html#gremlinjs-reference_gremlinjs_on-definition-pending)
+- [`Gizmo.ON_DEFINITION_PENDING`](api.html#api-reference_gremlin_on-definition-pending)
 
-- [`Gremlin.ON_GREMLIN_LOADED`](api.html#gremlinjs-reference_gremlinjs_on-gremlin-loaded)
+- [`Gizmo.ON_GREMLIN_LOADED`](api.html#api-reference_gremlin_on-gremlin-loaded)
 
 
 The example below uses all three events and logs the event type and the affected element into the console.
@@ -251,7 +251,7 @@ see [momentjs](http://momentjs.com/)
 
 It's easy to add custom extensions to your gremlins, 1) implement the extension and 2) register it.
 
-Every extension has to provide two methods, `.bind()` and `.extend()`. See [the api docs](api.html#gremlinjs-reference_iextension) for a more detailed explanation.
+Every extension has to provide two methods, `.bind()` and `.extend()`. See [the api docs](api.html#api-reference_iextension) for a more detailed explanation.
 
 #### .extend()
 The extension below adds a static string `Greeting` to the abstract gremlin class and `talk()` method to the gremlin prototype.

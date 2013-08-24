@@ -24,14 +24,14 @@ Adds a gremlin class to gremlin.js that later will be used to activate [elements
  
 <div class="method-definition"></div>
 
-###### `.add(name, Gremlin):`[`Gremlin`](#gremlinjs-reference_gremlin)
+###### `.add(name, Gremlin):`[`Gizmo`](#api-reference_gizmo)
 
 returns a Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document  
 
 - **`name`** : String    
 	A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the `data-gremlin` attribute of a dom element to select the gremlin.
 
-- **`Gremlin`** : [Gremlin](#gremlinjs-reference_gremlin)    
+- **`Gremlin`** : [Gizmo](#api-reference_gizmo)    
 	The Gremlin class inherited from `Gremlin.Gizmo`
 
 Adding a `HelloWorld` gremlin with CoffeeScript would look like
@@ -55,15 +55,15 @@ class HelloWorld extends G.Gremlin
 G.add "HelloWorld", HelloWorld
 ```
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_hello-world)
+[**Open example &raquo;**](examples.html#basics_hello-world)
 
 ### Gremlin.debug
-###### `.debug:`[`Debug`](#debug)
+###### `.debug:`[`Debug`](#api-reference_debug)
 
-[Debugger](#debug) instance used by gremlin.js for console logging and gremlin highlighting in the document.
+[Debugger](#api-reference_debug) instance used by gremlin.js for console logging and gremlin highlighting in the document.
 With activated debugging, all gremlins will be highlighted visually and listed by their current state.
 
-To enable the debug mode, set `debug` to `true` at the body of your document. See [here](#gremlin-data) to learn how to add JSON to data attributes in gremlin.js.
+To enable the debug mode, set `debug` to `true` at the body of your document. See [here](#api-reference_gizmo_gizmo-data) to learn how to add JSON to data attributes in gremlin.js.
 
 ``` html
 <body data-gremlin-config='{"debug":true}'> ... </body>
@@ -75,7 +75,7 @@ Moreover, the debugger wraps the browser's `console` object with `Gremlin.debug.
 Gremlin.debug.console.log('Hello World!');
 ```
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_debugging)
+[**Open example &raquo;**](examples.html#basics_debugging)
 
 ### Gremlin.define()
 <!---
@@ -85,7 +85,7 @@ Creates a gremlin definition aka class, that later will be used to activate [ele
 
 <div class="method-definition"></div>
 
-###### `.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gremlin`](#gremlinjs-reference_gremlin)
+###### `.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gizmo`](#api-reference_gizmo)
 
 returns a Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document
 
@@ -124,11 +124,11 @@ For a basic gremlin add some HTML markup and create a Gremlin called `HelloWorld
 </script>
 ```
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_hello-world)
+[**Open example &raquo;**](examples.html#basics_hello-world)
 
 ### Gremlin.Gizmo
 
-Reference of [`Gremlin`](#gremlinjs-reference_gremlin).  
+Reference of [`Gizmo`](#api-reference_gizmo).  
 Extend `Gremlin.Gremlin` when creating Gremlin classes with CoffeeScript.
 
 
@@ -139,12 +139,12 @@ class Gizmo extends G.Gremlin
     alert "Hello World!"
 ```
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_hello-world)
+[**Open example &raquo;**](examples.html#basics_hello-world)
 
 ### Gremlin.Helper
-###### `.Helper:`[`Helper`](#helper)
+###### `.Helper:`[`Helper`](#api-reference_helper)
 Object providing some useful utility methods.
-References [`Helper`](#helper)
+References [`Helper`](#api-reference_helper)
 
 ### Gremlin.on()
 
@@ -171,7 +171,7 @@ G.on G.ON_GREMLIN_LOADED, (el) ->
   console?.log "Gremlin element found and instantiated"
 ```
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_events)
+[**Open example &raquo;**](examples.html#basics_events)
 
 ### Gremlin.registerExtension()
 
@@ -181,8 +181,8 @@ Adds a new extension to gremlin.js.
 
 ###### `.registerExtension(Extension)`
 
-- **`Extension`** : Object implementing [`IExtension`](#iextension)   
-	[`IExtension`](#iextension) does not exist in code and there is no error handling when registring extensions at all. Take care and be sure to provide the necessary methods. 
+- **`Extension`** : Object implementing [`IExtension`](#api-reference_iextension)   
+	[`IExtension`](#api-reference_iextension) does not exist in code and there is no error handling when registring extensions at all. Take care and be sure to provide the necessary methods. 
 
 **Always include your extensions before your gremlin definitions**
 
@@ -193,24 +193,24 @@ Adds a new extension to gremlin.js.
 Event dispatched, if an element with the `data-gremlin` attribute was found in the document.   
 **The gremlin is not instantiated at this moment!**
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_events)
+[**Open example &raquo;**](examples.html#basics_events)
 
 ### .ON_DEFINITION_PENDING
 Event dispatched, if an element with the `data-gremlin` attribute was found in the document but a definition for it is missing. Useful if you want to load your gremlins with a script loader on demand.
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_events)
+[**Open example &raquo;**](examples.html#basics_events)
 
 ### .ON_GREMLIN_LOADED
 Event dispatched, if an element with the `data-gremlin` attribute was found in the document and instantiated successfully.
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_events)
+[**Open example &raquo;**](examples.html#basics_events)
 
 
 ## Gizmo
-`gremlin.gremlinDefinitions.AbstractGremlin`
+`gremlinDefinitions.Gizmo`
 
-All gremlin definitions added with [`Gremlin.define()`](#gremlinjs-define) are inheriting from this class.
-If you want to extend the abstract gremlin class (eg. CoffeeScript), access it via `Gremlin.Gremlin`!
+All gremlin definitions added with [`Gremlin.define()`](#api-reference_gremlin_gremlin-define) are inheriting from this class.
+If you want to extend the abstract gremlin class (eg. CoffeeScript), access it via `Gremlin.Gizmo`!
 
 ### Gizmo()
 
@@ -268,7 +268,7 @@ console.log(this.data.config.foo); // prints bar
 console.log(typeof this.data.config); // prints object
 ```
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_setting-gremlin-options)
+[**Open example &raquo;**](examples.html#basics_gremlin-properties_setting-gremlin-options)
 
 
 ### Gizmo#el
@@ -278,21 +278,21 @@ console.log(typeof this.data.config); // prints object
 A reference of the dom element the gremlin was added to.  
 **This element should always be the starting point for all your dom manipulations, queryselectors etc...**
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_the-gremlin-element)
+[**Open example &raquo;**](examples.html#basics_gremlin-properties_the-gremlin-element)
 
 ### Gizmo#id
 
 ###### `#id : Number`
 Unique id amongst all gremlin instances.
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_unique-identifier)
+[**Open example &raquo;**](examples.html#basics_gremlin-properties_unique-identifier)
 
 ### Gizmo#klass
 
-###### `#klass : `[`Gremlin`](#gremlinjs-reference_gremlin)
-Points to the [`Gremlin`](#gremlinjs-reference_gremlin) the instance belongs to. 
+###### `#klass : `[`Gizmo`](#api-reference_gizmo)
+Points to the [`Gizmo`](#api-reference_gizmo) the instance belongs to. 
 
-Especially handy, when you define static gremlin members with [`Gremlin.define()`](#gremlinjs-define) and want to access them from inside an instance.
+Especially handy, when you define static gremlin members with [`Gremlin.define()`](#api-reference_gremlin_gremlin-define) and want to access them from inside an instance.
 
 
 #### Example
@@ -312,18 +312,18 @@ Gremlin.define('HelloWorld', function () {
 );
 ```
 
-[**Open example &raquo;**](examples.html#gremlinjs-basics_gremlin-properties_class-reflection)
+[**Open example &raquo;**](examples.html#basics_gremlin-properties_class-reflection)
 
 
 ## Debug
-`gremlin.util.Debug` 
+`util.Debug` 
 
 Debugger Class used for console logging and gremlin highlighting in the document.   
 If instantiated with activated debugging, all gremlins
 will be highlighted visually by Gremlin, and components that are ready, pending or broken are listed at the bottom left
 part of the site.
 
-**This class is not directly accessible and listed here for reference. Use the [`Gremlin.debug`](#gremlinjs-debug) instance to debug your gremlins!**
+**This class is not directly accessible and listed here for reference. Use the [`Gremlin.debug`](#api-reference_gremlin_gremlin-debug) instance to debug your gremlins!**
 
 ### Debug()
 Constructor
@@ -480,8 +480,8 @@ Binds the extension to a gremlin instance. Do whatever yout want to do with a gr
 
 ###### `.bind(gremlin)`
 
-- **`gremlin`** : [Gremlin](#gremlinjs-reference_gremlin)   
-	The [`Gremlin`](#gremlinjs-reference_gremlin) instance the extension will be bound to.
+- **`gremlin`** : [Gizmo](#api-reference_gizmo)   
+	The [`Gizmo`](#api-reference_gizmo) instance the extension will be bound to.
 
 **called for every gremlin element in the document separately**
 
@@ -497,7 +497,7 @@ Change and extend the gremlin definition (constructor function, aka. class) in t
 <div class="method-definition"></div>
 
 ###### `.extend(Gremlin)`
-- **`Gremlin`** : [Gremlin](#gremlinjs-reference_gremlin)      
+- **`Gremlin`** : [Gizmo](#api-reference_gizmo)      
 	The constructor function used to create gremlin instances later.
 
 `extend` is the place where you might want to add static members to the classes or extend their prototypes. 
@@ -534,14 +534,14 @@ Pub Sub extension that allows gremlins to interact with each other by dispatchin
    
 To use interests, there must be a gremlin emitting messages and another one that subscribed to these messages.
 
-Dispatching messages is as easy as writing [`gremlin.emit()`](#gremlin-emit). Every gremlin
-in the document that [defines an interest](#gremlin-interests) for this message, will be informed and a callback gets called. 
+Dispatching messages is as easy as writing [`gremlin.emit()`](#available-extensions_interests-pubsub_gremlin-emit). Every gremlin
+in the document that [defines an interest](#available-extensions_interests-pubsub_gremlin-interests) for this message, will be informed and a callback gets called. 
 
 #### Why do I need this?
 Gremlins are components, self-contained and isolated. But sometimes it's really useful when these components can talk to each other.   
 Think of a gremlin that asks the user for his [`geolocation`](http://devdocs.io/dom/window.navigator.geolocation). There may be other gremlins in the page, that rely on this information. Emit a message with a new location and all other (listening)  gremlins will be informed.  
 
-### Gremlin.interests
+### Gizmo.interests
 An Object defining message types the gremlin will be listening to and callbacks handling those messages. 
 
 ###### `.interests:Object`
@@ -566,7 +566,7 @@ Gremlin.define("Foo", function () {},
 );
 ```
 
-### Gremlin#emit()
+### Gizmo#emit()
 Dispatch a new broadcasting message
 
 <div class="method-definition"></div>
@@ -576,7 +576,7 @@ Dispatch a new broadcasting message
   The message type
 
 - **`data`** : Object *optional*   
-  Some additional event data that will be passed into the [`Gremlin#on`](#gremlin-on) handler.	
+  Some additional event data that will be passed into the handler defined in the interests object.	
 
 ``` js
 var Holly = Gremlin.define("Bar", function () {
@@ -601,15 +601,15 @@ Extension providing element maps "vanilla javascript style".
 Newer browsers come with a very powerful dom element selector engine, [`element.querySelectorAll()`](http://devdocs.io/dom/element.queryselectorall). The `DomElements` extension allows you to define element maps utilizing `querySelectorAll` for gremlins.
 
 **If you want to use DomElements with older browsers, include a `querySelectorAll` shim first!**
-### Gremlin.elements 
+### Gizmo.elements 
 
 ###### `.elements:Object`
-Object literal / map,  defining node lists to be added to the [`Gremlin`](#gremlinjs-reference_gremlin) instance.
+Object literal / map,  defining node lists to be added to the [`Gizmo`](#api-reference_gizmo) instance.
 
 The object has to be composed of a selector as a key, and an instance property name as the value.   
 `{SELECTOR:NAME, *SELECTOR:NAME}`  
 
-**`querySelectorAll` will always be executed relatively to the [gremlin's dom element](#gremlin-el)**.
+**`querySelectorAll` will always be executed relatively to the [gremlin's dom element](#api-reference_gizmo_gizmo-el)**.
 
 ``` html
 <div data-gremlin="Foo">
@@ -651,20 +651,20 @@ To use the jQuery extension, [download and include it](http://jquery.com/) in yo
 - **event maps** utilizing jQuery's powerful event delegation 
 - **element maps** defined with jQuery's selector engine 
 
-### Gremlin#$el
+### Gizmo#$el
 
 ###### `#$el:jQuery`
 The gremlin's dom element as jQuery object
  
-### Gremlin.elements
+### Gizmo.elements
 
 ###### `.elements:Object`
-Object literal / map,  defining jQuery objects to be added to the [`Gremlin`](#gremlinjs-reference_gremlin) instance.
+Object literal / map,  defining jQuery objects to be added to the [`Gizmo`](#api-reference_gizmo) instance.
 
 The object has to be composed of jQuery selectors as a key, and an instance property name as the value.   
 `{SELECTOR:NAME, *SELECTOR:NAME}`  
 
-**The selector will always be executed relatively to the [gremlin's dom element](#gremlin-el).**
+**The selector will always be executed relatively to the [gremlin's dom element](#api-reference_gizmo_gizmo-el).**
 
 ``` html
 <div data-gremlin="Foo">
@@ -684,10 +684,10 @@ Gremlin.define("Foo",
   });
 ```
 
-### Gremlin.events
+### Gizmo.events
 
 ###### `.events:Object`
-Object literal / map,  defining jQuery event handler to be added to the [`Gremlin`](#gremlinjs-reference_gremlin) instance.
+Object literal / map,  defining jQuery event handler to be added to the [`Gizmo`](#api-reference_gizmo) instance.
 
 The object has to be composed of an event description combining the event type and a selector as a key, and an instance method name as the value.  
 **If you use a handler name not available on your gremlin's instance, gremlin.js throws an Error.**
@@ -695,7 +695,7 @@ The object has to be composed of an event description combining the event type a
 #### Event map description
 It's possible to to bind events to the gremlin's dom element or to delegate events deeper into the gremlin.
 
-##### Binding events to [`#el`](#gremlin-el)
+##### Binding events to [`#el`](#api-reference_gizmo)
 Add the event type as a key, and the name of the handler as the value of the event map entry.
 
 ``` js
