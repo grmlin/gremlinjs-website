@@ -1,6 +1,6 @@
 # Basics
 
-Gremlins can be written with [CoffeeScript](http://coffeescript.org/) (the little language gremlin.js was build with) or Javascript.
+Gremlins can be written with [CoffeeScript](http://coffeescript.org/) (the little language <span class="gremlinjs">gremlin.js</span> was build with) or Javascript.
 
 The examples below exist in both variants and are embedded with [codepen.io](http://codepen.io/). You'll see the CoffeeScript example by default. A link to the Javascript version of it can be found next to it.   
 Some of the examples will work in modern browsers, only!
@@ -24,7 +24,7 @@ In this example, every instance of a `HelloWorld` gremlin will 1.) call the meth
 
 Read the guides to learn [how to create gremlins](guides.html#master-the-horde_creating-gremlins) in Javascript and Coffeescript
  
-<p data-gremlin="Codepen" data-height="300" data-theme-id="543" data-slug-hash="yDrKb" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/yDrKb'>gremlin.js - Hello World</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-height="300" data-theme-id="543" data-slug-hash="yDrKb" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/yDrKb'><span class="gremlinjs">gremlin.js</span> - Hello World</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 [This example in Javascript](http://codepen.io/grmlin/pen/IqFbf)
 
@@ -46,21 +46,21 @@ Separate the names with a `,`.
 In this example, every gremlin prints *Hello World! GremlinXYZ here*.
 
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="300" data-theme-id="543" data-slug-hash="xrLHz" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/xrLHz'>gremlin.js - Multiple Gremlins (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="300" data-theme-id="543" data-slug-hash="xrLHz" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/xrLHz'><span class="gremlinjs">gremlin.js</span> - Multiple Gremlins (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 [This example in Javascript](http://codepen.io/grmlin/pen/xciDp)
 
 
 ## Auto discovery
 
-gremlin.js discovers all gremlin elements for you fully automatically.
+<span class="gremlinjs">gremlin.js</span> discovers all gremlin elements for you fully automatically.
 
 ### JS
 In the example there are two gremlin definitions. `HelloWorld` and `Builder`.   
 A click on the `Builder` element will append a new div with the attribute `data-attribute="HelloWorld"`to the document body.  
-When attached to the document, the `HelloWorld` gremlin is found and processed. Nothing else is necessary to get the gremlin instantiated by gremlin.js.
+When attached to the document, the `HelloWorld` gremlin is found and processed. Nothing else is necessary to get the gremlin instantiated by <span class="gremlinjs">gremlin.js</span>.
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="241" data-theme-id="543" data-slug-hash="quFta" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/quFta'>gremlin.js - Auto Discovery (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="241" data-theme-id="543" data-slug-hash="quFta" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/quFta'><span class="gremlinjs">gremlin.js</span> - Auto Discovery (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 [This example in Javascript](http://codepen.io/grmlin/pen/wCthx)
 
@@ -75,7 +75,7 @@ Object providing all parsed data-attributes of the gremlin's dom element. Everyt
 
 See ["add options"](api.html#api-reference_gizmo_gizmo-data) for a more detailed explanation.
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="193" data-theme-id="543" data-slug-hash="zBtHn" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/zBtHn'>gremlin.js - #data (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="193" data-theme-id="543" data-slug-hash="zBtHn" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/zBtHn'><span class="gremlinjs">gremlin.js</span> - #data (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 [This example in Javascript](http://codepen.io/grmlin/pen/Ljwod)
 
@@ -94,7 +94,7 @@ Every gremlin has a unique ID, a number incremented for every gremlin found in t
 
 In the example below, `GREETING` is a static property of the `HelloWorld` gremlin and used to change the gremlin's `innerHTML`.
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="200" data-theme-id="543" data-slug-hash="grstB" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/grstB'>gremlin.js - #id (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="200" data-theme-id="543" data-slug-hash="grstB" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/grstB'><span class="gremlinjs">gremlin.js</span> - #id (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 [This example in Javascript](http://codepen.io/grmlin/pen/ndCgD)
 
@@ -102,7 +102,7 @@ In the example below, `GREETING` is a static property of the `HelloWorld` gremli
 
 If you add static members to a gremlin class with CoffeeScript, or create some with `.define()`, the `Gremlin#klass` property will be useful. It reflects the original class. Use it to access static members from inside the instance.
 
-<p data-gremlin="Codepen" data-height="300" data-theme-id="543" data-slug-hash="yDrKb" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/yDrKb'>gremlin.js - Hello World</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-height="300" data-theme-id="543" data-slug-hash="yDrKb" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/yDrKb'><span class="gremlinjs">gremlin.js</span> - Hello World</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 [This example in Javascript](http://codepen.io/grmlin/pen/IqFbf)
  
@@ -131,11 +131,11 @@ To activate lazy loading an additional attribute is added, `data-gremlin-lazy="t
 All the gremlin does is adding the css style `display: block` to the `<div class="modal"></div>` inside when found and instantiated.   
 Furthermore the debug mode is enabled. Have a look into the lower left corner of the sample to see the current status of the document's gremlins.
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="260" data-theme-id="543" data-slug-hash="FDuhg" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/FDuhg'>gremlin.js - Lazy Loading (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="260" data-theme-id="543" data-slug-hash="FDuhg" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/FDuhg'><span class="gremlinjs">gremlin.js</span> - Lazy Loading (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 ## Events
 
-gremlin.js dispatches some events while searching gremlins and instantiating them.
+<span class="gremlinjs">gremlin.js</span> dispatches some events while searching gremlins and instantiating them.
 
 - [`Gizmo.ON_ELEMENT_FOUND`](api.html#api-reference_gremlin_on-element-found)
 
@@ -146,7 +146,7 @@ gremlin.js dispatches some events while searching gremlins and instantiating the
 
 The example below uses all three events and logs the event type and the affected element into the console.
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="306" data-theme-id="543" data-slug-hash="cyxbB" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/cyxbB'>gremlin.js - Events (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="306" data-theme-id="543" data-slug-hash="cyxbB" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/cyxbB'><span class="gremlinjs">gremlin.js</span> - Events (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 ## Debugging
 
@@ -154,7 +154,7 @@ Sometimes, with documents full of gremlins, it can be very helpful to get visual
 
 ### HTML
 
-Activate debugging by changing the gremlin.js configuration at the document `body`. By doing so, debugging is activated, console logs are printed and gremlins are highlighted visually in the document.
+Activate debugging by changing the <span class="gremlinjs">gremlin.js</span> configuration at the document `body`. By doing so, debugging is activated, console logs are printed and gremlins are highlighted visually in the document.
 
 ``` html
 <body data-gremlin-config='{"debug":true}'> ... </body>
@@ -196,7 +196,7 @@ interest: {
 
 Every time any gremlin dispatches the event `"log"`, the `onLog()` method will be called. It adds the message to the document.
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="370" data-theme-id="543" data-slug-hash="aCJDL" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/aCJDL'>gremlin.js - Extension - Interests (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="370" data-theme-id="543" data-slug-hash="aCJDL" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/aCJDL'><span class="gremlinjs">gremlin.js</span> - Extension - Interests (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 ## jQuery
 
@@ -223,7 +223,7 @@ Even `$el` is used to add a border to the gremlin.
 
 see [momentjs](http://momentjs.com/)
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="353" data-theme-id="543" data-slug-hash="jIhyA" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/jIhyA'>gremlin.js - Extension - Interests (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="353" data-theme-id="543" data-slug-hash="jIhyA" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/jIhyA'><span class="gremlinjs">gremlin.js</span> - Extension - Interests (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 ## domElements
 
@@ -245,7 +245,7 @@ this.timestamp.innerHTML = moment().format('LLL')
 
 see [momentjs](http://momentjs.com/)
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="234" data-theme-id="543" data-slug-hash="mJkHL" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/mJkHL'>gremlin.js - Extension - domElements (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="234" data-theme-id="543" data-slug-hash="mJkHL" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/mJkHL'><span class="gremlinjs">gremlin.js</span> - Extension - domElements (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 ## Building your own
 
@@ -259,7 +259,7 @@ The extension below adds a static string `Greeting` to the abstract gremlin clas
 #### .bind()
 Furthermore, the extension assigns an instance property for every gremlin instance, `#contentId`, a unique id incremented by the extension itself.
 
-<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="318" data-theme-id="543" data-slug-hash="svboK" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/svboK'>gremlin.js - Custom extension (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
+<p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="318" data-theme-id="543" data-slug-hash="svboK" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/svboK'><span class="gremlinjs">gremlin.js</span> - Custom extension (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 [This example in Javascript](http://codepen.io/grmlin/pen/mAGDC)
 

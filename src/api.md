@@ -1,7 +1,7 @@
 # API Reference
-Reference of the publicly available methods and properties of gremlin.js.
+Reference of the publicly available methods and properties of <span class="gremlinjs">gremlin.js</span>.
 
-This is **not** a documentation of the gremlin.js sources, you have to read the code to see what's going on behind the scenes.
+This is **not** a documentation of the <span class="gremlinjs">gremlin.js</span> sources, you have to read the code to see what's going on behind the scenes.
 
 ## Gremlin
 
@@ -10,13 +10,13 @@ This is **not** a documentation of the gremlin.js sources, you have to read the 
 
 **The shorter alias `G` is available, if not used in the global namespace already!**
 
-The global gremlin.js namespace. This is the only directly available interface exposed to the global scope!
+The global <span class="gremlinjs">gremlin.js</span> namespace. This is the only directly available interface exposed to the global scope!
 
 Access the public api via `window.Gremlin`, `window.G` or asynchronously with an AMD-Loader and the name `Gremlin`.
 
 ### Gremlin.add()
 
-Adds a gremlin class to gremlin.js that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.
+Adds a gremlin class to <span class="gremlinjs">gremlin.js</span> that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.
 
 `Gremlin.add()` is primarily used with CoffeeScript, as there is no need to use `Gremlin.define()`
 
@@ -60,10 +60,10 @@ G.add "HelloWorld", HelloWorld
 ### Gremlin.debug
 ###### `.debug:`[`Debug`](#api-reference_debug)
 
-[Debugger](#api-reference_debug) instance used by gremlin.js for console logging and gremlin highlighting in the document.
+[Debugger](#api-reference_debug) instance used by <span class="gremlinjs">gremlin.js</span> for console logging and gremlin highlighting in the document.
 With activated debugging, all gremlins will be highlighted visually and listed by their current state.
 
-To enable the debug mode, set `debug` to `true` at the body of your document. See [here](#api-reference_gizmo_gizmo-data) to learn how to add JSON to data attributes in gremlin.js.
+To enable the debug mode, set `debug` to `true` at the body of your document. See [here](#api-reference_gizmo_gizmo-data) to learn how to add JSON to data attributes in <span class="gremlinjs">gremlin.js</span>.
 
 ``` html
 <body data-gremlin-config='{"debug":true}'> ... </body>
@@ -148,7 +148,7 @@ References [`Helper`](#api-reference_helper)
 
 ### Gremlin.on()
 
-Add an event listener to gremlin.js.
+Add an event listener to <span class="gremlinjs">gremlin.js</span>.
 
 <div class="method-definition"></div>
 
@@ -175,7 +175,7 @@ G.on G.ON_GREMLIN_LOADED, (el) ->
 
 ### Gremlin.registerExtension()
 
-Adds a new extension to gremlin.js.
+Adds a new extension to <span class="gremlinjs">gremlin.js</span>.
 
 <div class="method-definition"></div>
 
@@ -236,9 +236,9 @@ Constructor
 
 ###### `#data:Object`
 All data-attributes of the gremlin's dom element.   
-gremlin.js will parse all the data-attributes for you and tries to guess their types. Numbers will be Javascript Numbers, the strings *true* and *false* Booleans... and it's possible to define native Objects as JSON.
+<span class="gremlinjs">gremlin.js</span> will parse all the data-attributes for you and tries to guess their types. Numbers will be Javascript Numbers, the strings *true* and *false* Booleans... and it's possible to define native Objects as JSON.
 
-gremlin.js converts the attribute names separated by '-' into camel cased keys without the leading *data*. `data-foo-bar` becomes `#data.fooBar`.
+<span class="gremlinjs">gremlin.js</span> converts the attribute names separated by '-' into camel cased keys without the leading *data*. `data-foo-bar` becomes `#data.fooBar`.
 
 ###### JSON inside data-attributes
 
@@ -340,7 +340,7 @@ A reference to the console object you know and love.
 
 ###### `#console:`[`Console`](http://devdocs.io/dom/console)
 
-**If** gremlin.js is in debug mode, the `console` methods are linked directly to the native `console` object. Otherwise all your `console.log` statements will be muted.
+**If** <span class="gremlinjs">gremlin.js</span> is in debug mode, the `console` methods are linked directly to the native `console` object. Otherwise all your `console.log` statements will be muted.
 
 The following console commands are currently supported by `Gremlin.debug.console` *(if the browser supports them, of course)*:
 
@@ -348,9 +348,9 @@ The following console commands are currently supported by `Gremlin.debug.console
 ["debug", "error", "info", "log", "warn", "dir", "dirxml", "trace", "assert", "count", "markTimeline", "profile", "profileEnd", "time", "timeEnd", "timeStamp", "group", "groupCollapsed", "groupEnd", "clear"]
 ```
 ## Helper
-`gremlin.util.Helper` 
+`util.Helper`
 
-Utility methods used by gremlin.js that may be useful.
+Utility methods used by <span class="gremlinjs">gremlin.js</span> that may be useful.
 
 ### Helper.extend()
 
@@ -465,11 +465,11 @@ Add some new css styles to your document
 ```
 
 ## IExtension
-`gremlin.gremlinDefinitions.IExtension`
+`gremlinDefinitions.IExtension`
 
 Interface every extension has to implement.
 
-**This is pseudo code that can't be found in the gremlin.js sources. There will be no
+**This is pseudo code that can't be found in the <span class="gremlinjs">gremlin.js</span> sources. There will be no
 error checking or whatsoever when processing extensions**
 
 ### IExtension.bind()
@@ -515,7 +515,7 @@ Extension.extend= function(Gremlin) {
 
 
 # Available Extensions
-gremlin.js already provides some useful extensions. Feel free to use them.
+<span class="gremlinjs">gremlin.js</span> already provides some useful extensions. Feel free to use them.
 
 You'll find them at Github, with the following naming pattern: `gremlinjs-EXTENSION` inside the `dist` directory.
 
@@ -646,7 +646,7 @@ jQuery extension providing element and event maps.
 Gremlin doesn't require jQuery, but it's used a lot these days. That's why this handy extension is included.
 Keep the code defining gremlins clean with element and event maps. 
 
-To use the jQuery extension, [download and include it](http://jquery.com/) in your document **before** including gremlin.js. Than, the extension provides access to
+To use the jQuery extension, [download and include it](http://jquery.com/) in your document **before** including <span class="gremlinjs">gremlin.js</span>. Than, the extension provides access to
 
 - **event maps** utilizing jQuery's powerful event delegation 
 - **element maps** defined with jQuery's selector engine 
@@ -690,7 +690,7 @@ Gremlin.define("Foo",
 Object literal / map,  defining jQuery event handler to be added to the [`Gizmo`](#api-reference_gizmo) instance.
 
 The object has to be composed of an event description combining the event type and a selector as a key, and an instance method name as the value.  
-**If you use a handler name not available on your gremlin's instance, gremlin.js throws an Error.**
+**If you use a handler name not available on your gremlin's instance, <span class="gremlinjs">gremlin.js</span> throws an Error.**
 
 #### Event map description
 It's possible to to bind events to the gremlin's dom element or to delegate events deeper into the gremlin.

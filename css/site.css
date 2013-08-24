@@ -304,6 +304,13 @@ a:focus {
     white-space: normal;
     white-space: normal;
 }
+
+.content .gremlinjs {
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
 .content code {
     background: #f9f2f4;
     white-space: normal;
