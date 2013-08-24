@@ -227,6 +227,32 @@ a:focus {
     width: 20px;
 }
 
+.header .right > div,
+.header .right iframe {
+    max-height: 20px;
+    display: inline-block;
+}
+.header .right > div {
+    vertical-align: middle !important;
+}
+
+@media (max-width: 767px) {
+    .header .right {
+    }
+    .header .right iframe,
+    .header .right > div {
+        margin-bottom: 10px !important;
+        display: block;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .header .right iframe {
+        display: block;
+    }
+}
+
 .home .content {
     padding: 0;
     max-width: 100%;
