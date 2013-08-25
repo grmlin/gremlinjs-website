@@ -1,6 +1,60 @@
 /*@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);*/
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,300,300italic);
 
+@font-face {
+    font-family: 'icomoon';
+    src:url('fonts/icomoon.eot');
+    src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.woff') format('woff'),
+    url('fonts/icomoon.ttf') format('truetype'),
+    url('fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+    font-family: 'icomoon';
+    content: attr(data-icon);
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-github, .icon-google-plus, .icon-twitter {
+    font-family: 'icomoon';
+    background: transparent;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    height: auto;
+    width: auto;
+}
+.icon-github:before {
+    content: "\e004";
+}
+.icon-google-plus:before {
+    content: "\e005";
+}
+.icon-twitter:before {
+    content: "\e006";
+}
+
+
 body,
 td,
 textarea,
@@ -608,4 +662,44 @@ footer .ghbtn {
 
 .homepage-footer .ghbtn {
     margin-bottom: 5px;
+    display: inline-block;
+}
+
+.header .ghbtn {
+
+}
+.header .ghbtn a,
+.homepage-footer .ghbtn a {
+    font-size: 46px;
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition: all 120ms linear;
+    -moz-transition: all 120ms linear;
+    -ms-transition: all 120ms linear;
+    -o-transition: all 120ms linear;
+    transition: all 120ms linear;
+    margin-right: 20px;
+}
+
+.header .ghbtn a {
+    font-size: 16px;
+    color: #999;
+}
+
+.header .ghbtn a:hover,
+.header .ghbtn a:active,
+.homepage-footer .ghbtn a:hover,
+.homepage-footer .ghbtn a:active {
+    color: #09d;
+}
+
+@media (max-width: 767px) {
+    .header .ghbtn a {
+        display: block;
+    }
+    .homepage-footer .pull-right {
+        text-align: left;
+        padding: 20px 20px 30px 20px;
+        float: none;
+    }
 }
