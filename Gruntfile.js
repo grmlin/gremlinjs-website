@@ -13,6 +13,8 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     //
     // Grunt configuration:
@@ -24,7 +26,8 @@ module.exports = function (grunt) {
                 files: ['*.html','src/**/*','css/**/*','js/**/*'],
                 options: {
                     livereload: true
-                }
+                },
+                tasks: ['clean', 'copy:dist']
                 
             }
             
@@ -33,9 +36,26 @@ module.exports = function (grunt) {
             docs: {
                 options: {
                     port: 4242,
-                    base: './'
+                    base: './dist'
                 }
             }
+        },
+        copy: {
+            dist: {
+                files: [
+                    {expand: true, src: ['0.3/**'], dest: 'dist/'},
+                    {expand: true, src: ['build/**'], dest: 'dist/'},
+                    {expand: true, src: ['css/**'], dest: 'dist/'},
+                    {expand: true, src: ['img/**'], dest: 'dist/'},
+                    {expand: true, src: ['js/**'], dest: 'dist/'},
+                    {expand: true, src: ['src/**'], dest: 'dist/'},
+                    {expand: true, src: ['*.html'], dest: 'dist/'}
+
+                ]
+            }
+        },
+        clean: {
+            dist: ["dist/"]
         },
         pkg: grunt.file.readJSON('package.json')
     });
@@ -45,7 +65,7 @@ module.exports = function (grunt) {
     //grunt.registerTask('server', ['docs', 'connect:gremlinjs', 'watch:docs']);
 
     // the default task, when 'grunt' is executed with no options.
-    grunt.registerTask('default', ['connect:docs', 'watch:docs']);
+    grunt.registerTask('default', ['clean:dist', 'copy:dist', 'connect:docs', 'watch:docs']);
 
 };
 
