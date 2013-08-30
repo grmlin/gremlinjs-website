@@ -78,7 +78,7 @@
 #### 1. Include gremlin.js
 
 ``` html
-<script src="http://grmlin.github.io/gremlinjs-website/build/latest/gremlin.min.js"></script>
+<script src="js/gremlin.min.js"></script>
 ```
 
 #### 2. Add a Gremlin
