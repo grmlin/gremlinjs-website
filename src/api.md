@@ -534,8 +534,8 @@ Pub Sub extension that allows gremlins to interact with each other by dispatchin
    
 To use interests, there must be a gremlin emitting messages and another one that subscribed to these messages.
 
-Dispatching messages is as easy as writing [`gremlin.emit()`](#available-extensions_interests-pubsub_gremlin-emit). Every gremlin
-in the document that [defines an interest](#available-extensions_interests-pubsub_gremlin-interests) for this message, will be informed and a callback gets called. 
+Dispatching messages is as easy as writing [`gremlin.emit()`](#available-extensions_interests-pubsub_gizmo-emit). Every gremlin
+in the document that [defines an interest](#available-extensions_interests-pubsub_gizmo-interests) for this message, will be informed and a callback gets called. 
 
 #### Why do I need this?
 Gremlins are components, self-contained and isolated. But sometimes it's really useful when these components can talk to each other.   
