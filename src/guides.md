@@ -334,6 +334,12 @@ G.add "StripeJunior", StripeJunior
 To inherit a gremlin with Javascript you can use `G.derive()`. It works the same way  as `G.define()` but expects the name of a Gremlin to inherit from as a first parameter.
 -->
 
+## Events
+
+<span class="gremlinjs">gremlin.js</span> dispatches events while processing the document.
+
+See the [api docs](api.html#api-reference_gremlin_gremlin-on) and [example](examples.html#basics_events) for more information.
+
 ## Packages
 
 Sometimes you will feel the need to write code outside of your gremlin definitions and files. <span class="gremlinjs">gremlin.js</span> offers a simple package mechanism you can use without polluting the global namespace.
@@ -365,7 +371,7 @@ G.Package("util.time", {
 
 ### Accessing packages
 
-The new package is now globally available through the `Gremlin.namespace` property. You can also use `Gremlin.ns` if you don't have the time typing all those characters. 
+The new package is now globally available through the `Gremlin.namespace` property. You can also use `Gremlin.ns` if you don't have the time to type all those characters. 
 
 #### Coffeescript
 
@@ -419,7 +425,7 @@ Pub Sub module that allows gremlins to interact with each other by dispatching m
 <script src="gremlin.interests.min.js"></script>
 ```
 
-[Download](https://github.com/grmlin/gremlinjs-interests) at Github, see the [Interests Docs](api.html#available-extensions_interests-pubsub) for details.
+[Download](https://github.com/grmlin/gremlinjs-interests) at Github, see the [Interests Docs](api.html#modules_interests-pubsub) for details.
 
 
 ### Dom Elements
@@ -429,7 +435,7 @@ Module providing element maps "vanilla javascript style".
 <script src="gremlin.domelements.min.js"></script>
 ```
 
-[Download](https://github.com/grmlin/gremlinjs-domelements) at Github, see the [Dom Elements Docs](api.html#available-extensions_domelements) for details.
+[Download](https://github.com/grmlin/gremlinjs-domelements) at Github, see the [Dom Elements Docs](api.html#modules_domelements) for details.
 
 ### jQuery
 jQuery module providing element and event maps.
@@ -438,11 +444,11 @@ jQuery module providing element and event maps.
 <script src="gremlin.jquery.min.js"></script>
 ```
 
-[Download](https://github.com/grmlin/gremlinjs-jquery) at Github, see the [jQuery Docs](api.html#available-extensions_jquery) for details.
+[Download](https://github.com/grmlin/gremlinjs-jquery) at Github, see the [jQuery Docs](api.html#modules_jquery) for details.
 
 ## Building Modules
 
-Building modules is easy. Create an object that implements the [`IModule`](api.html#api-reference_iextension) interface and create a module with `Gremlin.Module`.
+Building modules is easy. Create an object that implements the [`IModule`](api.html#api-reference_imodule) interface and create a module with `Gremlin.Module`.
 
 Each module has to provide two methods, `.bind()` and `.extend()`. The methods won't be called in a special context, use the passed contexts to create one if you need one.
 
@@ -452,20 +458,15 @@ If you're interested what the <span class="gremlinjs">gremlin.js</span> does wit
 
 Binds the module to a specific gremlin instance. Do whatever yout want to do with a gremlins instance in here. 
 
-[API docs](api.html#api-reference_iextension_iextension-bind)
+[API docs](api.html#api-reference_imodule_imodule-bind)
 
 
 ### .extend()
 
-Change and extend the gremlin definition (constructor function, aka. class) in this handler.  
+Change and extend the gremlin definition (constructor function, aka. class) in this handler.
 
-[API docs](api.html#api-reference_iextension_iextension-extend)
+[API docs](api.html#api-reference_imodule_imodule-extend)
 
-## Events
-
-<span class="gremlinjs">gremlin.js</span> dispatches events while processing the document.
-
-See the [api docs](api.html#api-reference_gremlin_gremlin-on) and [example](examples.html#basics_events) for more information.
 # Tools
 
 ## Grunt

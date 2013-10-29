@@ -146,6 +146,20 @@ class Gizmo extends G.Gremlin
 Object providing some useful utility methods.
 References [`Helper`](#api-reference_helper)
 
+### Gremlin.Module
+###### `.Module:`[`Module`](#api-reference_module)
+Module class used to add modules to <span class="gremlinjs">gremlin.js</span>
+References [`Module`](#api-reference_module)
+
+
+### Gremlin.namespace
+
+Object that stores all packages added to <span class="gremlinjs">gremlin.js</span>
+
+### Gremlin.ns
+
+Alias of [`G.namespace`](#api-reference_gremlin_gremlin-namespace)
+
 ### Gremlin.on()
 
 Add an event listener to <span class="gremlinjs">gremlin.js</span>.
@@ -173,20 +187,10 @@ G.on G.ON_GREMLIN_LOADED, (el) ->
 
 [**Open example &raquo;**](examples.html#basics_events)
 
-### Gremlin.registerExtension()
-
-Adds a new extension to <span class="gremlinjs">gremlin.js</span>.
-
-<div class="method-definition"></div>
-
-###### `.registerExtension(Extension)`
-
-- **`Extension`** : Object implementing [`IExtension`](#api-reference_iextension)   
-	[`IExtension`](#api-reference_iextension) does not exist in code and there is no error handling when registring extensions at all. Take care and be sure to provide the necessary methods. 
-
-**Always include your extensions before your gremlin definitions**
-
-[**Open example &raquo;**](examples.html#extensions_building-your-own)
+### Gremlin.Package
+###### `.Package:`[`Package`](#api-reference_package)
+Package class used to add packages to `G.namespace`. 
+References [`Package`](#api-reference_package)
 
 ### .ON_ELEMENT_FOUND
 
@@ -287,6 +291,40 @@ Unique id amongst all gremlin instances.
 
 [**Open example &raquo;**](examples.html#basics_gremlin-properties_unique-identifier)
 
+### Gizmo.include
+
+###### `.include : String|String[]`
+**Optional** static property for a gremlin definition defining the included modules.
+
+Use a single string or an array of strings to include one or more modules
+
+#### Example
+
+``` js
+Gremlin.define('HelloWorld', function () {
+      ...
+    },
+    {
+      ...
+    },
+    {
+        include: "foo"
+    }
+);
+```
+
+``` js
+Gremlin.define('HelloWorld', function () {
+      ...
+    },
+    {
+      ...
+    },
+    {
+        include: ["foo", "bar"]
+    }
+);
+```
 ### Gizmo#klass
 
 ###### `#klass : `[`Gizmo`](#api-reference_gizmo)
@@ -464,33 +502,65 @@ Add some new css styles to your document
 	Gremlin.Helper.addStyleSheet(css);
 ```
 
-## IExtension
-`gremlinDefinitions.IExtension`
+## Module
+`modules.Module`
 
-Interface every extension has to implement.
+A module that can later be used to extend the functionality of gremlin classes.
 
-**This is pseudo code that can't be found in the <span class="gremlinjs">gremlin.js</span> sources. There will be no
-error checking or whatsoever when processing extensions**
+### Module()
+Constructor
 
-### IExtension.bind()
+*You can omit the `new` keyword creating `Module` instances*
 
-Binds the extension to a gremlin instance. Do whatever yout want to do with a gremlins instance in here. 
+<div class="method-definition"></div>
+
+###### `Module(name, obj)`
+
+- **`name`** : String  
+	The name of the module. Will later be used with `include` to add the module to a gremlin
+- **`obj`** : Object  
+    Object describing the module. Has to implement [`IModule`](#api-reference_imodule)   
+    
+Example from the interests module *(some code is missing here...)*
+```js
+"controller code ..."
+
+Gremlin.Module 'interests',
+  extend: (Gremlin) ->
+    Gremlin::emit = (name, data) ->
+      Controller.dispatch name, data
+
+  bind: (gremlinInstance) ->
+    addInterests.call gremlinInstance
+```
+
+## IModule
+`gremlinDefinitions.IModule`
+
+Interface every module has to implement.
+
+**This is pseudo code that can't be found in the <span class="gremlinjs">gremlin.js</span> sources. There will be no bulletproof
+error checking or whatsoever when processing modules**
+
+### IModule.bind()
+
+Will be called to bind the module to a gremlin instance. Do whatever yout want to do with a specific element in here. Event binding for dom elements would be a good example.
 
 <div class="method-definition"></div>
 
 ###### `.bind(gremlin)`
 
 - **`gremlin`** : [Gizmo](#api-reference_gizmo)   
-	The [`Gizmo`](#api-reference_gizmo) instance the extension will be bound to.
+	The [`Gizmo`](#api-reference_gizmo) instance the module will be bound to.
 
-**called for every gremlin element in the document separately**
+**called for every gremlin element including this module in the document separately**
 
 ```js
-Extension.bind = function(gremlin) {
+Module.bind = function(gremlin) {
     gremlin.foo = 'bar';
 };
 ```
-### IExtension.extend()
+### IModule.extend()
 
 Change and extend the gremlin definition (constructor function, aka. class) in this handler.  
 
@@ -502,10 +572,10 @@ Change and extend the gremlin definition (constructor function, aka. class) in t
 
 `extend` is the place where you might want to add static members to the classes or extend their prototypes. 
 
-**called once when adding the extension**
+**called once for every gremlin class including this module**
 
 ```js
-Extension.extend= function(Gremlin) {
+Module.extend= function(Gremlin) {
     Gremlin.foo = 'bar';
     Gremlin.prototype.talk = function(){
         alert(this.klass.foo);
@@ -513,14 +583,36 @@ Extension.extend= function(Gremlin) {
 };
 ```
 
+## Package
+`packages.Package`
 
-# Available Extensions
-<span class="gremlinjs">gremlin.js</span> already provides some useful extensions. Feel free to use them.
+Provides an easy way to add packages to `G.namespace`, without polluting the global namespace.
 
-You'll find them at Github, with the following naming pattern: `gremlinjs-EXTENSION` inside the `dist` directory.
+### Package()
+Constructor
+
+*You can omit the `new` keyword creating `Package` instances*
+
+<div class="method-definition"></div>
+
+###### `Package(namespace, content)`
+
+- **`namespace`** : String  
+	Namespace of the package, will be merged into [`G.namespace`](#api-reference_gremlin_gremlin-namespace)
+- **`content`** : *  
+    Whatever you want to add to the namespace. Objects, functions... 
+
+
+# Modules
+<span class="gremlinjs">gremlin.js</span> already provides some useful modules. Feel free to use them.
+
+You'll find them at Github, with the following naming pattern: `gremlinjs-MODULE` inside the `dist` directory.
 
 ## Interests (PubSub)
-Pub Sub extension that allows gremlins to interact with each other by dispatching messages.
+
+`include: "interests"`
+
+Pub Sub module that allows gremlins to interact with each other by dispatching messages.
 
 ``` html
 <script src="gremlin.interests.min.js"></script>
@@ -552,13 +644,15 @@ and the name of the handler as a value.
 the handler will be correctly bound to the gremlin instance you're currently in.
 
 ``` js
-Gremlin.define("Foo", function () {},
+Gremlin.define("Foo", function () {
+    },
     {
         onFoo: function (data) {
             console.dir(data);
         }
     },
     {
+    	include: 'interests',
         interests: {
             'FOO': 'onFoo'
         }
@@ -579,19 +673,25 @@ Dispatch a new broadcasting message
   Some additional event data that will be passed into the handler defined in the interests object.	
 
 ``` js
-var Holly = Gremlin.define("Bar", function () {
+var Holly = Gremlin.define("Bar", 
+  function () {
     this.emit("FOO", {foo: 'bar'})
-});
+  },
+  {}, 
+  {
+    include: 'interests',
+  });
 ```
 
 ## DomElements
-Extension providing element maps "vanilla javascript style".
+
+`include : "domelements"`
+
+Module providing element maps "vanilla javascript style".
 
 ``` html
 <script src="gremlin.domelements.min.js"></script>
 ```
-
-**Don't use the jquery and dom elements extension at the same time!**
 
 [Download](https://github.com/grmlin/gremlinjs-domelements) at Github
 
@@ -600,7 +700,8 @@ Extension providing element maps "vanilla javascript style".
 ### About dom elements
 Newer browsers come with a very powerful dom element selector engine, [`element.querySelectorAll()`](http://devdocs.io/dom/element.queryselectorall). The `DomElements` extension allows you to define element maps utilizing `querySelectorAll` for gremlins.
 
-**If you want to use DomElements with older browsers, include a `querySelectorAll` shim first!**
+**If you want to use DomElements with older browsers, include a `querySelectorAll` shim first!** 
+
 ### Gizmo.elements 
 
 ###### `.elements:Object`
@@ -623,6 +724,7 @@ Gremlin.define("Foo",
   },
   {},
   {
+    include: "domelements",
     elements: {
       "div.content": "contentEl"
   	}
@@ -630,23 +732,23 @@ Gremlin.define("Foo",
 ```
 
 ## jQuery
-jQuery extension providing element and event maps.
+`include: "jquery"`
+
+jQuery module providing element **and** event maps.
 
 ``` html
 <script src="gremlin.jquery.min.js"></script>
 ```
-
-**Don't use the jquery and dom elements extension at the same time!**
 
 [Download](https://github.com/grmlin/gremlinjs-jquery) at Github
 
 [**Open example &raquo;**](examples.html#extensions_jquery)
 
 ### About jQuery
-Gremlin doesn't require jQuery, but it's used a lot these days. That's why this handy extension is included.
+Gremlin doesn't require jQuery, but it's used a lot these days. That's why this handy extension is provided. *(I use it all the time btw.)*
 Keep the code defining gremlins clean with element and event maps. 
 
-To use the jQuery extension, [download and include it](http://jquery.com/) in your document **before** including <span class="gremlinjs">gremlin.js</span>. Than, the extension provides access to
+To use the jQuery module, [download and include it](http://jquery.com/) in your document **before** including <span class="gremlinjs">gremlin.js</span>. Than, the module provides access to
 
 - **event maps** utilizing jQuery's powerful event delegation 
 - **element maps** defined with jQuery's selector engine 
@@ -678,6 +780,7 @@ Gremlin.define("Foo",
   },
   {},
   {
+    include: "jquery",
     elements: {
       "div.content": "$content"
   	}
@@ -740,6 +843,7 @@ Gremlin.define("Foo",
     }
   },
   {
+    include: "jquery",
     events: {
       "click button": "onClick"
   }
