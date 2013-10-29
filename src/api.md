@@ -192,6 +192,13 @@ G.on G.ON_GREMLIN_LOADED, (el) ->
 Package class used to add packages to `G.namespace`. 
 References [`Package`](#api-reference_package)
 
+Why to use packages you may ask? A problem I often stumble upon is the style some frameworks propagate, the use of plain strings all over the code, not constants/enums. 
+I feel bad every time I do this. Refactoring can get really hard, your IDE won't help you with autocomplete...
+
+Put some constants into an object, store the object as a package, success.
+
+You can use packages to save every sort of code, of course. Classes, whatever.
+
 ### .ON_ELEMENT_FOUND
 
 Event dispatched, if an element with the `data-gremlin` attribute was found in the document.   
