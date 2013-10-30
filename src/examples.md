@@ -171,12 +171,12 @@ G.debug.console.log("Hello World!");
 <p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="280" data-theme-id="543" data-slug-hash="qpmEc" data-user="grmlin" data-default-tab="result" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/qpmEc'>qpmEc</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 
 
-# Extensions
+# Modules
 
 ## Interests
-Pub Sub extension that allows gremlins to interact with each other by dispatching messages.
+Pub Sub module that allows gremlins to interact with each other by dispatching messages.
 
-See the [api docs](api.html#available-extensions_interests-pubsub) for more details.
+See the [api docs](api.html#modules_interests-pubsub) for more details.
 
 In the example below, the gremlin `Chatterbox` dispatches events and the gremlin `Logger` listenes to them. Every time the input of `Chatterbox` contains a text and is submitted, it dispatches the event `"log"`: 
 
@@ -200,7 +200,7 @@ Every time any gremlin dispatches the event `"log"`, the `onLog()` method will b
 
 ## jQuery
 
-The jQuery introduces two new features to every gremlin, [event](api.html#available-extensions_jquery_gremlin-events) and [element](api.html#available-extensions_jquery_gremlin-elements) maps. Additionally, the instance property `$el` references the jQuery object of the gremlin's dom element.
+The jQuery module introduces two new features to every gremlin, [event](api.html#modules_jquery_gizmo-events) and [element](api.html#modules_jquery_gizmo-elements) maps. Additionally, the instance property `$el` references the jQuery object of the gremlin's dom element.
 
 The example uses all of these features.  
 A click handler on the button is added
@@ -249,15 +249,15 @@ see [momentjs](http://momentjs.com/)
 
 ## Building your own
 
-It's easy to add custom extensions to your gremlins, 1) implement the extension and 2) register it.
+It's easy to add modules to your gremlins, 1) implement the module and 2) register it with <span class="gremlinjs">gremlin.js</span>.
 
-Every extension has to provide two methods, `.bind()` and `.extend()`. See [the api docs](api.html#api-reference_iextension) for a more detailed explanation.
+Every extension has to provide two methods, `.bind()` and `.extend()`. See [the api docs](api.html#api-reference_imodule) for a more detailed explanation.
 
 #### .extend()
-The extension below adds a static string `Greeting` to the abstract gremlin class and `talk()` method to the gremlin prototype.
+The module below adds a static string `Greeting` to the gremlin's class and `talk()` method to the gremlin's prototype.
 
 #### .bind()
-Furthermore, the extension assigns an instance property for every gremlin instance, `#contentId`, a unique id incremented by the extension itself.
+Furthermore, the module assigns an instance property for every gremlin instance, `#contentId`, a unique id incremented by the module itself.
 
 <p data-gremlin="Codepen" data-gremlin-lazy="true" data-height="318" data-theme-id="543" data-slug-hash="svboK" data-user="grmlin" data-default-tab="js" class='codepen-lazy'>See the Pen <a href='http://codepen.io/grmlin/pen/svboK'><span class="gremlinjs">gremlin.js</span> - Custom extension (CS)</a> by Andreas (<a href='http://codepen.io/grmlin'>@grmlin</a>) on <a href='http://codepen.io'>CodePen</a></p>
 

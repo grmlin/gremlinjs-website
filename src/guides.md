@@ -334,77 +334,139 @@ G.add "StripeJunior", StripeJunior
 To inherit a gremlin with Javascript you can use `G.derive()`. It works the same way  as `G.define()` but expects the name of a Gremlin to inherit from as a first parameter.
 -->
 
-# Extend GremlinJS
-
-GremlinJS is highly extensible and allows you to add functionality to all of your gremlins at once.  
-
-You want to use a template engine like handlebars in your gremlins but don't want to add the code multiple times? Write an extension for it.
-
-## Using Extensions
-
-To use an extension make sure, that you include the extension before any gremlin. Once you've added an extension, it's automatically available to all of your gremlins.
-
-Some extensions are exist for GremlinJS, if you meet the requirements, feel free to use them.
-
-### Interests (PubSub)
-Pub Sub extension that allows gremlins to interact with each other by dispatching messages.
-
-``` html
-<script src="gremlin.interests.min.js"></script>
-```
-
-[Download](https://github.com/grmlin/gremlinjs-interests) at Github, see the [Interests Docs](api.html#available-extensions_interests-pubsub) for details.
-
-
-### Dom Elements
-Extension providing element maps "vanilla javascript style".
-
-**Don't use the jquery and dom elements extension at the same time!**
-
-``` html
-<script src="gremlin.domelements.min.js"></script>
-```
-
-[Download](https://github.com/grmlin/gremlinjs-domelements) at Github, see the [Dom Elements Docs](api.html#available-extensions_domelements) for details.
-
-### jQuery
-jQuery extension providing element and event maps.
-
-**Don't use the jquery and dom elements extension at the same time!**
-
-``` html
-<script src="gremlin.jquery.min.js"></script>
-```
-
-[Download](https://github.com/grmlin/gremlinjs-jquery) at Github, see the [jQuery Docs](api.html#available-extensions_jquery) for details.
-
-## Building Extensions
-
-Building extensions is easy. Create an object that implements the [`IExtension`](api.html#api-reference_iextension) interface and register the extension.
-
-Each extension has to provide two methods, `.bind()` and `.extend()`. Extensions won't be instantiated or called in a special context, extending <span class="gremlinjs">gremlin.js</span> in a meaningful way is your task.
-If you created the extension add it with `G.registerExtension()`.
-
-If you're interested what the <span class="gremlinjs">gremlin.js</span> does with the included extension, read the code of the extension already available for <span class="gremlinjs">gremlin.js</span>.
-
-### .bind()
-
-Binds the extension to a gremlin instance. Do whatever yout want to do with a gremlins instance in here. 
-
-[API docs](api.html#api-reference_iextension_iextension-bind)
-
-
-### .extend()
-
-Change and extend the gremlin definition (constructor function, aka. class) in this handler.  
-
-[API docs](api.html#api-reference_iextension_iextension-extend)
-
 ## Events
 
 <span class="gremlinjs">gremlin.js</span> dispatches events while processing the document.
 
 See the [api docs](api.html#api-reference_gremlin_gremlin-on) and [example](examples.html#basics_events) for more information.
+
+## Packages
+
+Sometimes you will feel the need to write code outside of your gremlin definitions and files. <span class="gremlinjs">gremlin.js</span> offers a simple package mechanism you can use without polluting the global namespace.
+
+
+
+### Creating packages
+
+Create a package with [`Gremlin.Package`](api.html#)
+
+#### Coffeescript
+
+``` js
+G.Package "util.time", 
+	getTime: ->
+    	(new Date()).getTime()
+```
+
+
+#### Javascript
+
+``` js
+G.Package("util.time", {
+	getTime: function() {
+    	return (new Date()).getTime()
+    }
+});
+```
+
+### Accessing packages
+
+The new package is now globally available through the `Gremlin.namespace` property. You can also use `Gremlin.ns` if you don't have the time to type all those characters. 
+
+#### Coffeescript
+
+``` js
+class Foo extends G.Gizmo
+	constructor : ->
+    	super
+        console.log G.namespace.util.time.getTime()
+    
+```
+
+# Modules
+
+GremlinJS is highly extensible and allows you to add functionality to all of your gremlins at once with modules.  
+
+You want to use a template engine like handlebars in your gremlins but don't want to add the code multiple times? Write a module for it.
+
+## Using Modules
+
+To use a module make sure, that you include the module before any gremlin. Once you've added a module, you can use the static `include` property of a gremlin definition to include modules in this class.
+
+Include no, one or more modules.
+
+#### Coffeescript
+
+``` js
+class Foo extends G.Gizmo
+  @include : ['jquery', 'interests']
+  
+  ...
+  
+class Bar extends G.Gizmo
+  @include : 'jquery'
+  
+  ...
+  
+class Baz extends G.Gizmo
+  # nothing here ;)
+  
+  ...
+  
+```
+
+
+Some modules already exist for GremlinJS, feel free to use them.
+
+### Interests (PubSub)
+Pub Sub module that allows gremlins to interact with each other by dispatching messages.
+
+``` html
+<script src="gremlin.interests.min.js"></script>
+```
+
+[Download](https://github.com/grmlin/gremlinjs-interests) at Github, see the [Interests Docs](api.html#modules_interests-pubsub) for details.
+
+
+### Dom Elements
+Module providing element maps "vanilla javascript style".
+
+``` html
+<script src="gremlin.domelements.min.js"></script>
+```
+
+[Download](https://github.com/grmlin/gremlinjs-domelements) at Github, see the [Dom Elements Docs](api.html#modules_domelements) for details.
+
+### jQuery
+jQuery module providing element and event maps.
+
+``` html
+<script src="gremlin.jquery.min.js"></script>
+```
+
+[Download](https://github.com/grmlin/gremlinjs-jquery) at Github, see the [jQuery Docs](api.html#modules_jquery) for details.
+
+## Building Modules
+
+Building modules is easy. Create an object that implements the [`IModule`](api.html#api-reference_imodule) interface and create a module with `Gremlin.Module`.
+
+Each module has to provide two methods, `.bind()` and `.extend()`. The methods won't be called in a special context, use the passed contexts to create one if you need one.
+
+If you're interested what the <span class="gremlinjs">gremlin.js</span> does with the included extension, read the code of the extension already available for <span class="gremlinjs">gremlin.js</span>.
+
+### .bind()
+
+Binds the module to a specific gremlin instance. Do whatever yout want to do with a gremlins instance in here. 
+
+[API docs](api.html#api-reference_imodule_imodule-bind)
+
+
+### .extend()
+
+Change and extend the gremlin definition (constructor function, aka. class) in this handler.
+
+[API docs](api.html#api-reference_imodule_imodule-extend)
+
 # Tools
 
 ## Grunt

@@ -367,6 +367,7 @@ a:focus {
 .content h3 a {
     display: inline-block;
     margin-left: 5px;
+    opacity: 0.5;
 }
 
 .content h3 + div > iframe,

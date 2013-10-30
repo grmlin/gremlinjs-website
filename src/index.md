@@ -53,11 +53,10 @@
         </p>
     </div>
     <div class="span5">
-        <h3>Extensions</h3>
+        <h3>Modules and packages</h3>
 
         <p>
-            Extend <span class="gremlinjs">gremlin.js</span> by yourself or use the existing AMD, PubSub, jQuery and domElements
-            extensions.
+            Extend <span class="gremlinjs">gremlin.js</span> with modules by yourself or use the existing AMD, PubSub, jQuery and domElements modules. Use namespaced packages for shared code.
         </p>
     </div>
 </div>
