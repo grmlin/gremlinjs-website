@@ -16,7 +16,7 @@ Access the public api via `window.Gremlin`, `window.G` or asynchronously with an
 
 ### Gremlin.add()
 
-Adds a gremlin class to <span class="gremlinjs">gremlin.js</span> that later will be used to activate [elements](https://developer.mozilla.org/en-US/docs/Web/API/element) in the document for this gremlin.
+Adds a gremlin class to <span class="gremlinjs">gremlin.js</span> that later will be used to activate [elements](http://devdocs.io/dom/element) in the document for this gremlin.
 
 `Gremlin.add()` is primarily used with CoffeeScript, as there is no need to use `Gremlin.define()`
 
@@ -129,7 +129,7 @@ For a basic gremlin add some HTML markup and create a Gremlin called `HelloWorld
 ### Gremlin.Gizmo
 
 Reference of [`Gizmo`](#api-reference_gizmo).  
-Extend `Gremlin.Gremlin` when creating Gremlin classes with CoffeeScript.
+Extend `G.Gizmo` when creating Gremlin classes with CoffeeScript.
 
 
 ``` js
@@ -143,13 +143,15 @@ class Gizmo extends G.Gremlin
 
 ### Gremlin.Helper
 ###### `.Helper:`[`Helper`](#api-reference_helper)
-Object providing some useful utility methods.
+Object providing some useful utility methods.  
 References [`Helper`](#api-reference_helper)
 
 ### Gremlin.Module
 ###### `.Module:`[`Module`](#api-reference_module)
-Module class used to add modules to <span class="gremlinjs">gremlin.js</span>
+Module class used to add modules to <span class="gremlinjs">gremlin.js</span>.  
 References [`Module`](#api-reference_module)
+
+Modules bake functionality into Gremlin classes, without touching them directly, or inheriting Base/Abstract Gremlins. The available modules should show you what this is good for.
 
 
 ### Gremlin.namespace
@@ -627,7 +629,7 @@ Pub Sub module that allows gremlins to interact with each other by dispatching m
 
 [Download](https://github.com/grmlin/gremlinjs-interests) at Github
 
-[**Open example &raquo;**](examples.html#extensions_interests)
+[**Open example &raquo;**](examples.html#modules_interests)
 
 ### About Interests
    
@@ -702,7 +704,7 @@ Module providing element maps "vanilla javascript style".
 
 [Download](https://github.com/grmlin/gremlinjs-domelements) at Github
 
-[**Open example &raquo;**](examples.html#extensions_domelements)
+[**Open example &raquo;**](examples.html#modules_domelements)
 
 ### About dom elements
 Newer browsers come with a very powerful dom element selector engine, [`element.querySelectorAll()`](http://devdocs.io/dom/element.queryselectorall). The `DomElements` extension allows you to define element maps utilizing `querySelectorAll` for gremlins.
@@ -749,7 +751,7 @@ jQuery module providing element **and** event maps.
 
 [Download](https://github.com/grmlin/gremlinjs-jquery) at Github
 
-[**Open example &raquo;**](examples.html#extensions_jquery)
+[**Open example &raquo;**](examples.html#modules_jquery)
 
 ### About jQuery
 Gremlin doesn't require jQuery, but it's used a lot these days. That's why this handy extension is provided. *(I use it all the time btw.)*
