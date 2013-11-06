@@ -340,13 +340,13 @@ To inherit a gremlin with Javascript you can use `G.derive()`. It works the same
 
 See the [api docs](api.html#api-reference_gremlin_gremlin-on) and [example](examples.html#basics_events) for more information.
 
-## Packages
+## Package management
 
 Sometimes you will feel the need to write code outside of your gremlin definitions and files. <span class="gremlinjs">gremlin.js</span> offers a simple package mechanism you can use without polluting the global namespace.
 
 
 
-### Creating packages
+### Create packages
 
 Create a package with [`Gremlin.Package`](api.html#)
 
@@ -369,17 +369,22 @@ G.Package("util.time", {
 });
 ```
 
-### Accessing packages
+### Require packages
 
-The new package is now globally available through the `Gremlin.namespace` property. You can also use `Gremlin.ns` if you don't have the time to type all those characters. 
+The new package is now globally available through the `Gremlin.namespace` property. You can also use `Gremlin.ns` if you don't have the time to type all those characters.  
+If you like the `require` syntax you can also use `G.require()` to require packages.
 
 #### Coffeescript
 
 ``` js
+time = G.require "util.time"
+
 class Foo extends G.Gizmo
 	constructor : ->
     	super
         console.log G.namespace.util.time.getTime()
+        console.log G.ns.util.time.getTime()
+        console.log time.getTime()
     
 ```
 

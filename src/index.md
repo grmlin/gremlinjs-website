@@ -1,5 +1,5 @@
 <div class="lead">
-    <span class="gremlinjs">gremlin.js</span>, a dependency-free library to build <abbr title="aka: Gremlins">Javascript components</abbr>.
+    <span class="gremlinjs">gremlin.js</span>, a dependency-free library to build <abbr title="aka: Gremlins">Javascript components</abbr> for all your websites.
 </div>
 <hr/>
 <div class="row">
@@ -53,10 +53,10 @@
         </p>
     </div>
     <div class="span5">
-        <h3>Modules and packages</h3>
+        <h3>Modules and Package Management</h3>
 
         <p>
-            Extend <span class="gremlinjs">gremlin.js</span> with modules by yourself or use the existing AMD, PubSub, jQuery and domElements modules. Use namespaced packages for shared code.
+            Extend <span class="gremlinjs">gremlin.js</span> with modules you create or use the existing AMD, PubSub, jQuery and domElements modules. <br> Organize your code with namespaced packages.
         </p>
     </div>
 </div>

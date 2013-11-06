@@ -201,6 +201,34 @@ Put some constants into an object, store the object as a package, success.
 
 You can use packages to save every sort of code, of course. Classes, whatever.
 
+
+
+``` js
+G.Package "util.time", 
+	getTime: -> (new Date()).getTime()
+```
+
+
+### Gremlin.require
+Access a package defined with `G.Package`
+
+<div class="method-definition"></div>
+
+###### `.require(namespace): *`
+
+**returns the package**
+
+- **`namespace`** : String    
+	The package namespace
+
+
+
+``` js
+time = G.require "util.time"
+console.log time.getTime()
+```
+
+
 ### .ON_ELEMENT_FOUND
 
 Event dispatched, if an element with the `data-gremlin` attribute was found in the document.   
