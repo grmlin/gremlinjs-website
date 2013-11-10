@@ -100,39 +100,41 @@ If you know what you're doing, you can of cause do all the work by yourself. Rea
 
 ### Javascript 
 With vanilla Javascript, the CoffeeScript syntax sugar isn't available, of course.   
-If you don't want to implement the class mechanics with Javascript by yourself, you can write  Gremlin definitions with [`G.define()`](api.html#api-reference_gremlin_gremlin-define). This method will create constructor functions aka classes for you which are inherited from the abstract gremlin behind the scenes.
+If you don't want to implement the class mechanics with Javascript by yourself, you can write  Gremlin definitions with [`Gizmo.extend()`](api.html#api-reference_gizmo_gizmo-extend). This method will create constructor functions aka classes for you which are inherited from the abstract gremlin behind the scenes.
 
 <div class="method-definition"></div>
 
-###### `G.define(name, constructor [, instanceMembers] [, staticMembers]):`[`Gizmo`](api.html#api-reference_gizmo)
+###### `Gizmo.extend(constructor [, instanceMembers] [, staticMembers]):`[`Gizmo`](api.html#api-reference_gizmo)
 
 returns a Gremlin class (constructor function) that is later used to instantiate the gremlins found in the document
-
-- **`name`** : String    
-	A unique String used to reference the new Gremlin, the gremlin's name. Use this name in the `data-gremlin` attribute of a dom element to select the gremlin.
 
 - **`constructor`** : Function    
 	The constructor function being called every time a gremlin with `name` was found in the dom and gets instantiated.   
 	`this` inside the constructor refers to the instance of `Gremlin`
 
 - **`instanceMembers`** : Object *optional*  
-	All instance members of this class as an object literal. Will be mixed into the `prototype` of the gremlin (the constructor function returned by `G.define`).
+	All instance members of this class as an object literal. Will be mixed into the `prototype` of the gremlin you are extending
 
 - **`staticMembers`** : Object *optional*   
-	All static members of this class as an object literal. <br> To access static members from inside gremlin instances, `G.klass` references the original constructor function.
+	All static members of this class as an object literal. <br> To access static members from inside gremlin instances, `Gizmo#constructor` references the original constructor function.
 
 
-So *Gizmo* from above written with `G.define()` would look like this:
+So *Stripe* from above written with `Gizmo.extend()` would look like this:
 
 ``` js
-G.define('Stripe', function () {
+var Stripe = G.Gizmo.extend(function () {
   alert("Hello World!");
 });
 ```
 
-### G.define() in detail
-Learn how to use [`G.define(name, constructor [, instanceMembers] [, staticMembers])`](api.html#api-reference_gremlin_gremlin-define) in detail below.
+Adding the new class to <span class="gremlinjs">gremlin.js</span> is the same as before.
 
+``` js
+G.add('Stripe', Stripe);
+```
+
+### G.add() in detail
+Learn how to use [`G.add(name, Gizmo`](api.html#api-reference_gremlin_gremlin-add) to register your gremlin classes in detail below.
 
 #### `name`
 The name identifies your gremlin and is essential. The name links the dom element with the definitions you provide.
@@ -143,17 +145,26 @@ If you add a gremlin with the name `Foo` to an element as in
 ```
 a gremlin has to be defined with this name in order to make it work.
 ``` js
-G.define("Foo", ...);
+G.add("Foo", ...);
 ```
 
 If a gremlin definition with this name is missing, or you forgot to add a name, the developer tool's console will tell you. Furthermore <span class="gremlinjs">gremlin.js</span> comes with a [debug mode](api.html#api-reference_gremlin_gremlin-debug), that helps you to find working and defect gremlins in the document.
+
+#### `Gizmo`
+The class you created by extending `G.Gizmo` in Coffeescript or calling `Gizmo.extend`
+
+### Gizmo.extend() in detail
+Learn how to use [`Gizmo.extend(constructor [, instanceMembers] [, staticMembers])`](api.html#api-reference_gizmo_gizmo-extend) in detail below.
+
+
+
 
 #### `constructor`
 The constructor function will be called for all gremlin elements in the dom matching the `name`. The constructor function is called after all the default properties were added to the gremlin and with all extensions bound.  
 Within the constructor `this` points to the gremlin instance which gives access to all properties added by <span class="gremlinjs">gremlin.js</span>, the available extensions and yourself (by providing the instance and static properties objects).
 
 ``` js
-G.define("Foo", function() {
+G.Gizmo.extend(function() {
 	console.log(this.id); // logs the unique id of the gremlin
 });
 ```
@@ -166,7 +177,7 @@ That's why all methods and properties are accessible through the gremlin instanc
 
 
 ``` js
-G.define("Foo", function() {
+G.Gizmo.extend(function() {
 	this.logId();	
   },
   {
@@ -181,15 +192,15 @@ G.define("Foo", function() {
 The static properties parameter has to be an object, too. This time, all methods and members are added to the Gremlin class itself.  
 Static properties are really useful if you have to define properties that don't have to clutter the gremlin's prototype, eg string constants. 
 
-To access static properties, use the [`Gizmo#klass`](api.html#api-reference_gizmo_gizmo-klass) member, reflecting the class.
+To access static properties, use the [`Gizmo#constructor`](api.html#api-reference_gizmo_gizmo-constructor) member, reflecting the class.
 
 ``` js
-G.define("Foo", function() {
+G.Gizmo.extend(function() {
 	this.logId();	
   },
   {
 	logId: function() {
-	  console.log(this.klass.GREETING + this.id); // logs "Hello, I'm the gremlin #ID"
+	  console.log(this.constructor.GREETING + this.id); // logs "Hello, I'm the gremlin #ID"
 	}	
   },
   {
@@ -197,6 +208,7 @@ G.define("Foo", function() {
   }
 );
 ```
+
 ## Detecting Gremlins
 You are adding some `data-gremlin` attributes to dom elements and create Javascript functions defining them. How will GremlinJS associate and instantiate them, what do you have to do?
 
@@ -226,9 +238,9 @@ GremlinJS uses the [`animationstart`](http://devdocs.io/dom_events/animationstar
 **It will break the auto detection of GremlinJS**
  
 ## The Gremlin
-When you define gremlins with [`G.define()`](api.html#api-reference_gremlin_gremlin-define), GremlinJS creates a Javascript constructor function that later will be instantiated with `new` for every gremlin element found in the document.
-This class inherits from an abstract gremlin class [Gizmo](api.html#api-reference_gizmo). All it's properties, all the properties added by extensions and all the properties you define are available in every instance of this gremlin type.
-The same applies to classes added with `G.add()`.
+When you create gremlin classes with [`Gizmo.extend()`](api.html#api-reference_gizmo_gizmo-extend), GremlinJS creates a Javascript constructor function that later will be instantiated with `new` for every gremlin element found in the document.
+This class inherits from the abstract gremlin class [Gizmo](api.html#api-reference_gizmo). All it's properties, all the properties added by extensions and all the properties you define are available in every instance of this gremlin type.
+This is the same for extending gremlin classes with coffeescript, of course!
 
 ### Inherited properties
 Every class properly created will add some useful members to every gremlin instance.
@@ -252,11 +264,11 @@ this.el.innerHTML = "Hello World!";
 
 Unique id amongst all gremlin instances.
 
-#### Gizmo#klass
+#### Gizmo#constructor
 
-Reflects the class of the instance (something that Javascript doesn't). 
+Reflects the class of the instance (something that Javascript doesn't do innately).
 
-Especially handy, when you define static gremlin members with [`G.define()`](api.html#api-reference_gremlin_gremlin-define) and want to access them from inside an instance.
+Can be handy when you define static gremlin members and want to access them from inside an instance.
 
 ``` js
 G.define('HelloWorld', function () {
@@ -264,7 +276,7 @@ G.define('HelloWorld', function () {
     },
     {
         talk: function () {
-            this.el.innerHTML = this.klass.GREETING;
+            this.el.innerHTML = this.constructor.GREETING;
         }
     },
     {
@@ -275,7 +287,7 @@ G.define('HelloWorld', function () {
 
 ### Add Options
 
-With a modular approach like GremlinJS, there will always be the need to add some configuration to your components.   
+With a modular approach like <span class="gremlinjs">gremlin.js</span>, there will always be the need to add some configuration to your components.   
 GremlinJS fulfills this desire by parsing data-attributes similar to jQuery. GremlinJS adds a `data`-property to every instance providing the values of the attributes.  See [`Gizmo#data`](api.html#api-reference_gizmo_gizmo-data) for details.
 
 Think of a slideshow gremlin like the one on the front page, that should have a configurable slideshow interval in milliseconds.
@@ -312,27 +324,36 @@ GremlinJS uses [`element.getBoundingClientRect`](http://devdocs.io/dom/element.g
 
 #### CoffeeScript
 
-To inherit an existing gremlin, extend it, call `super` in the constructor and add it.
+With Coffeescript things are easy again. All you have to do is extending the Gremlin you already created.
 
 ``` js
-class Stripe extends G.Gizmo
-	constructor: ->
-		super
-
-class StripeJunior extends Stripe
+class Parent extends G.Gizmo
   constructor : ->
-    super
-    alert "Hello World!"
+    super	
+  foo: 'bar' 
 
-G.add "Stripe", Stripe
-G.add "StripeJunior", StripeJunior
+class Child extends Parent
+  constructor: ->
+    super
+    console.log @foo   # logs 'bar'
 ```
 
 #### Javascript
-*coming soon*
-<!--
-To inherit a gremlin with Javascript you can use `G.derive()`. It works the same way  as `G.define()` but expects the name of a Gremlin to inherit from as a first parameter.
--->
+With Javascript you have to use `.extend()` on the class you want to inherit from. 
+
+``` js
+var Parent = G.Gizmo.extend(function(){},
+  {
+	foo: 'bar'
+  }
+);
+
+var Child = Parent.extend(function(){
+	console.log(this.foo); // logs 'bar'
+});
+```
+
+**Javascript inheritence is done with Coffeescript behind the curtain. So all static members will be inherited, too!**
 
 ## Events
 
@@ -371,26 +392,22 @@ G.Package("util.time", {
 
 ### Require packages
 
-The new package is now globally available through the `Gremlin.namespace` property. You can also use `Gremlin.ns` if you don't have the time to type all those characters.  
-If you like the `require` syntax you can also use `G.require()` to require packages.
+The new package can now be accessed with `G.Package.require()`.
 
 #### Coffeescript
 
 ``` js
-time = G.require "util.time"
+time = G.Package.require "util.time"
 
 class Foo extends G.Gizmo
 	constructor : ->
     	super
-        console.log G.namespace.util.time.getTime()
-        console.log G.ns.util.time.getTime()
         console.log time.getTime()
-    
 ```
 
 # Modules
 
-GremlinJS is highly extensible and allows you to add functionality to all of your gremlins at once with modules.  
+GremlinJS is highly extensible and allows you to add functionality to all of your gremlins at once with modules.
 
 You want to use a template engine like handlebars in your gremlins but don't want to add the code multiple times? Write a module for it.
 
