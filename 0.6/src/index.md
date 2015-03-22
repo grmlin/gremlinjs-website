@@ -1,7 +1,35 @@
 <div class="lead">
-    <span class="gremlinjs">gremlin.js</span>, a dependency-free library to build <abbr title="aka: Gremlins">Javascript components</abbr> for all your websites.
+    <span class="gremlinjs">gremlin.js</span>, a dependency-free library to build <abbr title="aka: Gremlins">web components</abbr> for all your websites.
 </div>
+
+<span class="gremlinjs">GREMLIN.JS</span> is a library to build web components. Web components for boringly normal websites. Webapps 
+are not for everyone and everything, but modular and well organized code is.
+
 <hr/>
+
+**Add the element to the dom**
+
+``` html
+<hello-gremlin>
+  <p data-content></p>
+</hello-gremlin>
+```
+
+**Add the spec for it**
+
+``` javascript
+var gremlins = require('gremlins');
+gremlins.create({
+  name: 'hello'
+  initialize: function(){
+    this.el.querySelector('[data-content]').textContent = 'Hello World!';
+  }
+});
+```
+
+That's all. The components are found and instantiated automatically if they enter the dom.
+
+
 <div class="row">
     <div class="span5">
         <h3>Tasty Vanilla</h3>
@@ -17,9 +45,9 @@
         <h3>Modular</h3>
 
         <p>
-            Gremlins are modular pieces of code describing the behaviour of dom
-            elements.
-            Fight the unorganized code masses, <span class="gremlinjs">gremlin.js</span> does the dirty work.
+            Gremlins are modular pieces of code describing the behaviour of custom dom
+            elements. <br>
+            It's simple in it's core and can easily extended with mixins
         </p>
     </div>
 </div>
@@ -28,10 +56,8 @@
         <h3>Fast and Lightweight</h3>
 
         <p>
-            <span class="gremlinjs">gremlin.js</span> was build with performance in mind. Using hundreds of inefficient dom
-            selectors is slow. <span class="gremlinjs">gremlin.js</span> uses <strong>a single</strong> dom query to find elements
-            in
-            the document that should be enhanced with Javascript
+            <span class="gremlinjs">gremlin.js</span> is build for the future and uses custom dom elements.
+            All you need is a polyfill for older browsers, that is already included. 
         </p>
     </div>
     <div class="span5">
@@ -39,26 +65,12 @@
 
         <p>
             <span class="gremlinjs">gremlin.js</span> is well documented and works completely autonomous. Concentrate on
-            implementing dom behaviour and don't get lost in meta tasks anymore.
+            implementing dom behaviour and don't get lost in meta tasks.
         </p>
     </div>
 </div>
 <div class="row">
-    <div class="span5">
-        <h3>Lazy Loading</h3>
-
-        <p>
-            Want to add lots of cpu intensive components to the document? Load the components when
-            entering the viewport and minimize the load times of a site.
-        </p>
-    </div>
-    <div class="span5">
-        <h3>Modules and Package Management</h3>
-
-        <p>
-            Extend <span class="gremlinjs">gremlin.js</span> with modules you create or use the existing AMD, PubSub, jQuery and domElements modules. <br> Organize your code with namespaced packages.
-        </p>
-    </div>
+    
 </div>
 <div class="clear"></div>
 
