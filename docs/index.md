@@ -1,3 +1,5 @@
+no_nav: true
+
 # GREMLIN.JS <small>dead simple web components</small>
 
 <div class="lead">
