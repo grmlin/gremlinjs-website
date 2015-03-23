@@ -1,5 +1,12 @@
 no_nav: true
 
+<div class="text-center">
+    <p>
+        <br><br>
+        <img alt="logo" src="./img/logo.png">
+    </p>
+</div>
+
 # GREMLIN.JS <small>dead simple web components</small>
 
 <div class="lead">
@@ -22,7 +29,7 @@ websites. Webapps are not for everyone and everything, but modular and well orga
 
 ``` javascript
 gremlins.create({
-  name: 'hello'
+  name: 'hello',
   initialize: function(){
     this.el.querySelector('[data-content]').textContent = 'Hello World!';
   }
@@ -31,7 +38,20 @@ gremlins.create({
 
 **done**
 
-That's all. The components are found and instantiated automatically if they enter the dom.
+<div class="well well-sm">
+    <hello-gremlin>
+      <span data-content></span>
+    </hello-gremlin>
+</div>
+
+<script>
+gremlins.create({
+  name: 'hello',
+  initialize: function(){
+    this.el.querySelector('[data-content]').textContent = 'Hello World!';
+  }
+});
+</script>
 
 ## Installation
 
