@@ -1,4 +1,4 @@
-## gremlins
+## GREMLINS
 The main entry point creating gremlin components
 
 ### create
@@ -26,7 +26,7 @@ gremlins.create({
 
 <br><br><br>
 
-## Gremlin component specification
+## COMPONENT SPECIFICATIONS
 
 ### name
 
@@ -82,8 +82,21 @@ gremlins.create({
 
 `object mixins` 
 
-An object, or an array of objects, used as mixin(s). This way it's easy to extend you're components capabilities in a modular way.  
-If you're mixins and componenet use the same method names, they will be decorated and called in the order they were added to the spec.
+An object, or an array of objects, used as mixin(s). This way it's easy to extend you're components capabilities in a 
+modular way.  
+
+
+```js
+var gremlinsJquery = require('gremlins-jquery');
+
+gremlins.create({
+  mixins: [gremlinsJquery],
+  name: 'foo', 
+  initialize: function(){
+    this.$el.text('Hello Foo');
+  }
+});
+```
 
 ### initialize() 
 
@@ -97,3 +110,29 @@ constructor function called for all instances on creation
 
 called, when the element leaves the dom. Can be used to unbind event handlers and such
 
+
+## MIXINS / MODULES
+
+Mixins are an easy way to share component behaviour between components.   
+Mixins are simple javascript object literals extending the components prototype. If a mixin and a component or another 
+mixin use the same method names, they will be decorated and called in the order they were added to the spec.
+
+<div class="text-right"><span class="label label-primary">mixin</span></div>
+```js
+var gremlinsJquery = {
+  initialize: function(){
+    this.$el = $(this.el);
+  }
+}
+```
+
+<div class="text-right"><span class="label label-primary">specification</span></div>
+```js
+gremlins.create({
+  mixins: [gremlinsJquery],
+  name: 'foo', 
+  initialize: function(){
+    this.$el.text('Hello Foo');
+  }
+});
+```

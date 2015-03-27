@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Andreas Wehr">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Learn - GREMLIN.JS - GREMLIN.JS</title>
+
+        <link href="../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../css/highlight/github.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script src="../js/base.js"></script>
+        <script src="../js/gremlins.js"></script>
+
+        
+    </head>
+
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">GREMLIN.JS</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">Learn</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../api">Documentation</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="..">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../api">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/grmlin/gremlins">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+        <div class="container">
+
+        
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#custom-elements">Custom Elements</a></li>
+        
+            <li><a href="#browser-support">Browser support</a></li>
+        
+    
+        <li class="main "><a href="#creating-components">Creating components</a></li>
+        
+            <li><a href="#the-spec">The spec</a></li>
+        
+            <li><a href="#the-custom-element">The custom element</a></li>
+        
+    
+        <li class="main "><a href="#using-mixins">Using mixins</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h2 id="custom-elements">Custom Elements</h2>
+<p>Custom elements are a great way to add some custom behaviour to dom elements, in a reusable and modular manner. 
+GREMLIN.JS offers a simple interface to create and describe these custom elements.</p>
+<h3 id="browser-support">Browser support</h3>
+<p>Creating custom elements with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/registerElement"><code>document.registerElement</code></a>
+is supported in modern Chrome, Firefox and Opera. For older browser there exists a small 
+<a href="https://github.com/WebReflection/document-register-element">polyfill</a>, that's already included in GREMLIN.JS. If you 
+need support for IE8, you'll have to include another script available at the 
+<a href="https://github.com/WebReflection/document-register-element">polyfills repository</a>.</p>
+<p><br></p>
+<h2 id="creating-components">Creating components</h2>
+<h3 id="the-spec">The spec</h3>
+<p>Every gremlin component is described with a <a href="../api#component-specifications">component specification</a>, an object literal providing methods, properties and an optional 
+constructor function <code>initialize</code>.</p>
+<p>You'll add the spec to GREMLIN.JS by calling the <a href="../api#create"><code>gremlins.create</code></a> function.</p>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String <code>name</code></td>
+<td><strong>required</strong>, the unique name of this component</td>
+</tr>
+<tr>
+<td>Function <code>initialize</code></td>
+<td>will be called for all elements found in the site and added to the dom</td>
+</tr>
+<tr>
+<td>HTMLElement <code>el</code></td>
+<td>is a reference to the dom element and added for you by GREMLIN.JS</td>
+</tr>
+<tr>
+<td>Function <code>create</code></td>
+<td><strong>readonly</strong> gremlin inheritance can't be overwritten.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="js">var gremlins = require('gremlins');
+
+gremlins.create({
+  name: 'foo',
+  initialize: function(){
+    console.log('a new foo is in town!', this.el);
+  }
+});
+</code></pre>
+
+<p><br></p>
+<h3 id="the-custom-element">The custom element</h3>
+<p>When you created a spec, you can use the corresponding custom element to add gremlin components to your site. In fact,
+it does not matter if you create the spec first, specs can be added after the element exists in the dom.</p>
+<p>The custom element's (tag) name is created with the <code>name</code> property of the gremlin's  spec as the first part.</p>
+<p><code>&lt;[name]-gremlin /&gt;</code></p>
+<p>So the spec </p>
+<pre><code class="js">gremlins.create({
+  name: 'foo'
+)};
+</code></pre>
+
+<p>would be used for all</p>
+<pre><code class="html">&lt;foo-gremlin&gt;...&lt;/foo-gremlin&gt;
+</code></pre>
+
+<p>elements.</p>
+<p><br></p>
+<h4 id="but-i-dont-like-these-tag-names">But I don't like these tag names</h4>
+<p><a href="http://w3c.github.io/webcomponents/spec/custom/#concepts">Some theory first</a>:</p>
+<blockquote>
+<p>The custom element type identifies a custom element interface and is a sequence of characters that must match the NCName production, must contain a U+002D HYPHEN-MINUS character, and must not contain any uppercase ASCII letters.
+ The custom element type must not be one of the following values:</p>
+<ul>
+<li>annotation-xml</li>
+<li>color-profile</li>
+<li>font-face</li>
+<li>font-face-src</li>
+<li>font-face-uri</li>
+<li>font-face-format</li>
+<li>font-face-name</li>
+<li>missing-glyph</li>
+</ul>
+</blockquote>
+<p><strong>works: </strong><br />
+<code>&lt;foo-bar /&gt;</code> or <code>&lt;my-tag /&gt;</code> </p>
+<p><strong>throws an exception: </strong><br />
+<code>&lt;foo /&gt;</code>, <code>&lt;foo_bar /&gt;</code> or <code>&lt;fooBar /&gt;</code>  </p>
+<hr />
+<p>If you keep these restrictions in mind, feel free to use the <a href="../api#tagname"><code>tagName</code></a> property in the components spec to overwrite the
+default behaviour and use tag names you like.</p>
+<p>So the spec </p>
+<pre><code class="js">gremlins.create({
+  name: 'foo',
+  tagName: 'my-foo'
+)};
+</code></pre>
+
+<p>would be used for all</p>
+<pre><code class="html">&lt;my-foo&gt;...&lt;/my-foo&gt;
+</code></pre>
+
+<p>elements</p>
+<p><br></p>
+<h2 id="using-mixins">Using mixins</h2>
+</div>
+        
+
+        </div>
+
+        
+
+
+    </body>
+</html>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gremlinjs-website.iml" filepath="$PROJECT_DIR$/.idea/gremlinjs-website.iml" />
+      <module fileurl="file://$USER_HOME$/Dev/git/github/grmlin/gremlins-website/.idea/gremlinjs-website.iml" filepath="$USER_HOME$/Dev/git/github/grmlin/gremlins-website/.idea/gremlinjs-website.iml" />
     </modules>
   </component>
 </project>

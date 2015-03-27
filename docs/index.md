@@ -61,8 +61,21 @@ gremlins.create({
     
 ### Bower
 
-    $bower install gremlins
+    $ bower install gremlins
     
-### Globals
+### Classic
+download from [`dist` at github](https://github.com/grmlin/gremlins) and include it
 
-     <script src="gremlin.min.js" />
+     <script src="gremlins.js" />
+     
+## Usage
+     
+### Browserify, Webpack
+
+    var gremlins = require('gremlins');
+    
+### Global
+
+    var gremlins = window.gremlins;
+    
+<br><br><br>
