@@ -1,7 +1,11 @@
-GremlinJS Website
-=================
+   
+## install
+    brew install mkdocs
+    
+## serve    
 
-### Usage
+    $ mkdocs serve
 
-    $ npm install
-    $ grunt
+## build
+
+    $ mkdocs build
