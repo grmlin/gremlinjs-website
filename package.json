@@ -1,25 +1,24 @@
 {
-  "name": "gremlinjs-website",
-  "version": "1.0.0",
+  "name": "gremlins-website",
+  "version": "1.0.1",
   "description": "gremlinjs website and documentation",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/grmlin/gremlinjs-website.git"
+    "url": "https://github.com/grmlin/gremlins-website.git"
   },
   "author": "Andreas Wehr",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/grmlin/gremlinjs-website/issues"
+    "url": "https://github.com/grmlin/gremlins-website/issues"
   },
-  "homepage": "https://github.com/grmlin/gremlinjs-website",
-  "dependencies": {
-    "gremlins": "^0.8.0"
+  "homepage": "http://grml.in",
+  "dependencies": {},
+  "devDependencies": {
+    "babelify": "^5.0.4",
+    "browserify": "^9.0.3",
+    "gremlins": "^0.8.1",
+    "gulp": "^3.8.11",
+    "gulp-sourcemaps": "^1.5.1",
+    "through2": "^0.6.3"
   }
 }

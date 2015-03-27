@@ -44,15 +44,6 @@ gremlins.create({
     </hello-gremlin>
 </div>
 
-<script>
-gremlins.create({
-  name: 'hello',
-  initialize: function(){
-    this.el.querySelector('[data-content]').textContent = 'Hello World!';
-  }
-});
-</script>
-
 ## Installation
 
 ### NPM

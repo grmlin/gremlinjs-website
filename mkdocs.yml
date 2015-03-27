@@ -4,7 +4,7 @@ theme_dir: 'custom_theme'
 repo_url: 'https://github.com/grmlin/gremlins'
 site_author: 'Andreas Wehr'
 markdown_extensions: [fenced_code, meta, def_list]
-extra_javascript: ['js/gremlins.js']
+extra_javascript: ['js/index.js']
 
 pages:
 - ['index.md', 'GREMLIN.JS']
