@@ -1,0 +1,16 @@
+[
+  {
+    "title": "gremlins-jquery",
+    "description": "gremlin.js jQuery mixin supporting element and event maps",
+    "author": "grmlin",
+    "repository": "https://github.com/grmlin/gremlins-jquery",
+    "npm": "https://www.npmjs.com/package/gremlins-jquery"
+  },
+  {
+    "title": "gremlins-interests",
+    "description": "gremlin.js interests (PubSub) extension",
+    "author": "grmlin",
+    "repository": "https://github.com/grmlin/gremlins-interests",
+    "npm": "https://www.npmjs.com/package/gremlins-interests"
+  }
+]

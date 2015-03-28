@@ -1,32 +1,36 @@
 var gulp = require('gulp');
-var path = require('path');
-var jsRoot = path.join(__dirname, 'gremlins-website');
-var through2 = require('through2');
 var browserify = require('browserify');
-var babelify = require("babelify");
+var mold = require('mold-source-map');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var exorcist = require('exorcist');
+var uglifyify = require('uglifyify');
 var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
 
 gulp.task('scripts', function () {
 
-	return gulp.src('src/index.js')
+	return browserify('./src/index.js', {
+		extensions: ['.js', '.jsx', '.json'],
+		debug: true
+	})
+		.transform('babelify')
+		.bundle()
+		.pipe(mold.transformSourcesRelativeTo('./'))
+		//.pipe(exorcist('./custom_theme/js/index.js.map'))
+		.pipe(source('index.js'))
+		.pipe(buffer())
 		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(through2.obj(function (file, enc, next) {
-				browserify(file.path, {
-					debug: true
-				})
-				.transform('babelify')
-				.bundle(function (err, res) {
-					// assumes file.contents is a Buffer
-					file.contents = res;
-					next(null, file);
-				});
-		}))
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest('custom_theme/js'));
+		//.pipe(uglify({
+		//	outSourceMap: true
+		//}))
+		.pipe(uglify())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('./custom_theme/js'));
 });
 
 gulp.task('watch', function () {
-	gulp.watch(['src/**/*.js'], ['scripts']);
+	gulp.watch(['src/**/*.*'], ['scripts']);
 });
 
 gulp.task('default', ['scripts', 'watch']);

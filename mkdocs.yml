@@ -10,5 +10,5 @@ pages:
 - ['index.md', 'GREMLIN.JS']
 - ['learn.md', 'Learn']
 - ['api.md', 'Documentation']
-#- ['modules.html', 'Find Modules']
+- ['modules.html', 'Find Modules']
 #- ['components.html', 'Find Components']

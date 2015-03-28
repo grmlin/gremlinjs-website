@@ -1,9 +1,7 @@
 'use strict';
 
+require('babel/polyfill');
+
 // include all the specs
-
 require('./specs/hello');
-
-module.exports = {
-
-};
+require('./specs/modules');
