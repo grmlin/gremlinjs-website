@@ -7,10 +7,17 @@
     "npm": "https://www.npmjs.com/package/gremlins-jquery"
   },
   {
-    "title": "gremlins-interests",
-    "description": "gremlin.js interests (PubSub) extension",
+    "title": "gremlins-dispatcher",
+    "description": "gremlin.js dispatcher mixin. Easy component interoperability",
     "author": "grmlin",
-    "repository": "https://github.com/grmlin/gremlins-interests",
-    "npm": "https://www.npmjs.com/package/gremlins-interests"
+    "repository": "https://github.com/grmlin/gremlins-dispatcher",
+    "npm": "https://www.npmjs.com/package/gremlins-dispatcher"
+  },
+  {
+    "title": "gremlins-data",
+    "description": "gremlin.js element data mixin for html5 data-attributes handling",
+    "author": "grmlin",
+    "repository": "https://github.com/grmlin/gremlins-data",
+    "npm": "https://www.npmjs.com/package/gremlins-data"
   }
 ]
