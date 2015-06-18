@@ -2,8 +2,7 @@
 
 var gremlins = require('gremlins');
 
-gremlins.create({
-	name: 'hello',
+gremlins.create('hello-world', {
 	initialize: function () {
 		this.el.querySelector('[data-content]').textContent = 'Hello World!';
 	}

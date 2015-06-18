@@ -16,39 +16,36 @@ websites. Webapps are not for everyone and everything, but modular and well orga
 
 ## How does it feel?
 
-
+<br>
 **Add a custom dom element**
-
 ``` html
-<hello-gremlin>
+<hello-world>
   <p data-content></p>
-</hello-gremlin>
+</hello-world>
 ```
-
-**Add a spec**
-
-``` javascript
-gremlins.create({
-  name: 'hello',
+<br>
+**Add a spec** 
+``` js
+gremlins.create('hello-world', {
   initialize: function(){
     this.el.querySelector('[data-content]').textContent = 'Hello World!';
   }
 });
 ```
 
+<br>
 **done**
-
 <div class="well well-sm">
-    <hello-gremlin>
+    <hello-world>
       <span data-content></span>
-    </hello-gremlin>
+    </hello-world>
 </div>
 
 ## Installation
 
 ### NPM
 
-    $ npm install gremlins --save
+    $ npm install --save gremlins 
     
 ### Bower
 

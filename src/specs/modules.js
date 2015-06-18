@@ -6,8 +6,7 @@ var gremlins = require('gremlins'),
 var ModulesComponent = require('../components/Modules'),
 	modules = require('../modules');
 
-gremlins.create({
-	name: 'modules',
+gremlins.create('modules-grid', {
 	initialize: function () {
 		React.render(
 			React.createElement(ModulesComponent, {modules}),

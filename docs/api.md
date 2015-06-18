@@ -3,80 +3,50 @@ The main entry point creating gremlin components
 
 ### create
 
-`Gremlin create(object specification)`
+`Gremlin create(string tagName, object specification)`
 
 Creates a new gremlin based on [`specification`](#gremlin-component-specification). 
 The spec is used for all custom elements later found in the dom
 
-The spec has to provide one property, `name`, that is required. Unless you specify a `tagName`, the name will be used
-create the custom element and it's tag name: `${name}-gremlin`.
+The `tagName` will be used to register the new element with the dom.
 
 #### Example
 
 ```js
 var gremlins = require('gremlins');
 
-gremlins.create({
-  name: 'foo', // finds all custom elements <foo-gremlin></foo-gremlin>
+gremlins.create('my-element', {
   initialize: function(){
     this.el.innerHTML = 'Hello Foo';
   }
 });
+```
+
+will be used for all
+
+```html
+<my-element></my-element>
+```
+
+<br><br>
+
+### findGremlin
+
+`gremlin findGremlin(HTMLElement element)`
+
+Returns the gremlin instance for a dom element.
+
+#### Example
+
+```js
+var gremlins = require('gremlins');
+
+var g = gremlins.findGremlin(el);
 ```
 
 <br><br><br>
 
-## COMPONENT SPECIFICATIONS
-
-### name
-
-`string name`
-
-Unique component name. 
-Without a `tagName` it will be used to create the custom elements tag name with the pattern `${name}-gremlin`:
-
-```js
-gremlins.create({
-  name: 'foo'
-});
-```
-
-```html
-<foo-gremlin></foo-gremlin>
-```
-    
-
-### tagName
-
-`string tagName` 
-
-Override the default tag name. It has to use a minimum of one hyphen, otherwise the custom element can't be created.
-
-```js
-gremlins.create({
-  name: 'hello',
-  tagName: 'hello-world'
-});
-```
-
-```html
-<hello-world></hello-world>
-```
-    
-### el
-
-`HTMLElement el`
-
-The dom element for this component. Available inside the `initialize` call and all other component method
-
-```js
-gremlins.create({
-  name: 'foo', 
-  initialize: function(){
-    this.el.innerHTML = 'Hello Foo';
-  }
-});
-```
+## COMPONENT SPECIFICATION
 
 ### mixins
 
@@ -110,14 +80,33 @@ constructor function called for all instances on creation
 
 called, when the element leaves the dom. Can be used to unbind event handlers and such
 
+## Component
+    
+### el
+
+`HTMLElement el`
+
+The dom element for this component. Available inside the `initialize` call and all other component methods
+
+```js
+gremlins.create({
+  name: 'foo', 
+  initialize: function(){
+    this.el.innerHTML = 'Hello Foo';
+  }
+});
+```
+
 
 ## MIXINS / MODULES
 
 Mixins are an easy way to share component behaviour between components.   
-Mixins are simple javascript object literals extending the components prototype. If a mixin and a component or another 
-mixin use the same method names, they will be decorated and called in the order they were added to the spec.
+Mixins are simple javascript object literals extending the components prototype. 
 
-<div class="text-right"><span class="label label-primary">mixin</span></div>
+If a mixin and a component or another mixin use the same method names, they will be decorated and called in the order 
+they were added to the spec, the mixins are always called before the actual spec method.
+
+<span class="label label-primary">mixin</span>
 ```js
 var gremlinsJquery = {
   initialize: function(){
@@ -126,11 +115,11 @@ var gremlinsJquery = {
 }
 ```
 
-<div class="text-right"><span class="label label-primary">specification</span></div>
+<br>  
+<span class="label label-primary">specification</span>
 ```js
-gremlins.create({
+gremlins.create('my-element', {
   mixins: [gremlinsJquery],
-  name: 'foo', 
   initialize: function(){
     this.$el.text('Hello Foo');
   }

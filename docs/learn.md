@@ -11,29 +11,33 @@ is supported in modern Chrome, Firefox and Opera. For older browser there exists
 need support for IE8, you'll have to include another script available at the 
 [polyfills repository](https://github.com/WebReflection/document-register-element).
 
+You can use the barebones GREMLIN.JS library, too, if you want to bring your own polyfill or prefer to live on the cutting edge.
+Include the `lib/gremlins.native.js` instead to omit the polyfill.
+
 <br>
 
 ## Creating components
 
 ### The spec
 
-Every gremlin component is described with a [component specification](api.md#component-specifications), an object literal providing methods, properties and an optional 
-constructor function `initialize`.
+Every gremlin component is described with a [component specification](api.md#component-specifications), an object 
+literal providing methods, properties and an optional constructor function `initialize`.
 
 You'll add the spec to GREMLIN.JS by calling the [`gremlins.create`](api.md#create) function.
 
-property     | description
--------------|--------------
-String `name`       | **required**, the unique name of this component
-Function `initialize` | will be called for all elements found in the site and added to the dom
-HTMLElement `el`         | is a reference to the dom element and added for you by GREMLIN.JS
-Function `create`     | **readonly** gremlin inheritance can't be overwritten.
+property            | type                  | description
+-------------       | -----                 |--------------
+`mixin`             | Object, [Object]      | on or more mixins to use with this component
+`initialize`        | Function              | will be called for all elements found after they were added to the dom
+`destroy`           | Function              | will be called for all elements found when they are removed from the dom
+
 
 ```js
-var gremlins = require('gremlins');
+var gremlins       = require('gremlins');
+var gremlinsJquery = require('gremlins-jquery');
 
-gremlins.create({
-  name: 'foo',
+gremlins.create('foo-gremlin', {
+  mixins: [gremlinsJquery],
   initialize: function(){
     console.log('a new foo is in town!', this.el);
   }
@@ -46,28 +50,24 @@ gremlins.create({
 When you created a spec, you can use the corresponding custom element to add gremlin components to your site. In fact,
 it does not matter if you create the spec first, specs can be added after the element exists in the dom.
  
-The custom element's (tag) name is created with the `name` property of the gremlin's  spec as the first part.
+The custom element's (tag) name is created with the tag name you provide when creating the gremlin.
 
-`<[name]-gremlin />`
-
-So the spec 
+The spec
 ```js
-gremlins.create({
-  name: 'foo'
-)};
+gremlins.create('my-element'};
 ```
 
 would be used for all
 
 ```html
-<foo-gremlin>...</foo-gremlin>
+<my-element>...</my-element>
 ```
 
 elements.
 
 <br>
 
-#### But I don't like these tag names
+#### Tag names
 
 [Some theory first](http://w3c.github.io/webcomponents/spec/custom/#concepts):
 
@@ -88,29 +88,6 @@ elements.
 
 **throws an exception: **  
 `<foo />`, `<foo_bar />` or `<fooBar />`  
-
------
-
-If you keep these restrictions in mind, feel free to use the [`tagName`](api.md#tagname) property in the components spec to overwrite the
-default behaviour and use tag names you like.
-
-So the spec 
-```js
-gremlins.create({
-  name: 'foo',
-  tagName: 'my-foo'
-)};
-```
-
-would be used for all
-
-```html
-<my-foo>...</my-foo>
-```
-elements
-
-
-<br>
 
 ## Using mixins
 
