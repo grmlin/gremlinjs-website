@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
 
-	<title>Learn - GREMLIN.JS - GREMLIN.JS</title>
+	<title>Learn - GREMLIN.JS</title>
 
         <link href="../css/bootstrap-3.0.3.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -55,20 +55,26 @@
             <ul class="nav navbar-nav">
             
             
+                <li >
+                    <a href="..">GREMLIN.JS</a>
+                </li>
+            
+            
+            
                 <li class="active">
-                    <a href=".">Learn</a>
+                    <a href="./">Learn</a>
                 </li>
             
             
             
                 <li >
-                    <a href="../api">Documentation</a>
+                    <a href="../api/">Documentation</a>
                 </li>
             
             
             
                 <li >
-                    <a href="../modules">Find Modules</a>
+                    <a href="../modules/">Find Modules</a>
                 </li>
             
             
@@ -83,7 +89,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../api">
+                    <a rel="prev" href="../api/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -135,42 +141,45 @@ is supported in modern Chrome, Firefox and Opera. For older browser there exists
 <a href="https://github.com/WebReflection/document-register-element">polyfill</a>, that's already included in GREMLIN.JS. If you 
 need support for IE8, you'll have to include another script available at the 
 <a href="https://github.com/WebReflection/document-register-element">polyfills repository</a>.</p>
+<p>You can use the barebones GREMLIN.JS library, too, if you want to bring your own polyfill or prefer to live on the cutting edge.
+Include the <code>lib/gremlins.native.js</code> instead to omit the polyfill.</p>
 <p><br></p>
 <h2 id="creating-components">Creating components</h2>
 <h3 id="the-spec">The spec</h3>
-<p>Every gremlin component is described with a <a href="../api#component-specifications">component specification</a>, an object literal providing methods, properties and an optional 
-constructor function <code>initialize</code>.</p>
-<p>You'll add the spec to GREMLIN.JS by calling the <a href="../api#create"><code>gremlins.create</code></a> function.</p>
+<p>Every gremlin component is described with a <a href="../api/#component-specifications">component specification</a>, an object 
+literal providing methods, properties and an optional constructor function <code>initialize</code>.</p>
+<p>You'll add the spec to GREMLIN.JS by calling the <a href="../api/#create"><code>gremlins.create</code></a> function.</p>
 <table>
 <thead>
 <tr>
 <th>property</th>
+<th>type</th>
 <th>description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>String <code>name</code></td>
-<td><strong>required</strong>, the unique name of this component</td>
+<td><code>mixin</code></td>
+<td>Object, [Object]</td>
+<td>on or more mixins to use with this component</td>
 </tr>
 <tr>
-<td>Function <code>initialize</code></td>
-<td>will be called for all elements found in the site and added to the dom</td>
+<td><code>initialize</code></td>
+<td>Function</td>
+<td>will be called for all elements found after they were added to the dom</td>
 </tr>
 <tr>
-<td>HTMLElement <code>el</code></td>
-<td>is a reference to the dom element and added for you by GREMLIN.JS</td>
-</tr>
-<tr>
-<td>Function <code>create</code></td>
-<td><strong>readonly</strong> gremlin inheritance can't be overwritten.</td>
+<td><code>destroy</code></td>
+<td>Function</td>
+<td>will be called for all elements found when they are removed from the dom</td>
 </tr>
 </tbody>
 </table>
-<pre><code class="js">var gremlins = require('gremlins');
+<pre><code class="js">var gremlins       = require('gremlins');
+var gremlinsJquery = require('gremlins-jquery');
 
-gremlins.create({
-  name: 'foo',
+gremlins.create('foo-gremlin', {
+  mixins: [gremlinsJquery],
   initialize: function(){
     console.log('a new foo is in town!', this.el);
   }
@@ -181,21 +190,18 @@ gremlins.create({
 <h3 id="the-custom-element">The custom element</h3>
 <p>When you created a spec, you can use the corresponding custom element to add gremlin components to your site. In fact,
 it does not matter if you create the spec first, specs can be added after the element exists in the dom.</p>
-<p>The custom element's (tag) name is created with the <code>name</code> property of the gremlin's  spec as the first part.</p>
-<p><code>&lt;[name]-gremlin /&gt;</code></p>
-<p>So the spec </p>
-<pre><code class="js">gremlins.create({
-  name: 'foo'
-)};
+<p>The custom element's (tag) name is created with the tag name you provide when creating the gremlin.</p>
+<p>The spec</p>
+<pre><code class="js">gremlins.create('my-element'};
 </code></pre>
 
 <p>would be used for all</p>
-<pre><code class="html">&lt;foo-gremlin&gt;...&lt;/foo-gremlin&gt;
+<pre><code class="html">&lt;my-element&gt;...&lt;/my-element&gt;
 </code></pre>
 
 <p>elements.</p>
 <p><br></p>
-<h4 id="but-i-dont-like-these-tag-names">But I don't like these tag names</h4>
+<h4 id="tag-names">Tag names</h4>
 <p><a href="http://w3c.github.io/webcomponents/spec/custom/#concepts">Some theory first</a>:</p>
 <blockquote>
 <p>The custom element type identifies a custom element interface and is a sequence of characters that must match the NCName production, must contain a U+002D HYPHEN-MINUS character, and must not contain any uppercase ASCII letters.
@@ -215,24 +221,7 @@ it does not matter if you create the spec first, specs can be added after the el
 <code>&lt;foo-bar /&gt;</code> or <code>&lt;my-tag /&gt;</code> </p>
 <p><strong>throws an exception: </strong><br />
 <code>&lt;foo /&gt;</code>, <code>&lt;foo_bar /&gt;</code> or <code>&lt;fooBar /&gt;</code>  </p>
-<hr />
-<p>If you keep these restrictions in mind, feel free to use the <a href="../api#tagname"><code>tagName</code></a> property in the components spec to overwrite the
-default behaviour and use tag names you like.</p>
-<p>So the spec </p>
-<pre><code class="js">gremlins.create({
-  name: 'foo',
-  tagName: 'my-foo'
-)};
-</code></pre>
-
-<p>would be used for all</p>
-<pre><code class="html">&lt;my-foo&gt;...&lt;/my-foo&gt;
-</code></pre>
-
-<p>elements</p>
-<p><br></p>
-<h2 id="using-mixins">Using mixins</h2>
-</div>
+<h2 id="using-mixins">Using mixins</h2></div>
         
 
         </div>

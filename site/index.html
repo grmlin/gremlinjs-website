@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="./img/favicon.ico">
 
-	<title>GREMLIN.JS - GREMLIN.JS</title>
+	<title>GREMLIN.JS</title>
 
         <link href="./css/bootstrap-3.0.3.min.css" rel="stylesheet">
         <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -53,6 +53,12 @@
         <div class="navbar-collapse collapse">
             <!-- Main navigation -->
             <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">GREMLIN.JS</a>
+                </li>
+            
             
             
                 <li >
@@ -109,7 +115,7 @@
 <div class="text-center">
     <p>
         <br><br>
-        <img alt="logo" src="././img/logo.png">
+        <img alt="logo" src="./img/logo.png">
     </p>
 </div>
 
@@ -120,38 +126,39 @@ websites. Webapps are not for everyone and everything, but modular and well orga
 </div>
 
 <h2 id="how-does-it-feel">How does it feel?</h2>
-<p><strong>Add a custom dom element</strong></p>
-<pre><code class="html">&lt;hello-gremlin&gt;
+<p><br>
+<strong>Add a custom dom element</strong></p>
+<pre><code class="html">&lt;hello-world&gt;
   &lt;p data-content&gt;&lt;/p&gt;
-&lt;/hello-gremlin&gt;
+&lt;/hello-world&gt;
 </code></pre>
 
-<p><strong>Add a spec</strong></p>
-<pre><code class="javascript">gremlins.create({
-  name: 'hello',
+<p><br>
+<strong>Add a spec</strong> </p>
+<pre><code class="js">gremlins.create('hello-world', {
   initialize: function(){
     this.el.querySelector('[data-content]').textContent = 'Hello World!';
   }
 });
 </code></pre>
 
-<p><strong>done</strong></p>
+<p><br>
+<strong>done</strong>
 <div class="well well-sm">
-    <hello-gremlin>
+    <hello-world>
       <span data-content></span>
-    </hello-gremlin>
-</div>
-
+    </hello-world>
+</div></p>
 <h2 id="installation">Installation</h2>
 <h3 id="npm">NPM</h3>
-<pre><code>$ npm install gremlins --save
+<pre><code>$ npm install --save gremlins
 </code></pre>
 <h3 id="bower">Bower</h3>
 <pre><code>$ bower install gremlins
 </code></pre>
 <h3 id="classic">Classic</h3>
 <p>download from <a href="https://github.com/grmlin/gremlins"><code>dist</code> at github</a> and include it</p>
-<pre><code> &lt;script src="./gremlins.js" /&gt;
+<pre><code> &lt;script src="gremlins.js" /&gt;
 </code></pre>
 <h2 id="usage">Usage</h2>
 <h3 id="browserify-webpack">Browserify, Webpack</h3>
@@ -160,8 +167,7 @@ websites. Webapps are not for everyone and everything, but modular and well orga
 <h3 id="global">Global</h3>
 <pre><code>var gremlins = window.gremlins;
 </code></pre>
-<p><br><br><br></p>
-</div>
+<p><br><br><br></p></div>
             
 
         </div>

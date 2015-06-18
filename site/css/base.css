@@ -103,3 +103,33 @@ div.source-links {
         width: 263px;
     }
 }
+
+
+pre code {
+    position: relative;
+}
+pre code:before{
+    display: inline;
+    font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+    padding: .2em .6em .3em;
+    font-size: 85%;
+    font-weight: bold;
+    line-height: 1;
+    color: #ffffff;
+    background-color: #bbbbbb;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+pre code.js:before {
+    content: 'js'
+}
+
+pre code.html:before {
+    content: 'html'
+}

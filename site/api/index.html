@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
 
-	<title>Documentation - GREMLIN.JS - GREMLIN.JS</title>
+	<title>Documentation - GREMLIN.JS</title>
 
         <link href="../css/bootstrap-3.0.3.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -56,19 +56,25 @@
             
             
                 <li >
-                    <a href="../learn">Learn</a>
-                </li>
-            
-            
-            
-                <li class="active">
-                    <a href=".">Documentation</a>
+                    <a href="..">GREMLIN.JS</a>
                 </li>
             
             
             
                 <li >
-                    <a href="../modules">Find Modules</a>
+                    <a href="../learn/">Learn</a>
+                </li>
+            
+            
+            
+                <li class="active">
+                    <a href="./">Documentation</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../modules/">Find Modules</a>
                 </li>
             
             
@@ -78,12 +84,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../learn">
+                    <a rel="next" href="../learn/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../modules">
+                    <a rel="prev" href="../modules/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -111,20 +117,21 @@
         
             <li><a href="#create">create</a></li>
         
+            <li><a href="#findgremlin">findGremlin</a></li>
+        
     
-        <li class="main "><a href="#component-specifications">COMPONENT SPECIFICATIONS</a></li>
-        
-            <li><a href="#name">name</a></li>
-        
-            <li><a href="#tagname">tagName</a></li>
-        
-            <li><a href="#el">el</a></li>
+        <li class="main "><a href="#component-specification">COMPONENT SPECIFICATION</a></li>
         
             <li><a href="#mixins">mixins</a></li>
         
             <li><a href="#initialize">initialize()</a></li>
         
             <li><a href="#destroy">destroy()</a></li>
+        
+    
+        <li class="main "><a href="#component">Component</a></li>
+        
+            <li><a href="#el">el</a></li>
         
     
         <li class="main "><a href="#mixins-modules">MIXINS / MODULES</a></li>
@@ -137,59 +144,36 @@
 <h2 id="gremlins">GREMLINS</h2>
 <p>The main entry point creating gremlin components</p>
 <h3 id="create">create</h3>
-<p><code>Gremlin create(object specification)</code></p>
+<p><code>Gremlin create(string tagName, object specification)</code></p>
 <p>Creates a new gremlin based on <a href="#gremlin-component-specification"><code>specification</code></a>. 
 The spec is used for all custom elements later found in the dom</p>
-<p>The spec has to provide one property, <code>name</code>, that is required. Unless you specify a <code>tagName</code>, the name will be used
-create the custom element and it's tag name: <code>${name}-gremlin</code>.</p>
+<p>The <code>tagName</code> will be used to register the new element with the dom.</p>
 <h4 id="example">Example</h4>
 <pre><code class="js">var gremlins = require('gremlins');
 
-gremlins.create({
-  name: 'foo', // finds all custom elements &lt;foo-gremlin&gt;&lt;/foo-gremlin&gt;
+gremlins.create('my-element', {
   initialize: function(){
     this.el.innerHTML = 'Hello Foo';
   }
 });
+</code></pre>
+
+<p>will be used for all</p>
+<pre><code class="html">&lt;my-element&gt;&lt;/my-element&gt;
+</code></pre>
+
+<p><br><br></p>
+<h3 id="findgremlin">findGremlin</h3>
+<p><code>gremlin findGremlin(HTMLElement element)</code></p>
+<p>Returns the gremlin instance for a dom element.</p>
+<h4 id="example_1">Example</h4>
+<pre><code class="js">var gremlins = require('gremlins');
+
+var g = gremlins.findGremlin(el);
 </code></pre>
 
 <p><br><br><br></p>
-<h2 id="component-specifications">COMPONENT SPECIFICATIONS</h2>
-<h3 id="name">name</h3>
-<p><code>string name</code></p>
-<p>Unique component name. 
-Without a <code>tagName</code> it will be used to create the custom elements tag name with the pattern <code>${name}-gremlin</code>:</p>
-<pre><code class="js">gremlins.create({
-  name: 'foo'
-});
-</code></pre>
-
-<pre><code class="html">&lt;foo-gremlin&gt;&lt;/foo-gremlin&gt;
-</code></pre>
-
-<h3 id="tagname">tagName</h3>
-<p><code>string tagName</code> </p>
-<p>Override the default tag name. It has to use a minimum of one hyphen, otherwise the custom element can't be created.</p>
-<pre><code class="js">gremlins.create({
-  name: 'hello',
-  tagName: 'hello-world'
-});
-</code></pre>
-
-<pre><code class="html">&lt;hello-world&gt;&lt;/hello-world&gt;
-</code></pre>
-
-<h3 id="el">el</h3>
-<p><code>HTMLElement el</code></p>
-<p>The dom element for this component. Available inside the <code>initialize</code> call and all other component method</p>
-<pre><code class="js">gremlins.create({
-  name: 'foo', 
-  initialize: function(){
-    this.el.innerHTML = 'Hello Foo';
-  }
-});
-</code></pre>
-
+<h2 id="component-specification">COMPONENT SPECIFICATION</h2>
 <h3 id="mixins">mixins</h3>
 <p><code>object mixins</code> </p>
 <p>An object, or an array of objects, used as mixin(s). This way it's easy to extend you're components capabilities in a 
@@ -211,12 +195,24 @@ gremlins.create({
 <h3 id="destroy">destroy()</h3>
 <p><code>function destroy()</code></p>
 <p>called, when the element leaves the dom. Can be used to unbind event handlers and such</p>
+<h2 id="component">Component</h2>
+<h3 id="el">el</h3>
+<p><code>HTMLElement el</code></p>
+<p>The dom element for this component. Available inside the <code>initialize</code> call and all other component methods</p>
+<pre><code class="js">gremlins.create({
+  name: 'foo', 
+  initialize: function(){
+    this.el.innerHTML = 'Hello Foo';
+  }
+});
+</code></pre>
+
 <h2 id="mixins-modules">MIXINS / MODULES</h2>
 <p>Mixins are an easy way to share component behaviour between components. <br />
-Mixins are simple javascript object literals extending the components prototype. If a mixin and a component or another 
-mixin use the same method names, they will be decorated and called in the order they were added to the spec.</p>
-<div class="text-right"><span class="label label-primary">mixin</span></div>
-
+Mixins are simple javascript object literals extending the components prototype. </p>
+<p>If a mixin and a component or another mixin use the same method names, they will be decorated and called in the order 
+they were added to the spec, the mixins are always called before the actual spec method.</p>
+<p><span class="label label-primary">mixin</span></p>
 <pre><code class="js">var gremlinsJquery = {
   initialize: function(){
     this.$el = $(this.el);
@@ -224,18 +220,15 @@ mixin use the same method names, they will be decorated and called in the order 
 }
 </code></pre>
 
-<div class="text-right"><span class="label label-primary">specification</span></div>
-
-<pre><code class="js">gremlins.create({
+<p><br><br />
+<span class="label label-primary">specification</span></p>
+<pre><code class="js">gremlins.create('my-element', {
   mixins: [gremlinsJquery],
-  name: 'foo', 
   initialize: function(){
     this.$el.text('Hello Foo');
   }
 });
-</code></pre>
-
-</div>
+</code></pre></div>
         
 
         </div>
