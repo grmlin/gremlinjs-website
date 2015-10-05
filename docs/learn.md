@@ -89,5 +89,4 @@ elements.
 **throws an exception: **  
 `<foo />`, `<foo_bar />` or `<fooBar />`  
 
-## Using mixins
 

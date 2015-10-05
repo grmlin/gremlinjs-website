@@ -80,6 +80,12 @@ constructor function called for all instances on creation
 
 called, when the element leaves the dom. Can be used to unbind event handlers and such
 
+### attributeDidChange()
+
+`function attributeDidChange(String attributeName, previousValue, value)`
+
+called, when an attribute of the dom element changed
+
 ## Component
     
 ### el
