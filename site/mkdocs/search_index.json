@@ -1,0 +1,159 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "GREMLIN.JS \ndead simple web components\n\n\n\nGREMLIN.JS is a dependency-free library to build web components. Web components for boringly normal websites, all your\nwebsites. Webapps are not for everyone and everything, but modular and well organized code is.\n\n\n\n\nHow does it feel?\n\n\n\n    All examples in this documentation will use the \nES2015/ES6 syntax\n. Use a compiler like \n Babel \n  to compile them into ES5 compatible Javascript. \n\n\n\n\n\n\nAdd a custom dom element\n\n\nhello-world\n\n  \np data-content\n/p\n\n\n/hello-world\n\n\n\n\n\n\n\nAdd a spec\n \n\n\ngremlins.create('hello-world', {\n  initialize: function(){\n    this.el.querySelector('[data-content]').textContent = 'Hello World!';\n  }\n});\n\n\n\n\n\n\ndone\n\n\n\n    \n\n      \n\n    \n\n\n\n\nInstallation\n\n\nNPM\n\n\n$ npm install --save gremlins\n\n\n\nClassic\n\n\ndownload the latest relase \nat github\n and include the minified file found in \ndist\n\n\n \nscript src=\"gremlins.js\" /\n\n\n\n\nUsage\n\n\nBrowserify, Webpack\n\n\nimport gremlins from 'gremlins';\n\n\n\nGlobal\n\n\nconst gremlins = window.gremlins;\n\n\n\nthe global namespace isn't available in a common-js/es2015-module environment", 
+            "title": "GREMLIN.JS"
+        }, 
+        {
+            "location": "/#gremlinjs-dead-simple-web-components", 
+            "text": "GREMLIN.JS is a dependency-free library to build web components. Web components for boringly normal websites, all your\nwebsites. Webapps are not for everyone and everything, but modular and well organized code is.", 
+            "title": "GREMLIN.JS dead simple web components"
+        }, 
+        {
+            "location": "/#how-does-it-feel", 
+            "text": "All examples in this documentation will use the  ES2015/ES6 syntax . Use a compiler like   Babel    to compile them into ES5 compatible Javascript.    Add a custom dom element  hello-world \n   p data-content /p  /hello-world    Add a spec    gremlins.create('hello-world', {\n  initialize: function(){\n    this.el.querySelector('[data-content]').textContent = 'Hello World!';\n  }\n});   done", 
+            "title": "How does it feel?"
+        }, 
+        {
+            "location": "/#installation", 
+            "text": "", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/#npm", 
+            "text": "$ npm install --save gremlins", 
+            "title": "NPM"
+        }, 
+        {
+            "location": "/#classic", 
+            "text": "download the latest relase  at github  and include the minified file found in  dist    script src=\"gremlins.js\" /", 
+            "title": "Classic"
+        }, 
+        {
+            "location": "/#usage", 
+            "text": "", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/#browserify-webpack", 
+            "text": "import gremlins from 'gremlins';", 
+            "title": "Browserify, Webpack"
+        }, 
+        {
+            "location": "/#global", 
+            "text": "const gremlins = window.gremlins;  the global namespace isn't available in a common-js/es2015-module environment", 
+            "title": "Global"
+        }, 
+        {
+            "location": "/learn/", 
+            "text": "All examples in this documentation will use the \nES2015/ES6 syntax\n. Use a compiler like \n Babel \n  to compile them into ES5 compatible Javascript. \n\n\n\n\nCustom Elements\n\n\nCustom elements are a great way to add some custom behaviour to dom elements, in a reusable and modular manner. \nGREMLIN.JS offers a simple interface to create and describe these custom elements.\n\n\nBrowser support\n\n\nCreating custom elements with \ndocument.registerElement\n\nis supported in modern Chrome, Firefox and Opera. For older browser there exists a small \n\npolyfill\n, that's already included in GREMLIN.JS. If you \nneed support for IE8, you'll have to include another script available at the \n\npolyfills repository\n.\n\n\nYou can use the barebones GREMLIN.JS library, too, if you want to bring your own polyfill or prefer to live on the cutting edge.\nInclude the \nlib/native.js\n instead to omit the polyfill.\n\n\n\n\nCreating components\n\n\nThe spec\n\n\nEvery gremlin component is described with a \ncomponent specification\n, an object \nliteral providing methods, properties and an optional constructor function \ninitialize\n.\n\n\nYou'll add the spec to GREMLIN.JS by calling the \ngremlins.create\n function.\n\n\n\n\n\n\n\n\nproperty\n\n\ntype\n\n\ndescription\n\n\n\n\n\n\n\n\n\n\nmixin\n\n\nObject, [Object]\n\n\non or more mixins to use with this component\n\n\n\n\n\n\ninitialize\n\n\nFunction\n\n\nwill be called for all elements found after they were added to the dom\n\n\n\n\n\n\ndestroy\n\n\nFunction\n\n\nwill be called for all elements found when they are removed from the dom\n\n\n\n\n\n\n\n\nvar gremlins       = require('gremlins');\nvar gremlinsJquery = require('gremlins-jquery');\n\ngremlins.create('foo-gremlin', {\n  mixins: [gremlinsJquery],\n  initialize: function(){\n    console.log('a new foo is in town!', this.el);\n  }\n});\n\n\n\n\n\n\nThe custom element\n\n\nWhen you created a spec, you can use the corresponding custom element to add gremlin components to your site. In fact,\nit does not matter if you create the spec first, specs can be added after the element exists in the dom.\n\n\nThe custom element's (tag) name is created with the tag name you provide when creating the gremlin.\n\n\nThe spec\n\n\ngremlins.create('my-element'};\n\n\n\n\nwould be used for all\n\n\nmy-element\n...\n/my-element\n\n\n\n\n\nelements.\n\n\n\n\nTag names\n\n\nSome theory first\n:\n\n\n\n\nThe custom element type identifies a custom element interface and is a sequence of characters that must match the NCName production, must contain a U+002D HYPHEN-MINUS character, and must not contain any uppercase ASCII letters.\n The custom element type must not be one of the following values:\n\n\n\n\nannotation-xml\n\n\ncolor-profile\n\n\nfont-face\n\n\nfont-face-src\n\n\nfont-face-uri\n\n\nfont-face-format\n\n\nfont-face-name\n\n\nmissing-glyph\n\n\n\n\n\n\nworks: \n\n\nfoo-bar /\n or \nmy-tag /\n \n\n\nthrows an exception: \n\n\nfoo /\n, \nfoo_bar /\n or \nfooBar /", 
+            "title": "Learn"
+        }, 
+        {
+            "location": "/learn/#custom-elements", 
+            "text": "Custom elements are a great way to add some custom behaviour to dom elements, in a reusable and modular manner. \nGREMLIN.JS offers a simple interface to create and describe these custom elements.", 
+            "title": "Custom Elements"
+        }, 
+        {
+            "location": "/learn/#browser-support", 
+            "text": "Creating custom elements with  document.registerElement \nis supported in modern Chrome, Firefox and Opera. For older browser there exists a small  polyfill , that's already included in GREMLIN.JS. If you \nneed support for IE8, you'll have to include another script available at the  polyfills repository .  You can use the barebones GREMLIN.JS library, too, if you want to bring your own polyfill or prefer to live on the cutting edge.\nInclude the  lib/native.js  instead to omit the polyfill.", 
+            "title": "Browser support"
+        }, 
+        {
+            "location": "/learn/#creating-components", 
+            "text": "", 
+            "title": "Creating components"
+        }, 
+        {
+            "location": "/learn/#the-spec", 
+            "text": "Every gremlin component is described with a  component specification , an object \nliteral providing methods, properties and an optional constructor function  initialize .  You'll add the spec to GREMLIN.JS by calling the  gremlins.create  function.     property  type  description      mixin  Object, [Object]  on or more mixins to use with this component    initialize  Function  will be called for all elements found after they were added to the dom    destroy  Function  will be called for all elements found when they are removed from the dom     var gremlins       = require('gremlins');\nvar gremlinsJquery = require('gremlins-jquery');\n\ngremlins.create('foo-gremlin', {\n  mixins: [gremlinsJquery],\n  initialize: function(){\n    console.log('a new foo is in town!', this.el);\n  }\n});", 
+            "title": "The spec"
+        }, 
+        {
+            "location": "/learn/#the-custom-element", 
+            "text": "When you created a spec, you can use the corresponding custom element to add gremlin components to your site. In fact,\nit does not matter if you create the spec first, specs can be added after the element exists in the dom.  The custom element's (tag) name is created with the tag name you provide when creating the gremlin.  The spec  gremlins.create('my-element'};  would be used for all  my-element ... /my-element   elements.", 
+            "title": "The custom element"
+        }, 
+        {
+            "location": "/learn/#tag-names", 
+            "text": "Some theory first :   The custom element type identifies a custom element interface and is a sequence of characters that must match the NCName production, must contain a U+002D HYPHEN-MINUS character, and must not contain any uppercase ASCII letters.\n The custom element type must not be one of the following values:   annotation-xml  color-profile  font-face  font-face-src  font-face-uri  font-face-format  font-face-name  missing-glyph    works:   foo-bar /  or  my-tag /    throws an exception:   foo / ,  foo_bar /  or  fooBar /", 
+            "title": "Tag names"
+        }, 
+        {
+            "location": "/api/", 
+            "text": "All examples in this documentation will use the \nES2015/ES6 syntax\n. Use a compiler like \n Babel \n  to compile them into ES5 compatible Javascript. \n\n\n\n\nGREMLINS\n\n\nThe main entry point creating gremlin components\n\n\ncreate\n\n\nGremlin create(string tagName, object specification)\n\n\nCreates a new gremlin based on \nspecification\n. \nThe spec is used for all custom elements later found in the dom\n\n\nThe \ntagName\n will be used to register the new element with the dom.\n\n\nExample\n\n\nvar gremlins = require('gremlins');\n\ngremlins.create('my-element', {\n  initialize: function(){\n    this.el.innerHTML = 'Hello Foo';\n  }\n});\n\n\n\n\nwill be used for all\n\n\nmy-element\n/my-element\n\n\n\n\n\n\n\nfindGremlin\n\n\ngremlin findGremlin(HTMLElement element)\n\n\nReturns the gremlin instance for a dom element.\n\n\nExample\n\n\nvar gremlins = require('gremlins');\n\nvar g = gremlins.findGremlin(el);\n\n\n\n\n\n\nCOMPONENT SPECIFICATION\n\n\n\n  \ngetter and setter\n \n\n  Feel free to use getter and setter definitions in component specifications and mixins.\n\n\n\nmixins\n\n\nobject mixins\n \n\n\nAn object, or an array of objects, used as mixin(s). This way it's easy to extend you're components capabilities in a \nmodular way.  \n\n\nvar gremlinsJquery = require('gremlins-jquery');\n\ngremlins.create({\n  mixins: [gremlinsJquery],\n  name: 'foo', \n  initialize: function(){\n    this.$el.text('Hello Foo');\n  }\n});\n\n\n\n\ninitialize()\n\n\nfunction initialize()\n\n\nconstructor function called for all instances on creation\n\n\ndestroy()\n\n\nfunction destroy()\n\n\ncalled, when the element leaves the dom. Can be used to unbind event handlers and such\n\n\nattributeDidChange()\n\n\nfunction attributeDidChange(String attributeName, previousValue, value)\n\n\ncalled, when an attribute of the dom element changed\n\n\nComponent\n\n\nel\n\n\nHTMLElement el\n\n\nThe dom element for this component. Available inside the \ninitialize\n call and all other component methods\n\n\ngremlins.create({\n  name: 'foo', \n  initialize: function(){\n    this.el.innerHTML = 'Hello Foo';\n  }\n});\n\n\n\n\nMIXINS / MODULES\n\n\nMixins are an easy way to share component behaviour between components. \n\nMixins are simple javascript object literals extending the components prototype. \n\n\nIf a mixin and a component or another mixin use the same method names, they will be decorated and called in the order \nthey were added to the spec, the mixins are always called before the actual spec method.\n\n\njqueryMixin.js\n\n\nimport $ from 'jquery';\n\nexport default {\n  initialize: function(){\n    this.$el = $(this.el);\n  }\n}\n\n\n\n\n\n\nHelloWorld.js\n\n\nimport gremlinsJquery from './jqueryMixin';\n\ngremlins.create('my-element', {\n  mixins: [gremlinsJquery],\n  initialize: function(){\n    this.$el.text('Hello Foo');\n  }\n});", 
+            "title": "Documentation"
+        }, 
+        {
+            "location": "/api/#gremlins", 
+            "text": "The main entry point creating gremlin components", 
+            "title": "GREMLINS"
+        }, 
+        {
+            "location": "/api/#create", 
+            "text": "Gremlin create(string tagName, object specification)  Creates a new gremlin based on  specification . \nThe spec is used for all custom elements later found in the dom  The  tagName  will be used to register the new element with the dom.", 
+            "title": "create"
+        }, 
+        {
+            "location": "/api/#example", 
+            "text": "var gremlins = require('gremlins');\n\ngremlins.create('my-element', {\n  initialize: function(){\n    this.el.innerHTML = 'Hello Foo';\n  }\n});  will be used for all  my-element /my-element", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/api/#findgremlin", 
+            "text": "gremlin findGremlin(HTMLElement element)  Returns the gremlin instance for a dom element.", 
+            "title": "findGremlin"
+        }, 
+        {
+            "location": "/api/#example_1", 
+            "text": "var gremlins = require('gremlins');\n\nvar g = gremlins.findGremlin(el);", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/api/#component-specification", 
+            "text": "getter and setter   \n  Feel free to use getter and setter definitions in component specifications and mixins.", 
+            "title": "COMPONENT SPECIFICATION"
+        }, 
+        {
+            "location": "/api/#mixins", 
+            "text": "object mixins    An object, or an array of objects, used as mixin(s). This way it's easy to extend you're components capabilities in a \nmodular way.    var gremlinsJquery = require('gremlins-jquery');\n\ngremlins.create({\n  mixins: [gremlinsJquery],\n  name: 'foo', \n  initialize: function(){\n    this.$el.text('Hello Foo');\n  }\n});", 
+            "title": "mixins"
+        }, 
+        {
+            "location": "/api/#initialize", 
+            "text": "function initialize()  constructor function called for all instances on creation", 
+            "title": "initialize()"
+        }, 
+        {
+            "location": "/api/#destroy", 
+            "text": "function destroy()  called, when the element leaves the dom. Can be used to unbind event handlers and such", 
+            "title": "destroy()"
+        }, 
+        {
+            "location": "/api/#attributedidchange", 
+            "text": "function attributeDidChange(String attributeName, previousValue, value)  called, when an attribute of the dom element changed", 
+            "title": "attributeDidChange()"
+        }, 
+        {
+            "location": "/api/#component", 
+            "text": "", 
+            "title": "Component"
+        }, 
+        {
+            "location": "/api/#el", 
+            "text": "HTMLElement el  The dom element for this component. Available inside the  initialize  call and all other component methods  gremlins.create({\n  name: 'foo', \n  initialize: function(){\n    this.el.innerHTML = 'Hello Foo';\n  }\n});", 
+            "title": "el"
+        }, 
+        {
+            "location": "/api/#mixins-modules", 
+            "text": "Mixins are an easy way to share component behaviour between components.  \nMixins are simple javascript object literals extending the components prototype.   If a mixin and a component or another mixin use the same method names, they will be decorated and called in the order \nthey were added to the spec, the mixins are always called before the actual spec method.  jqueryMixin.js  import $ from 'jquery';\n\nexport default {\n  initialize: function(){\n    this.$el = $(this.el);\n  }\n}   HelloWorld.js  import gremlinsJquery from './jqueryMixin';\n\ngremlins.create('my-element', {\n  mixins: [gremlinsJquery],\n  initialize: function(){\n    this.$el.text('Hello Foo');\n  }\n});", 
+            "title": "MIXINS / MODULES"
+        }, 
+        {
+            "location": "/modules/", 
+            "text": "Modules\n\n\n\nA list of gremlin.js mixins/modules", 
+            "title": "Find Modules"
+        }
+    ]
+}

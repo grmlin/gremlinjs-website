@@ -1,14 +1,17 @@
 site_name: 'GREMLIN.JS'
-theme: 'bootstrap'
-theme_dir: 'custom_theme'
+#theme: 'yeti'
+theme_dir: 'themes/yeti'
 repo_url: 'https://github.com/grmlin/gremlins'
 site_author: 'Andreas Wehr'
 markdown_extensions: [fenced_code, meta, def_list]
-extra_javascript: ['js/index.js']
+extra_javascript: [
+  'js/index.js'
+]
 
 pages:
-- ['index.md', 'GREMLIN.JS']
-- ['learn.md', 'Learn']
-- ['api.md', 'Documentation']
-- ['modules.html', 'Find Modules']
+- 'Home': 'index.md'
+- Learn: 'learn.md'
+- Documentation: 'api.md'
+- 'Find Modules': 'modules.html'
+
 #- ['components.html', 'Find Components']

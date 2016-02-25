@@ -26,7 +26,7 @@ gulp.task('scripts', function () {
 		//}))
 		.pipe(uglify())
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('./custom_theme/js'));
+		.pipe(gulp.dest('./themes/yeti/js'));
 });
 
 gulp.task('watch', function () {

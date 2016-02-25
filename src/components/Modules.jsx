@@ -1,12 +1,10 @@
 'use strict';
-var React = require('react'),
-	masonryMixin = require('react-masonry-mixin');
+var React = require('react');
 
 
 var ModulePanel = require('./ModulePanel');
 
 var Modules = React.createClass({
-	mixins: [masonryMixin('modules', {})],
 	propTypes: {
 		modules: React.PropTypes.array.isRequired
 	},
@@ -18,7 +16,9 @@ var Modules = React.createClass({
 		});
 
 		return (
-			<div className="row" ref="modules">
+			<div
+				className="row"
+			>
 				{moduleNodes}
 			</div>
 		);

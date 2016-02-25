@@ -1,3 +1,7 @@
+<div class="alert alert-info">
+	All examples in this documentation use the <a href="https://babeljs.io/docs/learn-es2015/">ES2015/ES6 syntax</a>. Use a compiler like <a href="https://babeljs.io/"> Babel </a>  to compile them into ES5 compatible Javascript.
+</div>
+
 ## Custom Elements
 
 Custom elements are a great way to add some custom behaviour to dom elements, in a reusable and modular manner. 
@@ -12,7 +16,7 @@ need support for IE8, you'll have to include another script available at the
 [polyfills repository](https://github.com/WebReflection/document-register-element).
 
 You can use the barebones GREMLIN.JS library, too, if you want to bring your own polyfill or prefer to live on the cutting edge.
-Include the `lib/gremlins.native.js` instead to omit the polyfill.
+Include the `lib/native.js` instead to omit the polyfill.
 
 <br>
 

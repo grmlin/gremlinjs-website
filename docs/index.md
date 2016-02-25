@@ -16,6 +16,10 @@ websites. Webapps are not for everyone and everything, but modular and well orga
 
 ## How does it feel?
 
+<div class="alert alert-info">
+	All examples in this documentation use the <a href="https://babeljs.io/docs/learn-es2015/">ES2015/ES6 syntax</a>. Use a compiler like <a href="https://babeljs.io/"> Babel </a>  to compile them into ES5 compatible Javascript.
+</div>
+
 <br>
 **Add a custom dom element**
 ``` html
@@ -47,12 +51,9 @@ gremlins.create('hello-world', {
 
     $ npm install --save gremlins 
     
-### Bower
-
-    $ bower install gremlins
     
 ### Classic
-download from [`dist` at github](https://github.com/grmlin/gremlins) and include it
+download the latest relase [at github](https://github.com/grmlin/gremlins) and include the minified file found in `dist`
 
      <script src="gremlins.js" />
      
@@ -60,10 +61,12 @@ download from [`dist` at github](https://github.com/grmlin/gremlins) and include
      
 ### Browserify, Webpack
 
-    var gremlins = require('gremlins');
+	import gremlins from 'gremlins';
+
     
 ### Global
 
-    var gremlins = window.gremlins;
-    
+    const gremlins = window.gremlins;
+
+*the global namespace isn't available in a common-js/es2015-module environment*    
 <br><br><br>
